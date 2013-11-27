@@ -27,7 +27,7 @@ GET		/admin/article/category/edit/:code	controllers.admin.ArticleCategory.edit(c
 POST	/admin/article/category/update		controllers.admin.ArticleCategory.update()
 GET		/admin/article/category/del/:code	controllers.admin.ArticleCategory.delete(code:String)
 
-# Admin question
+# Admin Message
 GET		/admin/message						controllers.admin.Admin.message()
 GET		/admin/message/add					controllers.admin.Message.add()
 POST	/admin/message/create				controllers.admin.Message.create()
@@ -50,6 +50,14 @@ POST	/admin/question/create				controllers.admin.Question.create()
 GET		/admin/question/edit/:code			controllers.admin.Question.edit(code:String)
 POST	/admin/question/update				controllers.admin.Question.update()
 GET		/admin/question/del/:code			controllers.admin.Question.delete(code:String)
+
+# Admin User
+GET		/admin/user							controllers.admin.Admin.user()
+GET		/admin/user/add						controllers.admin.User.add()
+POST	/admin/user/create					controllers.admin.User.create()
+GET		/admin/user/edit/:code				controllers.admin.User.edit(code:String)
+POST	/admin/user/update					controllers.admin.User.update()
+GET		/admin/user/del/:code				controllers.admin.User.delete(code:String)
 
 
 # Map static resources from the /public folder to the /assets URL path

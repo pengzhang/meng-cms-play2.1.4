@@ -29,8 +29,13 @@ public class Admin extends Controller {
 	public static Result question(){
 		return ok(question_view.render());
 	}
+	
 	public static Result exam(){
 		return ok(exam_view.render());
+	}
+	
+	public static Result user(){
+		return ok(user_view.render());
 	}
 
 }
