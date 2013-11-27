@@ -3,8 +3,54 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index()
-GET		/init						controllers.Application.cms_init()
+GET     /                           		controllers.Application.index()
+GET		/init								controllers.Application.cms_init()
+
+
+# Admin page
+GET		/admin								controllers.admin.Admin.index()
+GET		/admin/main							controllers.admin.Admin.main()
+
+# Admin Article
+GET		/admin/article						controllers.admin.Admin.article()
+GET		/admin/article/add					controllers.admin.Article.add()
+POST	/admin/article/create				controllers.admin.Article.create()
+GET		/admin/article/edit/:code			controllers.admin.Article.edit(code:String)
+POST	/admin/article/update				controllers.admin.Article.update()
+GET		/admin/article/del/:code			controllers.admin.Article.delete(code:String)
+
+# Admin Article Category
+GET		/admin/article/category				controllers.admin.Admin.article_category()
+GET		/admin/article/category/add			controllers.admin.ArticleCategory.add()
+POST	/admin/article/category/create		controllers.admin.ArticleCategory.create()
+GET		/admin/article/category/edit/:code	controllers.admin.ArticleCategory.edit(code:String)
+POST	/admin/article/category/update		controllers.admin.ArticleCategory.update()
+GET		/admin/article/category/del/:code	controllers.admin.ArticleCategory.delete(code:String)
+
+# Admin question
+GET		/admin/message						controllers.admin.Admin.message()
+GET		/admin/message/add					controllers.admin.Message.add()
+POST	/admin/message/create				controllers.admin.Message.create()
+GET		/admin/message/edit/:code			controllers.admin.Message.edit(code:String)
+POST	/admin/message/update				controllers.admin.Message.update()
+GET		/admin/message/del/:code			controllers.admin.Message.delete(code:String)
+
+# Admin Exam
+GET		/admin/exam							controllers.admin.Admin.exam()
+GET		/admin/exam/add						controllers.admin.Exam.add()
+POST	/admin/exam/create					controllers.admin.Exam.create()
+GET		/admin/exam/edit/:code				controllers.admin.Exam.edit(code:String)
+POST	/admin/exam/update					controllers.admin.Exam.update()
+GET		/admin/exam/del/:code				controllers.admin.Exam.delete(code:String)
+
+# Admin Question
+GET		/admin/question						controllers.admin.Admin.question()
+GET		/admin/question/add					controllers.admin.Question.add()
+POST	/admin/question/create				controllers.admin.Question.create()
+GET		/admin/question/edit/:code			controllers.admin.Question.edit(code:String)
+POST	/admin/question/update				controllers.admin.Question.update()
+GET		/admin/question/del/:code			controllers.admin.Question.delete(code:String)
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

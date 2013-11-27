@@ -1,0 +1,64 @@
+@js_css={
+<link rel="stylesheet" href="/assets/admin/css/tables.css">
+<script> /* SCRIPTS */
+  $(function () {
+    $('#dt3').dataTable( {
+        "bJQueryUI": true,
+        "sPaginationType": "full_numbers"   
+    }); /* For the data tables */
+    $("#add_exam").click(function(){
+    	location.href="/admin/exam/add"
+    });
+    $("#add_question").click(function(){
+    	location.href="/admin/question/add"
+    });
+    $("#view_question").click(function(){
+    	location.href="/admin/question"
+    });
+  });
+</script>
+}
+@admin("试卷管理",js_css){
+ <div class="content container_12">
+	<div class="sm-box grid_12">
+       <span>
+          <input type="button" id="add_exam" class="button big green" value="添加试卷">
+          <input type="button" id="add_question" class="button big blue" value="添加试题">
+       </span>
+     </div>
+      <div class="box grid_12">
+        <div class="box-head"><h2>试卷管理</h2></div>
+        <div class="box-content no-pad">
+        <table class="display" id="dt3">
+        <thead>
+          <tr>
+            <th>试卷标题</th>
+            <th>试卷描述</th>
+            <th>试卷题目数量</th>
+            <th>作者</th>
+            <th>审核通过</th>
+            <th>创建时间</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="odd gradeX">
+            <td>试卷A</td>
+            <td>Java试卷A</td>
+            <td class="center">10</td>
+            <td class="center">李老师</td> 
+            <td class="center">否</td>
+            <td class="center">2013/11/11 11:11:11</td>
+            <td class="center">
+             <input type="button" id="view_question" class="button small orange" value="查看该试卷">
+             <input type="button" class="button small green" value="审核通过">
+	         <input type="button" class="button small blue" value="编辑">
+         	 <input type="button" class="button small red" value="删除">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+        </div>
+      </div>
+  </div>
+}

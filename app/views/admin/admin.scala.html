@@ -1,0 +1,44 @@
+@(title:String,js_css:Html)(content:Html)
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>@title</title>
+  <link rel="shortcut icon" href="favicon.gif">
+  <!---CSS Files-->
+  <link rel="stylesheet" href="/assets/admin/css/master.css">
+  <!---jQuery Files-->
+  <script src="/assets/admin/js/jquery-1.7.1.min.js"></script>
+  <script src="/assets/admin/js/jquery-ui-1.8.17.min.js"></script>
+  <script src="/assets/admin/js/styler.js"></script>
+  <script src="/assets/admin/js/jquery.tipTip.js"></script>
+  <script src="/assets/admin/js/colorpicker.js"></script>
+  <script src="/assets/admin/js/sticky.full.js"></script>
+  <script src="/assets/admin/js/global.js"></script>
+  <script src="/assets/admin/js/flot/jquery.flot.min.js"></script>
+  <script src="/assets/admin/js/flot/jquery.flot.resize.min.js"></script>
+  <script src="/assets/admin/js/jquery.dataTables.min.js"></script>
+  <!---Fonts-->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <!--[if lte IE 8]>
+  <script language="javascript" type="text/javascript" src="/assets/admin/js/flot/excanvas.min.js"></script>
+  <![endif]-->
+  @js_css
+</head>
+<body>
+  <!--- HEADER -->
+	@header()
+
+  <!--- CONTENT AREA -->
+	@content
+	
+  <!--  FOOTER -->
+	@footer()
+
+</body>
+</html>
