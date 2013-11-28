@@ -1,0 +1,35 @@
+@js_css={
+}
+@import views.html.admin._
+@admin("信息(留言)管理",js_css){
+<div class="content container_12">
+     <div class="box grid_3"></div> 
+
+     <div class="box grid_6 ">
+       <div class="box-head"><h2>添加信息(留言)</h2></div><div class="box-content">
+          <div class="form-row">
+           <p class="form-label">姓名:</p><div class="form-item"><input type="text" /></div>
+          </div>
+          <div class="form-row">
+           <p class="form-label">手机:</p><div class="form-item"><input type="text" /></div>
+          </div>
+          <div class="form-row">
+           <p class="form-label">邮箱:</p><div class="form-item"><input type="text" /></div>
+          </div>
+          
+          <div class="form-row">
+           <p class="form-label">信息(留言内容):</p><div class="form-item"><textarea></textarea></div>
+          </div>
+
+         <div class="form-row">
+         	<div class="box grid_4"></div>
+         	<div class="box grid_4">
+          		<input type="button" class="button big green" value="确定">
+          		<input type="button" class="button small red" value="取消">
+          	</div>
+         </div>
+         <div class="clear"></div>
+       </div>
+     </div>
+</div>
+}

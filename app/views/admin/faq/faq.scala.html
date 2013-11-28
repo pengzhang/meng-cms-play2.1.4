@@ -1,0 +1,38 @@
+@js_css={
+<script>
+$(function(){
+	$("#view_faq").click(function(){
+    	location.href="/admin/faq"
+    });
+});
+</script>
+}
+@import views.html.admin._
+@admin("FAQ问答管理",js_css){
+<div class="content container_12">
+	<div class="sm-box grid_12">
+       <span>
+          <input type="button" id="view_faq" class="button big green" value="返回FAQ问答列表">
+       </span>
+     </div>
+     <div class="box grid_12">
+       <div class="box-head"><h2>添加FAQ问答</h2></div><div class="box-content">
+          <div class="form-row">
+           <p class="form-label">问题:</p><div class="form-item"><input type="text" /></div>
+          </div>
+          <div class="form-row">
+           <p class="form-label">答案:</p><div class="form-item"><input type="text" /></div>
+          </div>
+          
+         <div class="form-row">
+         	<div class="box grid_4"></div>
+         	<div class="box grid_4">
+          		<input type="button" class="button big green" value="确定">
+          		<input type="button" class="button small red" value="取消">
+          	</div>
+         </div>
+         <div class="clear"></div>
+       </div>
+     </div>
+</div>
+}

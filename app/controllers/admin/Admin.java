@@ -3,6 +3,14 @@ package controllers.admin;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.admin.*;
+import views.html.admin.article.*;
+import views.html.admin.question.*;
+import views.html.admin.message.*;
+import views.html.admin.user.*;
+import views.html.admin.advertising.*;
+import views.html.admin.faq.*;
+import views.html.admin.image.*;
+import views.html.admin.news.*;
 
 public class Admin extends Controller {
 	
@@ -37,5 +45,33 @@ public class Admin extends Controller {
 	public static Result user(){
 		return ok(user_view.render());
 	}
+	
+	public static Result advertising(){
+		return ok(advertising_view.render());
+	}
+	
+	public static Result faq(){
+		return ok(faq_view.render());
+	}
+	
+	public static Result image(){
+		return ok(image_view.render());
+	}
+	
+	public static Result image_category(){
+		return ok(image_category_view.render());
+	}
+	
+	public static Result news(){
+		return ok(news_view.render());
+	}
+	
+	public static Result news_category(){
+		return ok(news_category_view.render());
+	}
+	
+	
+	
+	
 
 }

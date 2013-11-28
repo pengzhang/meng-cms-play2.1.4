@@ -1,0 +1,64 @@
+@js_css={
+<link rel="stylesheet" href="/assets/admin/css/tables.css">
+<script> /* SCRIPTS */
+  $(function () {
+    $('#dt3').dataTable( {
+        "bJQueryUI": true,
+        "sPaginationType": "full_numbers"   
+    }); /* For the data tables */
+    
+    $("#add_category").click(function(){
+    	location.href="/admin/image/category/add"
+    });
+    $("#add_image").click(function(){
+    	location.href="/admin/image/add"
+    });
+    $("#view_image").click(function(){
+    	location.href="/admin/image"
+    });
+  });
+</script>
+}
+@import views.html.admin._
+@admin("分类管理",js_css){
+<div class="content container_12">
+	<div class="sm-box grid_12">
+       <span>
+          <input type="button" id="add_category" class="button big green" value="添加图片分类">
+           <input type="button" id="add_image" class="button big blue" value="添加图片">
+       </span>
+     </div>
+      <div class="box grid_12">
+        <div class="box-head"><h2>文章分类管理</h2></div>
+        <div class="box-content no-pad">
+        <table class="display" id="dt3">
+        <thead>
+          <tr>
+            <th>分类名称</th>
+            <th>分类描述</th>
+            <th>父分类名称</th>
+            <th>是否为频道</th>
+            <th>创建时间</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="odd gradeX">
+            <td>Java</td>
+            <td>Java程序设计语言</td>
+            <td class="center">程序设计语言</td>
+            <td class="center">否</td>
+            <td class="center">2013/11/11 11:11:11</td>
+            <td class="center">
+             <input type="button" id="view_image" class="button small orange" value="查看该分类的图片">
+             <input type="button" class="button small green" value="审核通过">
+	         <input type="button" class="button small blue" value="编辑">
+         	 <input type="button" class="button small red" value="删除">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+        </div>
+      </div>
+  </div>
+}

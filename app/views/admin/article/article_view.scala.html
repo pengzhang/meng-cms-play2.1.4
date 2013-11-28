@@ -1,0 +1,59 @@
+@js_css={
+<link rel="stylesheet" href="/assets/admin/css/tables.css">
+<script> /* SCRIPTS */
+  $(function () {
+    $('#dt3').dataTable( {
+        "bJQueryUI": true,
+        "sPaginationType": "full_numbers"   
+    }); /* For the data tables */
+    $("#add_article").click(function(){
+    	location.href="/admin/article/add"
+    });
+    $("#view_article_category").click(function(){
+    	location.href="/admin/article/category"
+    });
+  });
+</script>
+}
+@import views.html.admin._
+@admin("文章管理",js_css){
+ <div class="content container_12">
+	<div class="sm-box grid_12">
+       <span>
+          <input type="button" id="add_article" class="button big green" value="添加文章">
+          <input type="button" id="view_article_category" class="button big blue" value="返回文章分类列表">
+       </span>
+     </div>
+      <div class="box grid_12">
+        <div class="box-head"><h2>文章管理</h2></div>
+        <div class="box-content no-pad">
+        <table class="display" id="dt3">
+        <thead>
+          <tr>
+            <th>文章标题</th>
+            <th>文章作者</th>
+            <th>文章分类名称</th>
+            <th>审核通过</th>
+            <th>创建时间</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="odd gradeX">
+            <td>JDK的安装及配置</td>
+            <td>Java</td>
+            <td class="center">程序设计语言</td>
+            <td class="center">否</td>
+            <td class="center">2013/11/11 11:11:11</td>
+            <td class="center">
+             <input type="button" class="button small green" value="审核通过">
+	         <input type="button" class="button small blue" value="编辑">
+         	 <input type="button" class="button small red" value="删除">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+        </div>
+      </div>
+  </div>
+}

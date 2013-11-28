@@ -1,0 +1,55 @@
+@js_css={
+<link rel="stylesheet" href="css/jquery.lightbox-0.5.css">
+<script src="js/jquery.lightbox-0.5.pack.js"></script>
+<script>
+$(function() {
+  $('#gallery a').lightBox(); // Select all links in object with gallery ID
+  $("#add_image").click(function(){
+  	location.href="/admin/image/add"
+  });
+  $("#view_image_category").click(function(){
+  	location.href="/admin/image/category"
+  });
+});
+</script>
+}
+@import views.html.admin._
+@admin("文章管理",js_css){
+ <div class="content container_12">
+   <div class="sm-box grid_12">
+       <span>
+          <input type="button" id="add_image" class="button big green" value="添加图片">
+          <input type="button" id="view_image_category" class="button big blue" value="返回图片分类列表">
+       </span>
+    </div>
+    <div class="box grid_12">
+      <div class="box-head"><h2>Gallery</h2></div>
+        <div class="box-content" id="gallery">
+          <a href="/assets/admin/img/lightbox/photos/image1.jpg"><img src="/assets/admin/img/lightbox/photos/thumb_image1.jpg" width="72" height="72" alt="" /></a>
+          <a href="/assets/admin/img/lightbox/photos/image2.jpg"><img src="/assets/admin/img/lightbox/photos/thumb_image2.jpg" width="72" height="72" alt="" /></a>
+          <a href="/assets/admin/img/lightbox/photos/image3.jpg"><img src="/assets/admin/img/lightbox/photos/thumb_image3.jpg" width="72" height="72" alt="" /></a>
+          <a href="/assets/admin/img/lightbox/photos/image4.jpg"><img src="/assets/admin/img/lightbox/photos/thumb_image4.jpg" width="72" height="72" alt="" /></a>
+          <a href="/assets/admin/img/lightbox/photos/image5.jpg"><img src="/assets/admin/img/lightbox/photos/thumb_image5.jpg" width="72" height="72" alt="" /></a>
+          <a href="/assets/admin/img/lightbox/photos/image1.jpg"><img src="/assets/admin/img/lightbox/photos/thumb_image1.jpg" width="72" height="72" alt="" /></a>
+          <a href="/assets/admin/img/lightbox/photos/image2.jpg"><img src="/assets/admin/img/lightbox/photos/thumb_image2.jpg" width="72" height="72" alt="" /></a>
+          <a href="/assets/admin/img/lightbox/photos/image3.jpg"><img src="/assets/admin/img/lightbox/photos/thumb_image3.jpg" width="72" height="72" alt="" /></a>
+          <a href="/assets/admin/img/lightbox/photos/image4.jpg"><img src="/assets/admin/img/lightbox/photos/thumb_image4.jpg" width="72" height="72" alt="" /></a>
+          <a href="/assets/admin/img/lightbox/photos/image5.jpg"><img src="/assets/admin/img/lightbox/photos/thumb_image5.jpg" width="72" height="72" alt="" /></a>
+          <a href="/assets/admin/img/lightbox/photos/image1.jpg"><img src="/assets/admin/img/lightbox/photos/thumb_image1.jpg" width="72" height="72" alt="" /></a>
+          <a href="/assets/admin/img/lightbox/photos/image2.jpg"><img src="/assets/admin/img/lightbox/photos/thumb_image2.jpg" width="72" height="72" alt="" /></a>
+          <a href="/assets/admin/img/lightbox/photos/image3.jpg"><img src="/assets/admin/img/lightbox/photos/thumb_image3.jpg" width="72" height="72" alt="" /></a>
+          <a href="/assets/admin/img/lightbox/photos/image4.jpg"><img src="/assets/admin/img/lightbox/photos/thumb_image4.jpg" width="72" height="72" alt="" /></a>
+          <a href="/assets/admin/img/lightbox/photos/image5.jpg"><img src="/assets/admin/img/lightbox/photos/thumb_image5.jpg" width="72" height="72" alt="" /></a>
+          <a href="/assets/admin/img/lightbox/photos/image1.jpg"><img src="/assets/admin/img/lightbox/photos/thumb_image1.jpg" width="72" height="72" alt="" /></a>
+          <a href="/assets/admin/img/lightbox/photos/image2.jpg"><img src="/assets/admin/img/lightbox/photos/thumb_image2.jpg" width="72" height="72" alt="" /></a>
+          <a href="/assets/admin/img/lightbox/photos/image3.jpg"><img src="/assets/admin/img/lightbox/photos/thumb_image3.jpg" width="72" height="72" alt="" /></a>
+          <a href="/assets/admin/img/lightbox/photos/image4.jpg"><img src="/assets/admin/img/lightbox/photos/thumb_image4.jpg" width="72" height="72" alt="" /></a>
+          <a href="/assets/admin/img/lightbox/photos/image5.jpg"><img src="/assets/admin/img/lightbox/photos/thumb_image5.jpg" width="72" height="72" alt="" /></a>
+          <a href="/assets/admin/img/lightbox/photos/image1.jpg"><img src="/assets/admin/img/lightbox/photos/thumb_image1.jpg" width="72" height="72" alt="" /></a>
+          <a href="/assets/admin/img/lightbox/photos/image2.jpg"><img src="/assets/admin/img/lightbox/photos/thumb_image2.jpg" width="72" height="72" alt="" /></a>
+          <a href="/assets/admin/img/lightbox/photos/image3.jpg"><img src="/assets/admin/img/lightbox/photos/thumb_image3.jpg" width="72" height="72" alt="" /></a>
+          <a href="/assets/admin/img/lightbox/photos/image4.jpg"><img src="/assets/admin/img/lightbox/photos/thumb_image4.jpg" width="72" height="72" alt="" /></a>
+        </div>
+    </div>
+  </div>
+}
