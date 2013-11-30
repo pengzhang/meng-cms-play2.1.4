@@ -123,5 +123,13 @@ GET		/admin/download/category/edit/:code		controllers.admin.download.DownloadCat
 POST	/admin/download/category/update			controllers.admin.download.DownloadCategory.update()
 GET		/admin/download/category/del/:code		controllers.admin.download.DownloadCategory.delete(code:String)
 
+# Admin System
+GET		/admin/system											controllers.admin.Admin.system()
+GET		/admin/system/add									controllers.admin.system.System.add()
+POST	/admin/system/create								controllers.admin.system.System.create()
+GET		/admin/system/edit/:code						controllers.admin.system.System.edit(code:String)
+POST	/admin/system/update								controllers.admin.system.System.update()
+GET		/admin/system/del/:code							controllers.admin.system.System.delete(code:String)
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

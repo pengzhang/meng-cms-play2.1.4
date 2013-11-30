@@ -12,6 +12,7 @@ import views.html.admin.faq.*;
 import views.html.admin.image.*;
 import views.html.admin.news.*;
 import views.html.admin.download.*;
+import views.html.admin.system.*;
 
 public class Admin extends Controller {
 	
@@ -77,6 +78,10 @@ public class Admin extends Controller {
 	
 	public static Result download_category(){
 		return ok(download_category_view.render());
+	}
+	
+	public static Result system(){
+		return ok(system_view.render());
 	}
 	
 	
