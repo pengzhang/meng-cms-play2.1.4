@@ -69,6 +69,10 @@ public class ArticleCategory extends Model{
 	 * @param ac
 	 */
 	public static void modifyArticleCategory(ArticleCategory ac){
+		//如果文章分类不存在，则创建一个文章分类
+		if(ac.id <0 || getArticleCategoryById(ac.id) ==null){
+			createArticleCategory(ac);
+		}
 		ac.update();
 	}
 	
@@ -90,6 +94,24 @@ public class ArticleCategory extends Model{
 	}
 	
 	/**
+	 * 根据code获取文章分类
+	 * @param category_code
+	 * @return
+	 */
+	public static ArticleCategory getArticleCategoryByCode(String category_code){
+		return find.where().eq("category_code", category_code).findUnique();
+	}
+	
+	/**
+	 * 根据id获取文章分类
+	 * @param id
+	 * @return
+	 */
+	public static ArticleCategory getArticleCategoryById(long id){
+		return find.byId(id);
+	}
+	
+	/**
 	 * 获取文章分类的子节点_ByParentCategoryCode
 	 * @param parent_category_code
 	 * @return
@@ -102,8 +124,16 @@ public class ArticleCategory extends Model{
 	 * 获取全部文章分类
 	 * @return
 	 */
-	public static List<ArticleCategory> getCategoryTitleAll(){
+	public static List<ArticleCategory> getArticleCategoryAll(){
 		return find.all();
+	}
+	
+	/**
+	 * 分页获取文章分类
+	 * @return
+	 */
+	public static List<ArticleCategory> getArticleCategoryPage(int page,int size){
+		return find.findPagingList(size).getPage(page).getList();
 	}
 	
 	

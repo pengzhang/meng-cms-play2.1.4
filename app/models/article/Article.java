@@ -86,6 +86,7 @@ public class Article extends Model {
 	
 	/**
 	 * 创建文章
+	 * 默认分类：default
 	 * @param article
 	 */
 	public static void createArticle(Article article){
@@ -106,7 +107,7 @@ public class Article extends Model {
 		 * 如果数据库中不存在,创建新文章
 		 * 修改的文章,均需重新审核
 		 */
-		if(article.id <= 0){
+		if(article.id <0 ||getArticleById(article.id) == null ){
 			createArticle(article);
 		}else{
 			article.article_date = StringUtils.getStanderDate();
@@ -133,7 +134,6 @@ public class Article extends Model {
 		}
 	}
 	
-	
 	/**
 	 * 发布文章(批量)
 	 * @param article_codes
@@ -156,6 +156,15 @@ public class Article extends Model {
 	}
 	
 	/**
+	 * 查询文章内容
+	 * @param article_id
+	 * @return
+	 */
+	public static Article getArticleById(long id){
+		return find.byId(id);
+	}
+	
+	/**
 	 * 根据文章分类获取文章列表-ByCategoryCode
 	 * @param category_code
 	 * @return
@@ -175,6 +184,12 @@ public class Article extends Model {
 		return find.where().eq("article_category_code", category_code).orderBy().desc("article_date").findPagingList(size).getPage(page).getList();
 	}
 	
+	/**
+	 * 根据分类获取文章Top多少篇
+	 * @param category_code
+	 * @param top
+	 * @return
+	 */
 	public static List<Article> getArticleTop(String category_code, int top){
 		return find.where().eq("article_category_code", category_code).orderBy().desc("article_date").findPagingList(top).getPage(0).getList();
 	}
