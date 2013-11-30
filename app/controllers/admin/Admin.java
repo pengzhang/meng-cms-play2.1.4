@@ -11,6 +11,7 @@ import views.html.admin.advertising.*;
 import views.html.admin.faq.*;
 import views.html.admin.image.*;
 import views.html.admin.news.*;
+import views.html.admin.download.*;
 
 public class Admin extends Controller {
 	
@@ -69,6 +70,16 @@ public class Admin extends Controller {
 	public static Result news_category(){
 		return ok(news_category_view.render());
 	}
+	
+	public static Result download(){
+		return ok(download_view.render());
+	}
+	
+	public static Result download_category(){
+		return ok(download_category_view.render());
+	}
+	
+	
 	
 	
 	

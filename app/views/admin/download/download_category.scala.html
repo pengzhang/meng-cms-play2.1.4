@@ -1,0 +1,55 @@
+@js_css={
+<link rel="stylesheet" href="/assets/admin/css/iphone-check.css">
+<script src="/assets/admin/js/forms/iphone-check.js"></script>
+<script>
+$(function() {
+	$('#iphone-check').iphoneStyle();
+	$("#view_download_category").click(function(){
+    	location.href="/admin/download/category"
+    });
+});
+</script>
+
+}
+@import views.html.admin._
+@admin("下载分类管理",js_css){
+<div class="content container_12">
+	<div class="sm-box grid_12">
+       <span>
+          <input type="button" id="view_download_category" class="button big blue" value="返回下载分类列表">
+       </span>
+     </div>
+     <div class="box grid_12">
+       <div class="box-head"><h2>添加下载分类</h2></div><div class="box-content">
+          <div class="form-row">
+           <p class="form-label">下载分类名称:</p><div class="form-item"><input type="text" /></div>
+          </div>
+          <div class="form-row">
+           <p class="form-label">下载分类描述:</p><div class="form-item"><input type="text" /></div>
+          </div>
+          <div class="form-row">
+           <p class="form-label">是否为频道:</p><input checked type="checkbox" id="iphone-check" />
+          </div>
+          <div class="form-row">
+            <label class="form-label">下载分类:</label>
+            <div class="form-item">
+              <select>
+                <option value='option1'>Waldo was here</option>
+                <option value='option2'>Option 1</option>
+                <option value='option3'>Option 2</option>
+                <option value='option4'>Option 3</option>
+              </select>
+            </div>
+         </div>
+         <div class="form-row">
+         	<div class="box grid_4"></div>
+         	<div class="box grid_4">
+          		<input type="button" class="button big green" value="确定">
+          		<input type="button" class="button small red" value="取消">
+          	</div>
+         </div>
+         <div class="clear"></div>
+       </div>
+     </div>
+</div>
+}
