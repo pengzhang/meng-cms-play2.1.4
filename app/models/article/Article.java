@@ -13,7 +13,6 @@ import com.avaje.ebean.Ebean;
 
 import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
-import play.libs.Json;
 import utils.StringUtils;
 
 /**
@@ -193,7 +192,8 @@ public class Article extends Model {
 	 * @return
 	 */
 	public static List<Article> getArticlePageByCategoryCode(String category_code, int page, int size){
-		return find.select("article_code,article_title").where().eq("article_category_code", category_code).orderBy().desc("article_date").findPagingList(size).getPage(page).getList();
+		return find.select("article_code,article_title").findList();
+		//return find.select("article_code,article_title").where().eq("article_category_code", category_code).orderBy().desc("article_date").findPagingList(size).setFetchAhead(false).getPage(page).getList();
 	}
 	
 	/**
