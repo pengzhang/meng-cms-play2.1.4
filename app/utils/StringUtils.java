@@ -18,8 +18,15 @@ public class StringUtils {
 	
 	public final static String APPLICATION_JSON = "application/json";
 	
+	public static String returnSuccess(){
+		return "{\"status\":\"success\"}";
+	}
 	public static String returnSuccess(String field){
 		return "{\"status\":\"success\",\"code\":\""+field+"\"}";
+	}
+	
+	public static String listJson(String field,Object obj){
+		return "{\""+field+"\":"+Json.toJson(obj)+"}";
 	}
 	
 	public static String getForm(Map<String,String> map,String str){

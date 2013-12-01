@@ -13,6 +13,7 @@ import com.avaje.ebean.Ebean;
 
 import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
+import play.libs.Json;
 import utils.StringUtils;
 
 /**
@@ -80,7 +81,7 @@ public class Article extends Model {
 	 * default:默认分类
 	 */
 	@Column
-	public String article_categroy_code;
+	public String article_category_code;
 	
 	/**
 	 * 审核状态
@@ -100,8 +101,8 @@ public class Article extends Model {
 	public static String createArticle(Article article){
 		article.article_date = StringUtils.getStanderDate();
 		article.article_code = StringUtils.getMengCode();
-		if(article.article_categroy_code == null || article.article_categroy_code.equals("")){
-			article.article_categroy_code = "default";
+		if(article.article_category_code == null || article.article_category_code.equals("")){
+			article.article_category_code = "default";
 		}
 		article.save();
 		return article.article_code;
@@ -110,8 +111,9 @@ public class Article extends Model {
 	/**
 	 * 修改文章
 	 * @param article
+	 * @return article_code
 	 */
-	public static void modifyArticle(Article article){
+	public static String modifyArticle(Article article){
 		/**
 		 * 如果数据库中不存在,创建新文章
 		 * 修改的文章,均需重新审核
@@ -123,6 +125,7 @@ public class Article extends Model {
 			article.article_auditstatus = false;
 			article.update();
 		}
+		return article.article_code;
 	}
 	
 	/**
@@ -190,7 +193,7 @@ public class Article extends Model {
 	 * @return
 	 */
 	public static List<Article> getArticlePageByCategoryCode(String category_code, int page, int size){
-		return find.where().eq("article_category_code", category_code).orderBy().desc("article_date").findPagingList(size).getPage(page).getList();
+		return find.select("article_code,article_title").where().eq("article_category_code", category_code).orderBy().desc("article_date").findPagingList(size).getPage(page).getList();
 	}
 	
 	/**

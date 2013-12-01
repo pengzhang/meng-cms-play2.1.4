@@ -1,2 +1,4 @@
 #Web Article Page
-POST	/article/create								controllers.web.article.WebArticle.create()
+POST	/article/create														controllers.web.article.WebArticle.create()
+GET		/article/get/:code													controllers.web.article.WebArticle.getArticle(code:String)
+GET		/article/get/title/:category/:page/:size					controllers.web.article.WebArticle.getArticlePage(category:String,page:Int,size:Int)

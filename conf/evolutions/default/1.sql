@@ -37,7 +37,7 @@ create table article (
   article_author            varchar(255),
   article_date              varchar(255),
   article_subject           varchar(255),
-  article_categroy_code     varchar(255),
+  article_category_code     varchar(255),
   article_auditstatus       tinyint(1) default 0,
   constraint pk_article primary key (id))
 ;
