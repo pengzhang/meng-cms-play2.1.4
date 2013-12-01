@@ -1,0 +1,123 @@
+# Admin page
+GET		/													controllers.admin.Admin.index()
+GET		/main											controllers.admin.Admin.main()
+
+# Admin Article
+GET		/article											controllers.admin.Admin.article()
+GET		/article/add									controllers.admin.article.Article.add()
+POST	/article/create								controllers.admin.article.Article.create()
+GET		/article/edit/:code							controllers.admin.article.Article.edit(code:String)
+POST	/article/update								controllers.admin.article.Article.update()
+GET		/article/del/:code							controllers.admin.article.Article.delete(code:String)
+
+# Admin Article Category
+GET		/article/category							controllers.admin.Admin.article_category()
+GET		/article/category/add					controllers.admin.article.ArticleCategory.add()
+POST	/article/category/create					controllers.admin.article.ArticleCategory.create()
+GET		/article/category/edit/:code			controllers.admin.article.ArticleCategory.edit(code:String)
+POST	/article/category/update				controllers.admin.article.ArticleCategory.update()
+GET		/article/category/del/:code			controllers.admin.article.ArticleCategory.delete(code:String)
+
+# Admin Message
+GET		/message										controllers.admin.Admin.message()
+GET		/message/add								controllers.admin.message.Message.add()
+POST	/message/create							controllers.admin.message.Message.create()
+GET		/message/edit/:code						controllers.admin.message.Message.edit(code:String)
+POST	/message/update							controllers.admin.message.Message.update()
+GET		/message/del/:code						controllers.admin.message.Message.delete(code:String)
+
+# Admin Exam
+GET		/exam											controllers.admin.Admin.exam()
+GET		/exam/add									controllers.admin.question.Exam.add()
+POST	/exam/create									controllers.admin.question.Exam.create()
+GET		/exam/edit/:code							controllers.admin.question.Exam.edit(code:String)
+POST	/exam/update								controllers.admin.question.Exam.update()
+GET		/exam/del/:code							controllers.admin.question.Exam.delete(code:String)
+
+# Admin Question
+GET		/question										controllers.admin.Admin.question()
+GET		/question/add								controllers.admin.question.Question.add()
+POST	/question/create							controllers.admin.question.Question.create()
+GET		/question/edit/:code						controllers.admin.question.Question.edit(code:String)
+POST	/question/update							controllers.admin.question.Question.update()
+GET		/question/del/:code						controllers.admin.question.Question.delete(code:String)
+
+# Admin User
+GET		/user												controllers.admin.Admin.user()
+GET		/user/add										controllers.admin.user.User.add()
+POST	/user/create									controllers.admin.user.User.create()
+GET		/user/edit/:code							controllers.admin.user.User.edit(code:String)
+POST	/user/update									controllers.admin.user.User.update()
+GET		/user/del/:code								controllers.admin.user.User.delete(code:String)
+
+# Admin Advertising
+GET		/advertising									controllers.admin.Admin.advertising()
+GET		/advertising/add							controllers.admin.advertising.Advertising.add()
+POST	/advertising/create						controllers.admin.advertising.Advertising.create()
+GET		/advertising/edit/:code					controllers.admin.advertising.Advertising.edit(code:String)
+POST	/advertising/update						controllers.admin.advertising.Advertising.update()
+GET		/advertising/del/:code					controllers.admin.advertising.Advertising.delete(code:String)
+
+# Admin Faq
+GET		/faq												controllers.admin.Admin.faq()
+GET		/faq/add										controllers.admin.faq.Faq.add()
+POST	/faq/create									controllers.admin.faq.Faq.create()
+GET		/faq/edit/:code								controllers.admin.faq.Faq.edit(code:String)
+POST	/faq/update									controllers.admin.faq.Faq.update()
+GET		/faq/del/:code								controllers.admin.faq.Faq.delete(code:String)
+
+# Admin News
+GET		/news											controllers.admin.Admin.news()
+GET		/news/add										controllers.admin.news.News.add()
+POST	/news/create									controllers.admin.news.News.create()
+GET		/news/edit/:code							controllers.admin.news.News.edit(code:String)
+POST	/news/update								controllers.admin.news.News.update()
+GET		/news/del/:code							controllers.admin.news.News.delete(code:String)
+
+# Admin News Category
+GET		/news/category								controllers.admin.Admin.news_category()
+GET		/news/category/add						controllers.admin.news.NewsCategory.add()
+POST	/news/category/create					controllers.admin.news.NewsCategory.create()
+GET		/news/category/edit/:code			controllers.admin.news.NewsCategory.edit(code:String)
+POST	/news/category/update					controllers.admin.news.NewsCategory.update()
+GET		/news/category/del/:code				controllers.admin.news.NewsCategory.delete(code:String)
+
+# Admin Image
+GET		/image											controllers.admin.Admin.image()
+GET		/image/add									controllers.admin.image.Image.add()
+POST	/image/create								controllers.admin.image.Image.create()
+GET		/image/edit/:code							controllers.admin.image.Image.edit(code:String)
+POST	/image/update								controllers.admin.image.Image.update()
+GET		/image/del/:code							controllers.admin.image.Image.delete(code:String)
+
+# Admin Image Category
+GET		/image/category							controllers.admin.Admin.image_category()
+GET		/image/category/add					controllers.admin.image.ImageCategory.add()
+POST	/image/category/create					controllers.admin.image.ImageCategory.create()
+GET		/image/category/edit/:code			controllers.admin.image.ImageCategory.edit(code:String)
+POST	/image/category/update				controllers.admin.image.ImageCategory.update()
+GET		/image/category/del/:code			controllers.admin.image.ImageCategory.delete(code:String)
+
+# Admin Download
+GET		/download										controllers.admin.Admin.download()
+GET		/download/add								controllers.admin.download.Download.add()
+POST	/download/create							controllers.admin.download.Download.create()
+GET		/download/edit/:code					controllers.admin.download.Download.edit(code:String)
+POST	/download/update							controllers.admin.download.Download.update()
+GET		/download/del/:code						controllers.admin.download.Download.delete(code:String)
+
+# Admin Download Category
+GET		/download/category						controllers.admin.Admin.download_category()
+GET		/download/category/add				controllers.admin.download.DownloadCategory.add()
+POST	/download/category/create			controllers.admin.download.DownloadCategory.create()
+GET		/download/category/edit/:code		controllers.admin.download.DownloadCategory.edit(code:String)
+POST	/download/category/update			controllers.admin.download.DownloadCategory.update()
+GET		/download/category/del/:code		controllers.admin.download.DownloadCategory.delete(code:String)
+
+# Admin System
+GET		/system											controllers.admin.Admin.system()
+GET		/system/add									controllers.admin.system.System.add()
+POST	/system/create								controllers.admin.system.System.create()
+GET		/system/edit/:code						controllers.admin.system.System.edit(code:String)
+POST	/system/update								controllers.admin.system.System.update()
+GET		/system/del/:code							controllers.admin.system.System.delete(code:String)

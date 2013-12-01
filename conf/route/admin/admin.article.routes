@@ -1,0 +1,13 @@
+# Admin Article
+GET		/add										controllers.admin.article.Article.add()
+POST	/create									controllers.admin.article.Article.create()
+GET		/edit/:code							controllers.admin.article.Article.edit(code:String)
+POST	/update								controllers.admin.article.Article.update()
+GET		/del/:code								controllers.admin.article.Article.delete(code:String)
+
+# Admin Article Category
+GET		/category/add						controllers.admin.article.ArticleCategory.add()
+POST	/category/create					controllers.admin.article.ArticleCategory.create()
+GET		/category/edit/:code			controllers.admin.article.ArticleCategory.edit(code:String)
+POST	/category/update					controllers.admin.article.ArticleCategory.update()
+GET		/category/del/:code				controllers.admin.article.ArticleCategory.delete(code:String)

@@ -4,11 +4,14 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.avaje.ebean.Ebean;
 
+import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
 import utils.StringUtils;
 
@@ -30,18 +33,21 @@ public class Article extends Model {
 	 * 文章ID
 	 */
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public long id;
 	
 	/**
 	 * 文章Code
 	 */
 	@Column
+	@Required
 	public String article_code;
 	
 	/**
 	 * 文章标题
 	 */
 	@Column
+	@Required
 	public String article_title;
 	
 	/**
@@ -60,6 +66,7 @@ public class Article extends Model {
 	 * 文章添加时间
 	 */
 	@Column
+	@Required
 	public String article_date;
 	
 	/**

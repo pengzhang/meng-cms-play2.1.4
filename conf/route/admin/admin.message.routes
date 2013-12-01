@@ -1,0 +1,6 @@
+# Admin Message
+GET		/add									controllers.admin.message.Message.add()
+POST	/create								controllers.admin.message.Message.create()
+GET		/edit/:code						controllers.admin.message.Message.edit(code:String)
+POST	/update							controllers.admin.message.Message.update()
+GET		/del/:code							controllers.admin.message.Message.delete(code:String)

@@ -44,7 +44,7 @@ public class AppConfig {
 	 * User 用户系统地址
 	 */
 	public static String UserSysAddr = getConfig("user.sys");
-
+	
 	
 			
 	private static String getConfig(String config){

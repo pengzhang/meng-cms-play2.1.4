@@ -1,0 +1,33 @@
+# Admin page
+GET		/													controllers.admin.Admin.index()
+GET		/main											controllers.admin.Admin.main()
+GET		/article											controllers.admin.Admin.article()
+GET		/article/category							controllers.admin.Admin.article_category()
+GET		/message										controllers.admin.Admin.message()
+GET		/exam											controllers.admin.Admin.exam()
+GET		/question										controllers.admin.Admin.question()
+GET		/user											controllers.admin.Admin.user()
+GET		/advertising									controllers.admin.Admin.advertising()
+GET		/faq												controllers.admin.Admin.faq()
+
+# Admin Article
+->		/article											admin.article.Routes
+
+# Admin Message
+->		/message										admin.message.Routes
+
+# Admin Exam
+->		/exam											admin.exam.Routes
+
+# Admin Question
+->		/question										admin.question.Routes
+
+# Admin User
+->		/user											admin.user.Routes
+
+# Admin Advertising
+->		/advertising									admin.advertising.Routes
+
+# Admin Faq
+->		/faq												admin.faq.Routes
+

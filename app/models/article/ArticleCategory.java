@@ -4,9 +4,12 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
 import utils.StringUtils;
 
@@ -31,18 +34,21 @@ public class ArticleCategory extends Model{
 	 * 文章分类ID
 	 */
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public long id;
 	
 	/**
 	 * 文章分类Code
 	 */
 	@Column
+	@Required
 	public String category_code;
 	
 	/**
 	 * 文章分类标题
 	 */
 	@Column
+	@Required
 	public String category_title;
 	
 	/**

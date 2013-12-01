@@ -1,0 +1,6 @@
+# Admin Faq
+GET		/add												controllers.admin.faq.Faq.add()
+POST	/create											controllers.admin.faq.Faq.create()
+GET		/edit/:code									controllers.admin.faq.Faq.edit(code:String)
+POST	/update										controllers.admin.faq.Faq.update()
+GET		/del/:code										controllers.admin.faq.Faq.delete(code:String)

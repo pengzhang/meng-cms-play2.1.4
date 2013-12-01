@@ -1,0 +1,6 @@
+# Admin User
+GET		/add											controllers.admin.user.User.add()
+POST	/create										controllers.admin.user.User.create()
+GET		/edit/:code								controllers.admin.user.User.edit(code:String)
+POST	/update									controllers.admin.user.User.update()
+GET		/del/:code									controllers.admin.user.User.delete(code:String)

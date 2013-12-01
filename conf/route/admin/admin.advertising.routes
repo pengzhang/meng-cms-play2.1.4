@@ -1,0 +1,6 @@
+# Admin Advertising
+GET		/add							controllers.admin.advertising.Advertising.add()
+POST	/create						controllers.admin.advertising.Advertising.create()
+GET		/edit/:code				controllers.admin.advertising.Advertising.edit(code:String)
+POST	/update					controllers.admin.advertising.Advertising.update()
+GET		/del/:code					controllers.admin.advertising.Advertising.delete(code:String)

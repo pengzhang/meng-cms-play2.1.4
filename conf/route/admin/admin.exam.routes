@@ -1,0 +1,6 @@
+# Admin Exam
+GET		/add										controllers.admin.question.Exam.add()
+POST	/create									controllers.admin.question.Exam.create()
+GET		/edit/:code							controllers.admin.question.Exam.edit(code:String)
+POST	/update								controllers.admin.question.Exam.update()
+GET		/del/:code								controllers.admin.question.Exam.delete(code:String)
