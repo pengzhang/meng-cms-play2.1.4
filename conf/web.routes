@@ -1,0 +1,2 @@
+#Web Article Page
+POST	/article/create								controllers.web.article.WebArticle.create()

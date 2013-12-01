@@ -7,12 +7,20 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 
+import play.libs.Json;
+
 /**
  * 字符串工具类
  * @author zhangpeng
  *
  */
 public class StringUtils {
+	
+	public final static String APPLICATION_JSON = "application/json";
+	
+	public static String returnSuccess(String field){
+		return "{\"status\":\"success\",\"code\":\""+field+"\"}";
+	}
 	
 	public static String getForm(Map<String,String> map,String str){
 		return map.get(str);

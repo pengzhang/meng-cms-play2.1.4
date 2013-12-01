@@ -95,14 +95,16 @@ public class Article extends Model {
 	 * 创建文章
 	 * 默认分类：default
 	 * @param article
+	 * @return article_code
 	 */
-	public static void createArticle(Article article){
+	public static String createArticle(Article article){
 		article.article_date = StringUtils.getStanderDate();
 		article.article_code = StringUtils.getMengCode();
 		if(article.article_categroy_code == null || article.article_categroy_code.equals("")){
 			article.article_categroy_code = "default";
 		}
 		article.save();
+		return article.article_code;
 	}
 	
 	/**
