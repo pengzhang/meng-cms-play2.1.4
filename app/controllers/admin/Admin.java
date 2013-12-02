@@ -87,11 +87,5 @@ public class Admin extends Controller {
 	public static Result system(){
 		return ok(system_view.render());
 	}
-	
-	
-	
-	
-	
-	
 
 }

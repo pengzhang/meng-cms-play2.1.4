@@ -45,10 +45,14 @@
             <td>@articles.get(i).article_title</td>
             <td>@articles.get(i).article_author</td>
             <td class="center">@articles.get(i).article_subject</td>
-            <td class="center">@articles.get(i).article_auditstatus</td>
+            <td class="center">
+            @if(articles.get(i).article_auditstatus){已通过}else{未通过}
+            </td>
             <td class="center">@articles.get(i).article_date</td>
             <td class="center">
-             <a href="/admin/article/audit/@articles.get(i).article_code"><input type="button" class="button small green" value="审核通过"></a>
+             @if(!articles.get(i).article_auditstatus){
+                  <a href="/admin/article/audit/@articles.get(i).article_code"><input type="button" class="button small green" value="审核通过"></a>
+              }
 	         <a href="/admin/article/edit/@articles.get(i).article_code"><input type="button" class="button small blue" value="编辑"></a>
          	 <a href="/admin/article/del/@articles.get(i).article_code"><input type="button" class="button small red" value="删除"></a>
             </td>

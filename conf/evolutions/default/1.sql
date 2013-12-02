@@ -33,7 +33,7 @@ create table article (
   id                        bigint auto_increment not null,
   article_code              varchar(255),
   article_title             varchar(255),
-  article_content           varchar(255),
+  article_content           longtext,
   article_author            varchar(255),
   article_date              varchar(255),
   article_subject           varchar(255),

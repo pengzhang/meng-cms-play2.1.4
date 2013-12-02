@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 import play.data.validation.Constraints.Required;
@@ -54,7 +55,7 @@ public class Article extends Model {
 	/**
 	 * 文章内容
 	 */
-	@Column
+	@Lob
 	public String article_content;
 	
 	/**
@@ -205,7 +206,7 @@ public class Article extends Model {
 	public static List<Article> getArticlePageByCategoryCode(String category_code, int page, int size){
 		List<Article> articles = find.select("article_code,article_title,article_author,article_date,article_subject,article_auditstatus")
 								.where().eq("article_category_code", category_code)
-								.orderBy().desc("article_date")
+								.orderBy().asc("article_auditstatus")
 								.findPagingList(size).setFetchAhead(false).getPage(page)
 								.getList();
 		return articles;
