@@ -1,5 +1,6 @@
 package models.article;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -9,11 +10,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.avaje.ebean.Ebean;
-
 import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
 import utils.StringUtils;
+
+import com.avaje.ebean.Ebean;
 
 /**
  * 文章管理
@@ -146,7 +147,7 @@ public class Article extends Model {
 	}
 	
 	/**
-	 * 发布文章(批量)
+	 * 审核文章(批量)
 	 * @param article_codes
 	 */
 	public static void publishArticle(List<String> article_codes){
@@ -155,6 +156,16 @@ public class Article extends Model {
 			article.article_auditstatus = true;
 			article.update();
 		}
+	}
+	
+	/**
+	 * 审核文章
+	 * @param article_codes
+	 */
+	public static void publishArticle(String article_code){
+		Article article = getArticleByCode(article_code);
+		article.article_auditstatus = true;
+		article.update();
 	}
 	
 	/**
@@ -192,8 +203,34 @@ public class Article extends Model {
 	 * @return
 	 */
 	public static List<Article> getArticlePageByCategoryCode(String category_code, int page, int size){
-		return find.select("article_code,article_title").findList();
-		//return find.select("article_code,article_title").where().eq("article_category_code", category_code).orderBy().desc("article_date").findPagingList(size).setFetchAhead(false).getPage(page).getList();
+		List<Article> articles = find.select("article_code,article_title,article_author,article_date,article_subject,article_auditstatus")
+								.where().eq("article_category_code", category_code)
+								.orderBy().desc("article_date")
+								.findPagingList(size).setFetchAhead(false).getPage(page)
+								.getList();
+		return articles;
+	}
+	
+	/**
+	 * 根据分类获取文章标题分页列表-ByCategoryCode and Page
+	 * @param category_code
+	 * @param page
+	 * @param size
+	 * @return
+	 */
+	public static List<ArticleTitle> getArticleTitlePageByCategoryCode(String category_code, int page, int size){
+		List<Article> articles = find.select("article_code,article_title").where().eq("article_category_code", category_code)
+								.orderBy().desc("article_date")
+								.findPagingList(size).setFetchAhead(false).getPage(page)
+								.getList();
+		List<ArticleTitle> articleTitles = new ArrayList<ArticleTitle>();
+		for(Article article : articles){
+			ArticleTitle at = new ArticleTitle();
+			at.article_code = article.article_code;
+			at.article_title = article.article_title;
+			articleTitles.add(at);
+		}
+		return articleTitles;
 	}
 	
 	/**

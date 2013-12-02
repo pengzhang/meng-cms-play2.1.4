@@ -1,5 +1,8 @@
 package controllers.admin;
 
+import java.util.List;
+
+import models.article.Article;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.admin.*;
@@ -25,7 +28,8 @@ public class Admin extends Controller {
 	}
 	
 	public static Result article(){
-		return ok(article_view.render());
+		List<Article> articles = Article.getArticlePageByCategoryCode("default", 0, 10);
+		return ok(article_view.render(articles));
 	}
 	
 	public static Result article_category(){

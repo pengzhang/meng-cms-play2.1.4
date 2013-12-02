@@ -3,6 +3,7 @@ package controllers.web.article;
 import java.util.List;
 
 import models.article.Article;
+import models.article.ArticleTitle;
 import play.libs.Json;
 import play.mvc.BodyParser;
 import play.mvc.Controller;
@@ -43,9 +44,8 @@ public class WebArticle extends Controller{
 	 */
 	public static Result getArticlePage(String category_code,int page,int size){
 		System.out.println(category_code+page+size);
-		List<Article> articles  = Article.getArticlePageByCategoryCode(category_code, page, size);
-		return ok(StringUtils.listJson("articles", articles)).as(StringUtils.APPLICATION_JSON);
-//		return ok("{articles:"+Json.toJson(articles)+"}").as(StringUtils.APPLICATION_JSON);
+		List<ArticleTitle> ats  = Article.getArticleTitlePageByCategoryCode(category_code, page, size);
+		return ok(StringUtils.listJson("articles", ats)).as(StringUtils.APPLICATION_JSON);
 	}
 	
 	

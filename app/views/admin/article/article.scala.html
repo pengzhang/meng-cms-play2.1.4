@@ -1,11 +1,17 @@
 @js_css={
+<script type="text/javascript" src="/assets/admin/js/forms/jquery.validate.min.js"></script>
 <script>
 $(function(){
 	$("#view_article").click(function(){
     	location.href="/admin/article"
     });
+	$("#btn_submit").click(function(){
+		$("#art_form").submit();
+	});
+	
 });
 </script>
+
 }
 @import views.html.admin._
 @admin("文章管理",js_css){
@@ -16,16 +22,18 @@ $(function(){
        </span>
      </div>
      <div class="box grid_12">
-       <div class="box-head"><h2>添加文章</h2></div><div class="box-content">
+      <form id="art_form" action="/admin/article/create" method="post">
+       <div class="box-head"><h2>添加文章</h2></div>
+       <div class="box-content">
           <div class="form-row">
-           <p class="form-label">文章标题:</p><div class="form-item"><input type="text" /></div>
+           <p class="form-label">文章标题:</p><div class="form-item"><input type="text" class="required" name="article_title" /></div>
           </div>
           
           <div class="form-row">
-           <p class="form-label">文章内容:</p><div class="form-item"><textarea></textarea></div>
+           <p class="form-label">文章内容:</p><div class="form-item"><textarea class="required" name="article_content"></textarea></div>
           </div>
           <div class="form-row">
-           <p class="form-label">文章主题:</p><div class="form-item"><input type="text" /></div>
+           <p class="form-label">文章主题:</p><div class="form-item"><input type="text" name="article_subject"/></div>
           </div>
          
           <div class="form-row">
@@ -41,18 +49,19 @@ $(function(){
          </div>
          
          <div class="form-row">
-           <p class="form-label">作者:</p><div class="form-item"><input type="text" /></div>
+           <p class="form-label">作者:</p><div class="form-item"><input type="text" name="article_author"/></div>
           </div>
           
          <div class="form-row">
          	<div class="box grid_4"></div>
          	<div class="box grid_4">
-          		<input type="button" class="button big green" value="确定">
+          		<input id="btn_submit" type="button" class="button big green" value="确定">
           		<input type="button" class="button small red" value="取消">
           	</div>
          </div>
          <div class="clear"></div>
        </div>
+       </form>
      </div>
 </div>
 }
