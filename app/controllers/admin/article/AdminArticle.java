@@ -11,13 +11,12 @@ import views.html.admin.article.article;
 public class AdminArticle extends Controller {
 	
 	public static Result add(){
-		//TODO 添加文章分类
-		return ok(article.render());
+		return ok(article.render(null,true));
 	}
 	
 	public static Result edit(String code){
-		
-		return ok(article.render());
+		Article art  = Article.getArticleByCode(code);
+		return ok(article.render(art,false));
 	}
 	
 	public static Result create(){
