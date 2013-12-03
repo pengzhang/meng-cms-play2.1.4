@@ -119,9 +119,11 @@ public class Article extends Model {
 		 * 如果数据库中不存在,创建新文章
 		 * 修改的文章,均需重新审核
 		 */
-		if(article.id <0 ||getArticleById(article.id) == null ){
+		Article art = getArticleByCode(article.article_code);
+		if( art == null ){
 			createArticle(article);
 		}else{
+			article.id  = art.id;
 			article.article_date = StringUtils.getStanderDate();
 			article.article_auditstatus = false;
 			article.update();

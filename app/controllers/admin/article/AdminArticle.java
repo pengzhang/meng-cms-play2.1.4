@@ -34,6 +34,7 @@ public class AdminArticle extends Controller {
 	public static Result update(){
 		Map<String,String> map = DynamicForm.form().bindFromRequest().data();
 		Article article = new Article();
+		article.article_code = map.get("article_code");
 		article.article_title = map.get("article_title");
 		article.article_content = map.get("article_content");
 		article.article_author = map.get("article_author");
