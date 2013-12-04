@@ -74,10 +74,12 @@ public class ArticleCategory extends Model{
 	/**
 	 * 创建文章分类
 	 * @param category_title
+	 * @return category_code 文章分类编号
 	 */
-	public static void createArticleCategory(ArticleCategory ac){
+	public static String createArticleCategory(ArticleCategory ac){
 		ac.category_code = StringUtils.getMengCode();
 		ac.save();
+		return ac.category_code;
 	}
 	
 	/**

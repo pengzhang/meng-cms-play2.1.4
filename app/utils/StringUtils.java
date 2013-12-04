@@ -18,6 +18,8 @@ public class StringUtils {
 	
 	public final static String APPLICATION_JSON = "application/json";
 	
+	public final static String TEXT_PLAIN = "text/plain";
+	
 	public static String returnSuccess(){
 		return "{\"status\":\"success\"}";
 	}
