@@ -3,6 +3,7 @@ package controllers.admin;
 import java.util.List;
 
 import models.article.Article;
+import models.article.ArticleCategory;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.admin.*;
@@ -27,13 +28,14 @@ public class Admin extends Controller {
 		return ok(dashboard.render());
 	}
 	
-	public static Result article(){
-		List<Article> articles = Article.getArticlePageByCategoryCode("default", 0, 10);
+	public static Result article(String code){
+		List<Article> articles = Article.getArticlePageByCategoryCode(code, 0, 10);
 		return ok(article_view.render(articles));
 	}
 	
 	public static Result article_category(){
-		return ok(article_category_view.render());
+		List<ArticleCategory> acs = ArticleCategory.getArticleCategoryPage(0, 10);
+		return ok(article_category_view.render(acs));
 	}
 	
 	public static Result message(){

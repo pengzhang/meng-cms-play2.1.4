@@ -1,3 +1,5 @@
+@(acs:List[models.article.ArticleCategory])
+@import models.article.ArticleCategory
 @js_css={
 <link rel="stylesheet" href="/assets/admin/css/tables.css">
 <script> /* SCRIPTS */
@@ -36,7 +38,6 @@
         <thead>
           <tr>
             <th>分类名称</th>
-            <th>分类描述</th>
             <th>父分类名称</th>
             <th>是否为频道</th>
             <th>创建时间</th>
@@ -44,19 +45,23 @@
           </tr>
         </thead>
         <tbody>
+        @for(ac <- acs){
           <tr class="odd gradeX">
-            <td>Java</td>
-            <td>Java程序设计语言</td>
-            <td class="center">程序设计语言</td>
-            <td class="center">否</td>
-            <td class="center">2013/11/11 11:11:11</td>
+            <td>@ac.category_title</td>
             <td class="center">
-             <input type="button" id="view_article" class="button small orange" value="查看该分类的文章">
-             <input type="button" class="button small green" value="审核通过">
-	         <input type="button" class="button small blue" value="编辑">
-         	 <input type="button" class="button small red" value="删除">
+            @if(ac.parent_category_code == null){顶级分类}else{@ArticleCategory.getCategoryTitleByCode(ac.parent_category_code)}
+            </td>
+            <td class="center">
+            @if(ac.is_channel){是}else{否}
+            </td>
+            <td class="center">@ac.create_at</td>
+            <td class="center">
+             <a href="/admin/article/view/@ac.category_code"><input type="button" id="view_article" class="button small orange" value="查看该分类的文章"></a>
+	         <a href="/admin/article/category/edit/@ac.category_code"><input type="button" class="button small blue" value="编辑"></a>
+         	 <a href="/admin/article/category/del/@ac.category_code"><input type="button" class="button small red" value="删除"></a>
             </td>
           </tr>
+         }
         </tbody>
       </table>
         </div>

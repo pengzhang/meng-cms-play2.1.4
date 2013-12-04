@@ -1,8 +1,10 @@
 package controllers.admin.article;
 
+import java.util.List;
 import java.util.Map;
 
 import models.article.Article;
+import models.article.ArticleCategory;
 import play.data.DynamicForm;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -11,12 +13,14 @@ import views.html.admin.article.article;
 public class AdminArticle extends Controller {
 	
 	public static Result add(){
-		return ok(article.render(null,true));
+		List<ArticleCategory> acs = ArticleCategory.getArticleCategoryAll();
+		return ok(article.render(acs,null,true));
 	}
 	
 	public static Result edit(String code){
+		List<ArticleCategory> acs = ArticleCategory.getArticleCategoryAll();
 		Article art  = Article.getArticleByCode(code);
-		return ok(article.render(art,false));
+		return ok(article.render(acs,art,false));
 	}
 	
 	public static Result create(){
@@ -28,7 +32,7 @@ public class AdminArticle extends Controller {
 		article.article_subject = map.get("article_subject");
 		article.article_category_code = map.get("article_category_code");
 		Article.createArticle(article);
-		return redirect("/admin/article");
+		return redirect("/admin/article/view/"+article.article_category_code);
 	}
 	
 	public static Result update(){
@@ -41,17 +45,17 @@ public class AdminArticle extends Controller {
 		article.article_subject = map.get("article_subject");
 		article.article_category_code = map.get("article_category_code");
 		Article.modifyArticle(article);
-		return redirect("/admin/article");
+		return redirect("/admin/article/view/"+article.article_category_code);
 	}
 	
 	public static Result delete(String article_code){
-		Article.destroyArticle(article_code);
-		return redirect("/admin/article");
+		String acc = Article.destroyArticle(article_code);
+		return redirect("/admin/article/view/"+acc);
 	}
 	
 	public static Result audit(String article_code){
-		Article.publishArticle(article_code);
-		return redirect("/admin/article");
+		String acc = Article.publishArticle(article_code);
+		return redirect("/admin/article/view/"+acc);
 	}
 
 }

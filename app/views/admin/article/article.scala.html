@@ -1,4 +1,4 @@
-@(art:models.article.Article,flag:Boolean)
+@(acs:List[models.article.ArticleCategory],art:models.article.Article,flag:Boolean)
 @js_css={
 <script type="text/javascript" src="/assets/admin/js/forms/jquery.validate.min.js"></script>
 <script>
@@ -43,11 +43,10 @@ $(function(){
           <div class="form-row">
             <label class="form-label">文章分类:</label>
             <div class="form-item">
-              <select>
-                <option value='option1'>Waldo was here</option>
-                <option value='option2'>Option 1</option>
-                <option value='option3'>Option 2</option>
-                <option value='option4'>Option 3</option>
+              <select name="article_category_code">
+              @for(ct <- acs){
+                <option value='@ct.category_code'>@ct.category_title</option>
+               }
               </select>
             </div>
          </div>
@@ -86,11 +85,10 @@ $(function(){
           <div class="form-row">
             <label class="form-label">文章分类:</label>
             <div class="form-item">
-              <select>
-                <option value='option1'>Waldo was here</option>
-                <option value='option2'>Option 1</option>
-                <option value='option3'>Option 2</option>
-                <option value='option4'>Option 3</option>
+              <select name="article_category_code">
+              @for(ct <- acs){
+                <option value='@ct.category_code'>@ct.category_title</option>
+               }
               </select>
             </div>
          </div>

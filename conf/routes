@@ -3,14 +3,14 @@
 # ~~~~
 
 # Home page
-GET     /                           										controllers.Application.index()
-GET		/init															controllers.Application.cms_init()
+GET     /                           							controllers.Application.index()
+GET		/init													controllers.Application.cms_init()
 
 # Admin page
-->		/admin														admin.Routes
+->		/admin													admin.Routes
 
 # Web page
-->		/web															web.Routes
+->		/web													web.Routes
 
 
 

@@ -3,7 +3,7 @@ GET		/													controllers.admin.Admin.index()
 GET		/main												controllers.admin.Admin.main()
 
 # Admin Article
-GET		/article											controllers.admin.Admin.article()
+GET		/article/view/:code									controllers.admin.Admin.article(code:String)
 GET		/article/add										controllers.admin.article.AdminArticle.add()
 POST	/article/create										controllers.admin.article.AdminArticle.create()
 GET		/article/edit/:code									controllers.admin.article.AdminArticle.edit(code:String)
@@ -12,12 +12,12 @@ GET		/article/del/:code									controllers.admin.article.AdminArticle.delete(co
 GET		/article/audit/:code								controllers.admin.article.AdminArticle.audit(code:String)
 
 # Admin Article Category
-GET		/article/category							controllers.admin.Admin.article_category()
-GET		/article/category/add					controllers.admin.article.ArticleCategory.add()
-POST	/article/category/create					controllers.admin.article.ArticleCategory.create()
-GET		/article/category/edit/:code			controllers.admin.article.ArticleCategory.edit(code:String)
-POST	/article/category/update				controllers.admin.article.ArticleCategory.update()
-GET		/article/category/del/:code			controllers.admin.article.ArticleCategory.delete(code:String)
+GET		/article/category									controllers.admin.Admin.article_category()
+GET		/article/category/add								controllers.admin.article.AdminArticleCategory.add()
+POST	/article/category/create							controllers.admin.article.AdminArticleCategory.create()
+GET		/article/category/edit/:code						controllers.admin.article.AdminArticleCategory.edit(code:String)
+POST	/article/category/update							controllers.admin.article.AdminArticleCategory.update()
+GET		/article/category/del/:code							controllers.admin.article.AdminArticleCategory.delete(code:String)
 
 # Admin Message
 GET		/message										controllers.admin.Admin.message()

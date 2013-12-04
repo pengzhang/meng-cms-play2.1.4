@@ -35,7 +35,7 @@ create table article (
   article_title             varchar(255),
   article_content           longtext,
   article_author            varchar(255),
-  article_date              varchar(255),
+  article_date              datetime,
   article_subject           varchar(255),
   article_category_code     varchar(255),
   article_auditstatus       tinyint(1) default 0,
@@ -47,6 +47,8 @@ create table article_category (
   category_code             varchar(255),
   category_title            varchar(255),
   parent_category_code      varchar(255),
+  is_channel                tinyint(1) default 0,
+  create_at                 datetime,
   constraint pk_article_category primary key (id))
 ;
 

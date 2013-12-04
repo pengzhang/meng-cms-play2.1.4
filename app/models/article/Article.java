@@ -1,5 +1,6 @@
 package models.article;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
@@ -69,7 +72,8 @@ public class Article extends Model {
 	 */
 	@Column
 	@Required
-	public String article_date;
+	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
+	public Timestamp article_date = new Timestamp(System.currentTimeMillis());
 	
 	/**
 	 * 文章主题
@@ -100,7 +104,6 @@ public class Article extends Model {
 	 * @return article_code
 	 */
 	public static String createArticle(Article article){
-		article.article_date = StringUtils.getStanderDate();
 		article.article_code = StringUtils.getMengCode();
 		if(article.article_category_code == null || article.article_category_code.equals("")){
 			article.article_category_code = "default";
@@ -124,7 +127,6 @@ public class Article extends Model {
 			createArticle(article);
 		}else{
 			article.id  = art.id;
-			article.article_date = StringUtils.getStanderDate();
 			article.article_auditstatus = false;
 			article.update();
 		}
@@ -134,9 +136,11 @@ public class Article extends Model {
 	/**
 	 * 删除文章-ByCode
 	 * @param article_code
+	 * @return article_category_code 文章分类编号
 	 */
-	public static void destroyArticle(String article_code){
+	public static String destroyArticle(String article_code){
 		Ebean.delete(find.where().eq("article_code", article_code).findList());
+		return getArticleByCode(article_code).article_category_code;
 	}
 	
 	/**
@@ -164,11 +168,14 @@ public class Article extends Model {
 	/**
 	 * 审核文章
 	 * @param article_codes
+	 * @return article_category_code 文章分类编号
 	 */
-	public static void publishArticle(String article_code){
+	public static String publishArticle(String article_code){
 		Article article = getArticleByCode(article_code);
 		article.article_auditstatus = true;
 		article.update();
+		return article.article_category_code;
+		
 	}
 	
 	/**

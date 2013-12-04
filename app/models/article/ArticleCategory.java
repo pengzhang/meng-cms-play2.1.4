@@ -1,5 +1,6 @@
 package models.article;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -8,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import play.data.validation.Constraints.Required;
 import play.db.ebean.Model;
@@ -59,6 +62,13 @@ public class ArticleCategory extends Model{
 	@Column
 	public String parent_category_code = "default";
 	
+	@Column
+	public boolean is_channel = false; 
+	
+	@Column
+	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
+	public Timestamp create_at = new Timestamp(System.currentTimeMillis());
+	
 	public static Model.Finder<Long, ArticleCategory> find = new Model.Finder<Long, ArticleCategory>(Long.class, ArticleCategory.class);
 	
 	/**
@@ -76,10 +86,13 @@ public class ArticleCategory extends Model{
 	 */
 	public static void modifyArticleCategory(ArticleCategory ac){
 		//如果文章分类不存在，则创建一个文章分类
-		if(ac.id <0 || getArticleCategoryById(ac.id) ==null){
+		ArticleCategory category = ArticleCategory.getArticleCategoryByCode(ac.category_code);
+		if(ac.id <0 || category ==null){
 			createArticleCategory(ac);
+		}else{
+			ac.id = category.id;
+			ac.update();
 		}
-		ac.update();
 	}
 	
 	/**
@@ -96,7 +109,11 @@ public class ArticleCategory extends Model{
 	 * @return
 	 */
 	public static String getCategoryTitleByCode(String category_code){
-		return find.where().eq("category_code", category_code).findUnique().category_title;
+		ArticleCategory ac = find.where().eq("category_code", category_code).findUnique();
+		if(ac == null){
+			return "顶级分类";
+		}
+		return ac.category_title;
 	}
 	
 	/**
