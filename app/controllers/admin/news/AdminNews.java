@@ -12,26 +12,6 @@ import views.html.admin.news.*;
 
 public class AdminNews extends Controller {
 	
-//	public static Result add(){
-//		return ok(news.render());
-//	}
-//	
-//	public static Result edit(String code){
-//		return ok(news.render());
-//	}
-//	
-//	public static Result create(){
-//		return redirect("/admin/news");
-//	}
-//	
-//	public static Result update(){
-//		return redirect("/admin/news");
-//	}
-//	
-//	public static Result delete(String code){
-//		return redirect("/admin/news");
-//	}
-	
 	public static Result add(){
 		List<NewsCategory> ncs = NewsCategory.getNewsCategoryAll();
 		return ok(news.render(ncs,null,true));

@@ -1,35 +1,84 @@
+@(msg:models.message.Message,flag:Boolean)
 @js_css={
+<script type="text/javascript" src="/assets/admin/js/forms/jquery.validate.min.js"></script>
+<script>
+$(function(){
+	$("#view_article").click(function(){
+    	location.href="/admin/message"
+    });
+	$("#btn_submit").click(function(){
+		$("#msg_form").submit();
+	});
+	
+});
+</script>
+
+<script type="text/javascript" charset="utf-8" src="/assets/ckeditor/ckeditor.js"></script>
 }
 @import views.html.admin._
 @admin("信息(留言)管理",js_css){
 <div class="content container_12">
-     <div class="box grid_3"></div> 
 
+     <div class="box grid_3"></div> 
+	@if(flag){
      <div class="box grid_6 ">
+       <form id="msg_form" action="/admin/message/create" method="post">
        <div class="box-head"><h2>添加信息(留言)</h2></div><div class="box-content">
           <div class="form-row">
-           <p class="form-label">姓名:</p><div class="form-item"><input type="text" /></div>
+           <p class="form-label">姓名:</p><div class="form-item"><input type="text" class="required" name="name"/></div>
           </div>
           <div class="form-row">
-           <p class="form-label">手机:</p><div class="form-item"><input type="text" /></div>
+           <p class="form-label">手机:</p><div class="form-item"><input type="text" class="required" name="mobile"/></div>
           </div>
           <div class="form-row">
-           <p class="form-label">邮箱:</p><div class="form-item"><input type="text" /></div>
+           <p class="form-label">邮箱:</p><div class="form-item"><input type="text" class="required" name="email"/></div>
           </div>
           
           <div class="form-row">
-           <p class="form-label">信息(留言内容):</p><div class="form-item"><textarea></textarea></div>
+           <p class="form-label">信息(留言内容):</p><div class="form-item"><textarea class="ckeditor required" name="message"></textarea></div>
           </div>
 
          <div class="form-row">
          	<div class="box grid_4"></div>
          	<div class="box grid_4">
-          		<input type="button" class="button big green" value="确定">
+          		<input type="button" id="btn_submit" class="button big green" value="确定">
           		<input type="button" class="button small red" value="取消">
           	</div>
          </div>
          <div class="clear"></div>
        </div>
+       </form>
      </div>
+     } else {
+     <div class="box grid_6 ">
+       <form id="msg_form" action="/admin/message/update" method="post">
+       <div class="box-head"><h2>添加信息(留言)</h2></div><div class="box-content">
+       	  <input type="hidden" name="msg_code" value="@msg.msg_code"/>
+          <div class="form-row">
+           <p class="form-label">姓名:</p><div class="form-item"><input type="text" class="required" name="name" value="@msg.name"/></div>
+          </div>
+          <div class="form-row">
+           <p class="form-label">手机:</p><div class="form-item"><input type="text" class="required" name="mobile" value="@msg.mobile"/></div>
+          </div>
+          <div class="form-row">
+           <p class="form-label">邮箱:</p><div class="form-item"><input type="text" class="required" name="email" value="@msg.email"/></div>
+          </div>
+          
+          <div class="form-row">
+           <p class="form-label">信息(留言内容):</p><div class="form-item"><textarea class="ckeditor required" name="message">@msg.message</textarea></div>
+          </div>
+
+         <div class="form-row">
+         	<div class="box grid_4"></div>
+         	<div class="box grid_4">
+          		<input type="button" id="btn_submit"  class="button big green" value="确定">
+          		<input type="button" class="button small red" value="取消">
+          	</div>
+         </div>
+         <div class="clear"></div>
+       </div>
+       </form>
+     </div>
+     }
 </div>
 }

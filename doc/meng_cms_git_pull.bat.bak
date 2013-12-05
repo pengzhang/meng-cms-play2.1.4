@@ -1,0 +1,4 @@
+@ECHO OFF
+start 
+cd /d D:\HNServer\publish\meng-cms
+git pull origin master 

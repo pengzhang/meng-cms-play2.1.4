@@ -4,6 +4,7 @@ import java.util.List;
 
 import models.article.Article;
 import models.article.ArticleCategory;
+import models.message.Message;
 import models.news.News;
 import models.news.NewsCategory;
 import play.mvc.Controller;
@@ -51,7 +52,8 @@ public class Admin extends Controller {
 	}
 	
 	public static Result message(){
-		return ok(message_view.render());
+		List<Message> lmsg = Message.getMessagePage(0, 10);
+		return ok(message_view.render(lmsg));
 	}
 	
 	public static Result question(){

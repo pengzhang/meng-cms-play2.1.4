@@ -1,0 +1,6 @@
+@ECHO OFF
+cd /d D:\HNServer\publish
+deltree meng-cms /y/e
+git clone git@git.oschina.net:zp8360/meng-cms.git
+cd meng-cms
+play run

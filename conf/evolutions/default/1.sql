@@ -77,11 +77,13 @@ create table image (
 
 create table message (
   id                        bigint auto_increment not null,
+  msg_code                  varchar(255),
   name                      varchar(255),
   email                     varchar(255),
   mobile                    varchar(255),
   message                   varchar(255),
   status                    tinyint(1) default 0,
+  create_date               datetime,
   constraint pk_message primary key (id))
 ;
 

@@ -1,3 +1,4 @@
+@(lmsg:List[models.message.Message])
 @js_css={
 <link rel="stylesheet" href="/assets/admin/css/tables.css">
 <script> /* SCRIPTS */
@@ -30,23 +31,29 @@
 	            <th>手机</th>
 	            <th>邮箱</th>
 	            <th>信息(留言)</th>
+	            <th>审核状态</th>
 	            <th>创建时间</th>
 	            <th>操作</th>
 	          </tr>
 	        </thead>
 	        <tbody>
+	          @for(i <- 0 to lmsg.size()-1 ){
 	          <tr class="odd gradeX">
-	            <td class="center">张三</td>
-	            <td class="center">13901234567</td>
-	            <td class="center">aaa@@qq.com</td>
-	            <td class="center">这个留言板有点意思!</td>
-	            <td class="center">2013/11/11 11:11:11</td>
+	            <td class="center">@lmsg.get(i).name</td>
+	            <td class="center">@lmsg.get(i).mobile</td>
+	            <td class="center">@lmsg.get(i).email</td>
+	            <td class="center">@lmsg.get(i).message</td>
+	            <td class="center">@lmsg.get(i).status</td>
+	            <td class="center">@lmsg.get(i).create_date</td>
 	            <td class="center">
-	             <input type="button" class="button small green" value="审核通过">
-		         <input type="button" class="button small blue" value="编辑">
-	         	 <input type="button" class="button small red" value="删除">
+	            @if(!lmsg.get(i).status){
+	             <a href="/admin/message/audit/@lmsg.get(i).msg_code" ><input type="button" class="button small green" value="审核通过"></a>
+	             }
+		         <a href="/admin/message/edit/@lmsg.get(i).msg_code" ><input type="button" class="button small blue" value="编辑"></a>
+	         	 <a href="/admin/message/del/@lmsg.get(i).msg_code" ><input type="button" class="button small red" value="删除"></a>
 	            </td>
 	          </tr>
+	          }
 	        </tbody>
 	      </table>
         </div>

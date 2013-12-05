@@ -37,12 +37,13 @@ POST	/news/category/update								controllers.admin.news.AdminNewsCategory.updat
 GET		/news/category/del/:code							controllers.admin.news.AdminNewsCategory.delete(code:String)
 
 # Admin Message
-GET		/message										controllers.admin.Admin.message()
-GET		/message/add								controllers.admin.message.Message.add()
-POST	/message/create							controllers.admin.message.Message.create()
-GET		/message/edit/:code						controllers.admin.message.Message.edit(code:String)
-POST	/message/update							controllers.admin.message.Message.update()
-GET		/message/del/:code						controllers.admin.message.Message.delete(code:String)
+GET		/message											controllers.admin.Admin.message()
+GET		/message/add										controllers.admin.message.AdminMessage.add()
+POST	/message/create										controllers.admin.message.AdminMessage.create()
+GET		/message/edit/:code									controllers.admin.message.AdminMessage.edit(code:String)
+POST	/message/update										controllers.admin.message.AdminMessage.update()
+GET		/message/del/:code									controllers.admin.message.AdminMessage.delete(code:String)
+GET		/message/audit/:code								controllers.admin.message.AdminMessage.audit(code:String)
 
 # Admin Exam
 GET		/exam											controllers.admin.Admin.exam()
