@@ -45,6 +45,15 @@ POST	/message/update										controllers.admin.message.AdminMessage.update()
 GET		/message/del/:code									controllers.admin.message.AdminMessage.delete(code:String)
 GET		/message/audit/:code								controllers.admin.message.AdminMessage.audit(code:String)
 
+# Admin Faq
+GET		/faq												controllers.admin.Admin.faq()
+GET		/faq/add											controllers.admin.faq.AdminFaq.add()
+POST	/faq/create											controllers.admin.faq.AdminFaq.create()
+GET		/faq/edit/:code										controllers.admin.faq.AdminFaq.edit(code:String)
+POST	/faq/update											controllers.admin.faq.AdminFaq.update()
+GET		/faq/del/:code										controllers.admin.faq.AdminFaq.delete(code:String)
+GET		/faq/audit/:code									controllers.admin.faq.AdminFaq.audit(code:String)
+
 # Admin Exam
 GET		/exam											controllers.admin.Admin.exam()
 GET		/exam/add									controllers.admin.question.Exam.add()
@@ -76,16 +85,6 @@ POST	/advertising/create						controllers.admin.advertising.Advertising.create()
 GET		/advertising/edit/:code					controllers.admin.advertising.Advertising.edit(code:String)
 POST	/advertising/update						controllers.admin.advertising.Advertising.update()
 GET		/advertising/del/:code					controllers.admin.advertising.Advertising.delete(code:String)
-
-# Admin Faq
-GET		/faq												controllers.admin.Admin.faq()
-GET		/faq/add										controllers.admin.faq.Faq.add()
-POST	/faq/create									controllers.admin.faq.Faq.create()
-GET		/faq/edit/:code								controllers.admin.faq.Faq.edit(code:String)
-POST	/faq/update									controllers.admin.faq.Faq.update()
-GET		/faq/del/:code								controllers.admin.faq.Faq.delete(code:String)
-
-
 
 # Admin Image
 GET		/image											controllers.admin.Admin.image()

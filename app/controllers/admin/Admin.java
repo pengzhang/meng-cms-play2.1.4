@@ -4,6 +4,7 @@ import java.util.List;
 
 import models.article.Article;
 import models.article.ArticleCategory;
+import models.faq.Faq;
 import models.message.Message;
 import models.news.News;
 import models.news.NewsCategory;
@@ -73,7 +74,8 @@ public class Admin extends Controller {
 	}
 	
 	public static Result faq(){
-		return ok(faq_view.render());
+		List<Faq> faqs = Faq.getFaqPage(0, 10);
+		return ok(faq_view.render(faqs));
 	}
 	
 	public static Result image(){

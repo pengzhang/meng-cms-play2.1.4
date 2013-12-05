@@ -1,3 +1,4 @@
+@(faqs:List[models.faq.Faq])
 @js_css={
 <link rel="stylesheet" href="/assets/admin/css/tables.css">
 <script> /* SCRIPTS */
@@ -28,21 +29,29 @@
           <tr>
             <th>问题</th>
             <th>答案</th>
+            <th>审核状态</th>
             <th>创建时间</th>
             <th>操作</th>
           </tr>
         </thead>
         <tbody>
+        @for(i <- 0 to faqs.size()-1){
           <tr class="odd gradeX">
-            <td>问: System.out.println("Hello"),输出什么?</td>
-            <td class="center">A</td>
-            <td class="center">2013/11/11 11:11:11</td>
+            <td>问: @faqs.get(i).question</td>
+            <td class="center">答: @faqs.get(i).answer</td>
+            <td>@if(faqs.get(i).status){已通过}else{未通过}</td>
+            <td class="center">@faqs.get(i).create_date</td>
             <td class="center">
-             <input type="button" class="button small green" value="审核通过">
-	         <input type="button" class="button small blue" value="编辑">
-         	 <input type="button" class="button small red" value="删除">
+             <a href="">
+             @if(!faqs.get(i).status){
+             <a href="/admin/faq/audit/@faqs.get(i).code"><input type="button" class="button small green" value="审核通过"></a>
+             }
+             </a>
+	         <a href="/admin/faq/edit/@faqs.get(i).code"><input type="button" class="button small blue" value="编辑"></a>
+         	 <a href="/admin/faq/del/@faqs.get(i).code"><input type="button" class="button small red" value="删除"></a>
             </td>
           </tr>
+          }
         </tbody>
       </table>
         </div>

@@ -1,11 +1,18 @@
+@(f:models.faq.Faq,flag:Boolean)
 @js_css={
+<script type="text/javascript" src="/assets/admin/js/forms/jquery.validate.min.js"></script>
 <script>
 $(function(){
 	$("#view_faq").click(function(){
     	location.href="/admin/faq"
     });
+	$("#btn_submit").click(function(){
+		$("#faq_form").submit();
+	});
+	
 });
 </script>
+<script type="text/javascript" charset="utf-8" src="/assets/ckeditor/ckeditor.js"></script>
 }
 @import views.html.admin._
 @admin("FAQ问答管理",js_css){
@@ -15,24 +22,51 @@ $(function(){
           <input type="button" id="view_faq" class="button big green" value="返回FAQ问答列表">
        </span>
      </div>
+     @if(flag){
+     <form id="faq_form" action="/admin/faq/create" method="post">
      <div class="box grid_12">
        <div class="box-head"><h2>添加FAQ问答</h2></div><div class="box-content">
           <div class="form-row">
-           <p class="form-label">问题:</p><div class="form-item"><input type="text" /></div>
+           <p class="form-label">问题:</p><div class="form-item"><input type="text" class="required" name="question" /></div>
           </div>
           <div class="form-row">
-           <p class="form-label">答案:</p><div class="form-item"><input type="text" /></div>
+           <p class="form-label">答案:</p><div class="form-item"><textarea class="ckeditor required" name="answer"></textarea></div>
           </div>
           
          <div class="form-row">
          	<div class="box grid_4"></div>
          	<div class="box grid_4">
-          		<input type="button" class="button big green" value="确定">
+          		<input id="btn_submit" type="button" class="button big green" value="确定">
           		<input type="button" class="button small red" value="取消">
           	</div>
          </div>
          <div class="clear"></div>
        </div>
      </div>
+     </form>
+     } else {
+     <form id="faq_form" action="/admin/faq/update" method="post">
+     <div class="box grid_12">
+       <div class="box-head"><h2>添加FAQ问答</h2></div><div class="box-content">
+       	  <input type="hidden" name="code" value="@f.code"/>
+          <div class="form-row">
+           <p class="form-label">问题:</p><div class="form-item"><input type="text" class="required" name="question" value="@f.question"/></div>
+          </div>
+          <div class="form-row">
+           <p class="form-label">答案:</p><div class="form-item"><textarea class="ckeditor required" name="answer">@f.answer</textarea></div>
+          </div>
+          
+         <div class="form-row">
+         	<div class="box grid_4"></div>
+         	<div class="box grid_4">
+          		<input id="btn_submit" type="button" class="button big green" value="确定">
+          		<input type="button" class="button small red" value="取消">
+          	</div>
+         </div>
+         <div class="clear"></div>
+       </div>
+     </div>
+     </form>
+     }
 </div>
 }

@@ -47,6 +47,7 @@ public class Message extends Model{
 	
 	public static void modifyMessage(Message msg){
 		msg.id = getMessage(msg.msg_code).id;
+		msg.status = false;
 		msg.update();
 	}
 	

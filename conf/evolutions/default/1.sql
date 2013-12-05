@@ -62,6 +62,16 @@ create table category (
   constraint pk_category primary key (id))
 ;
 
+create table faq (
+  id                        bigint auto_increment not null,
+  code                      varchar(255),
+  question                  varchar(255),
+  answer                    longtext,
+  status                    tinyint(1) default 0,
+  create_date               datetime,
+  constraint pk_faq primary key (id))
+;
+
 create table image (
   id                        bigint auto_increment not null,
   img_code                  varchar(255),
@@ -181,6 +191,8 @@ drop table article;
 drop table article_category;
 
 drop table category;
+
+drop table faq;
 
 drop table image;
 
