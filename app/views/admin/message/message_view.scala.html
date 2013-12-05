@@ -43,7 +43,9 @@
 	            <td class="center">@lmsg.get(i).mobile</td>
 	            <td class="center">@lmsg.get(i).email</td>
 	            <td class="center">@lmsg.get(i).message</td>
-	            <td class="center">@lmsg.get(i).status</td>
+	            <td class="center">
+	            @if(lmsg.get(i).status){已通过}else{未通过}
+	            </td>
 	            <td class="center">@lmsg.get(i).create_date</td>
 	            <td class="center">
 	            @if(!lmsg.get(i).status){

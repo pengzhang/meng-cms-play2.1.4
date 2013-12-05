@@ -38,6 +38,7 @@ public class AdminMessage extends Controller {
 		msg.mobile = map.get("mobile");
 		msg.message = map.get("message");
 		msg.msg_code = map.get("msg_code");
+		Message.modifyMessage(msg);
 		return redirect("/admin/message");
 	}
 	
