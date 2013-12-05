@@ -1,3 +1,4 @@
+@(ns:List[models.news.News])
 @js_css={
 <link rel="stylesheet" href="/assets/admin/css/tables.css">
 <script> /* SCRIPTS */
@@ -32,25 +33,31 @@
           <tr>
             <th>新闻标题</th>
             <th>新闻作者</th>
-            <th>新闻分类名称</th>
+            <th>新闻主题</th>
             <th>审核通过</th>
             <th>创建时间</th>
             <th>操作</th>
           </tr>
         </thead>
         <tbody>
+        @for(i<- 0 to ns.size()-1){
           <tr class="odd gradeX">
-            <td>JDK的安装及配置</td>
-            <td>Java</td>
-            <td class="center">程序设计语言</td>
-            <td class="center">否</td>
-            <td class="center">2013/11/11 11:11:11</td>
+            <td>@ns.get(i).news_title</td>
+            <td>@ns.get(i).news_author</td>
+            <td class="center">@ns.get(i).news_subject</td>
             <td class="center">
-             <input type="button" class="button small green" value="审核通过">
-	         <input type="button" class="button small blue" value="编辑">
-         	 <input type="button" class="button small red" value="删除">
+            @if(ns.get(i).news_auditstatus){已通过}else{未通过}
+            </td>
+            <td class="center">@ns.get(i).news_date</td>
+            <td class="center">
+             @if(!ns.get(i).news_auditstatus){
+                  <a href="/admin/news/audit/@ns.get(i).news_code"><input type="button" class="button small green" value="审核通过"></a>
+              }
+	         <a href="/admin/news/edit/@ns.get(i).news_code"><input type="button" class="button small blue" value="编辑"></a>
+         	 <a href="/admin/news/del/@ns.get(i).news_code"><input type="button" class="button small red" value="删除"></a>
             </td>
           </tr>
+          }
         </tbody>
       </table>
         </div>

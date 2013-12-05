@@ -4,6 +4,8 @@ import java.util.List;
 
 import models.article.Article;
 import models.article.ArticleCategory;
+import models.news.News;
+import models.news.NewsCategory;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.admin.*;
@@ -38,6 +40,16 @@ public class Admin extends Controller {
 		return ok(article_category_view.render(acs));
 	}
 	
+	public static Result news(String code){
+		List<News> news = News.getNewsPageByCategoryCode(code, 0, 10);
+		return ok(news_view.render(news));
+	}
+	
+	public static Result news_category(){
+		List<NewsCategory> ncs = NewsCategory.getNewsCategoryPage(0, 10);
+		return ok(news_category_view.render(ncs));
+	}
+	
 	public static Result message(){
 		return ok(message_view.render());
 	}
@@ -68,14 +80,6 @@ public class Admin extends Controller {
 	
 	public static Result image_category(){
 		return ok(image_category_view.render());
-	}
-	
-	public static Result news(){
-		return ok(news_view.render());
-	}
-	
-	public static Result news_category(){
-		return ok(news_category_view.render());
 	}
 	
 	public static Result download(){

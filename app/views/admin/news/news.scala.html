@@ -1,48 +1,113 @@
+@(ncs:List[models.news.NewsCategory],ne:models.news.News,flag:Boolean)
 @js_css={
+<script type="text/javascript" src="/assets/admin/js/forms/jquery.validate.min.js"></script>
+<script>
+$(function(){
+	$("#view_news").click(function(){
+    	location.href="/admin/news"
+    });
+	$("#btn_submit").click(function(){
+		$("#news_form").submit();
+	});
+	
+});
+</script>
+
+<script type="text/javascript" charset="utf-8" src="/assets/ckeditor/ckeditor.js"></script>
 }
 @import views.html.admin._
 @admin("新闻管理",js_css){
 <div class="content container_12">
-     <div class="box grid_3"></div> 
-
-     <div class="box grid_6 ">
-       <div class="box-head"><h2>添加新闻</h2></div><div class="box-content">
+	<div class="sm-box grid_12">
+       <span>
+          <input type="button" id="view_news" class="button big blue" value="返回新闻列表">
+       </span>
+     </div>
+     <div class="box grid_12">
+     @if(flag){
+      <form id="news_form" action="/admin/news/create" method="post">
+       <div class="box-head"><h2>添加新闻</h2></div>
+       <div class="box-content">
           <div class="form-row">
-           <p class="form-label">新闻标题:</p><div class="form-item"><input type="text" /></div>
+           <p class="form-label">新闻标题:</p><div class="form-item"><input type="text" class="required" name="news_title" /></div>
           </div>
           
           <div class="form-row">
-           <p class="form-label">新闻内容:</p><div class="form-item"><textarea></textarea></div>
+           <p class="form-label">新闻内容:</p><div class="form-item">
+           <textarea class="ckeditor required" name="news_content"></textarea></div>
           </div>
           <div class="form-row">
-           <p class="form-label">新闻主题:</p><div class="form-item"><input type="text" /></div>
+           <p class="form-label">新闻主题:</p><div class="form-item"><input type="text" name="news_subject"/></div>
           </div>
          
           <div class="form-row">
             <label class="form-label">新闻分类:</label>
             <div class="form-item">
-              <select>
-                <option value='option1'>Waldo was here</option>
-                <option value='option2'>Option 1</option>
-                <option value='option3'>Option 2</option>
-                <option value='option4'>Option 3</option>
+              <select name="news_category_code">
+              @for(ct <- ncs){
+                <option value='@ct.category_code'>@ct.category_title</option>
+               }
               </select>
             </div>
          </div>
          
          <div class="form-row">
-           <p class="form-label">作者:</p><div class="form-item"><input type="text" /></div>
+           <p class="form-label">作者:</p><div class="form-item"><input type="text" name="news_author"/></div>
           </div>
           
          <div class="form-row">
          	<div class="box grid_4"></div>
          	<div class="box grid_4">
-          		<input type="button" class="button big green" value="确定">
+          		<input id="btn_submit" type="button" class="button big green" value="确定">
           		<input type="button" class="button small red" value="取消">
           	</div>
          </div>
          <div class="clear"></div>
        </div>
+       </form>
+       }else{
+       <form id="news_form" action="/admin/news/update" method="post">
+       <div class="box-head"><h2>添加新闻</h2></div>
+       <div class="box-content">
+       	  <input type="hidden" name="news_code" value="@ne.news_code" />
+          <div class="form-row">
+           <p class="form-label">新闻标题:</p><div class="form-item"><input type="text" class="required" name="news_title" value="@ne.news_title"/></div>
+          </div>
+          
+          <div class="form-row">
+           <p class="form-label">新闻内容:</p><div class="form-item">
+           <textarea class="ckeditor required" name="news_content">@ne.news_content</textarea></div>
+          </div>
+          <div class="form-row">
+           <p class="form-label">新闻主题:</p><div class="form-item"><input type="text" name="news_subject" value="@ne.news_subject"/></div>
+          </div>
+         
+          <div class="form-row">
+            <label class="form-label">新闻分类:</label>
+            <div class="form-item">
+              <select name="news_category_code">
+              @for(ct <- ncs){
+                <option value='@ct.category_code'>@ct.category_title</option>
+               }
+              </select>
+            </div>
+         </div>
+         
+         <div class="form-row">
+           <p class="form-label">作者:</p><div class="form-item"><input type="text" name="news_author" value="@ne.news_author"/></div>
+          </div>
+          
+         <div class="form-row">
+         	<div class="box grid_4"></div>
+         	<div class="box grid_4">
+          		<input id="btn_submit" type="button" class="button big green" value="确定">
+          		<input type="button" class="button small red" value="取消">
+          	</div>
+         </div>
+         <div class="clear"></div>
+       </div>
+       </form>
+       }
      </div>
 </div>
 }

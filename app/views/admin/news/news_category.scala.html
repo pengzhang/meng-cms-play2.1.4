@@ -1,49 +1,93 @@
+@(acs:List[models.news.NewsCategory],ac:models.news.NewsCategory,flag:Boolean)
 @js_css={
 <link rel="stylesheet" href="/assets/admin/css/iphone-check.css">
 <script src="/assets/admin/js/forms/iphone-check.js"></script>
 <script>
 $(function() {
 	$('#iphone-check').iphoneStyle();
+	$("#view_news_category").click(function(){
+    	location.href="/admin/news/category"
+    });
+	$("#btn_submit").click(function(){
+		$("#ac_form").submit();
 	});
+});
 </script>
 
 }
 @import views.html.admin._
 @admin("分类管理",js_css){
 <div class="content container_12">
-     <div class="box grid_3"></div> 
-
-     <div class="box grid_6 ">
+	<div class="sm-box grid_12">
+       <span>
+          <input type="button" id="view_news_category" class="button big blue" value="返回新闻分类列表">
+       </span>
+     </div>
+     <div class="box grid_12">
+      @if(flag){
+       <form id="ac_form" action="/admin/news/category/create" method="post">
        <div class="box-head"><h2>添加新闻分类</h2></div><div class="box-content">
           <div class="form-row">
-           <p class="form-label">新闻分类名称:</p><div class="form-item"><input type="text" /></div>
+           <p class="form-label">新闻分类名称:</p><div class="form-item"><input type="text" name="category_title"/></div>
           </div>
           <div class="form-row">
-           <p class="form-label">新闻分类描述:</p><div class="form-item"><input type="text" /></div>
+           <p class="form-label">是否为频道:</p><input type="checkbox" name="is_channel" id="iphone-check" />
           </div>
           <div class="form-row">
-           <p class="form-label">是否为频道:</p><input checked type="checkbox" id="iphone-check" />
-          </div>
-          <div class="form-row">
-            <label class="form-label">新闻分类:</label>
+            <label class="form-label">父新闻分类:</label>
             <div class="form-item">
-              <select>
-                <option value='option1'>Waldo was here</option>
-                <option value='option2'>Option 1</option>
-                <option value='option3'>Option 2</option>
-                <option value='option4'>Option 3</option>
+              <select name="parent_category_code">
+              @for(ct <- acs){
+                <option value='@ct.category_code'>@ct.category_title</option>
+               }
               </select>
             </div>
          </div>
          <div class="form-row">
          	<div class="box grid_4"></div>
          	<div class="box grid_4">
-          		<input type="button" class="button big green" value="确定">
+          		<input type="button" id="btn_submit" class="button big green" value="确定">
           		<input type="button" class="button small red" value="取消">
           	</div>
          </div>
          <div class="clear"></div>
        </div>
+       </form>
+       } else {
+       <form id="ac_form" action="/admin/news/category/update" method="post">
+       <div class="box-head"><h2>添加新闻分类</h2></div><div class="box-content">
+       	  <input type="hidden" name="category_code" value="@ac.category_code" />
+       	  <div class="form-row">
+           <p class="form-label">新闻分类名称:</p><div class="form-item"><input type="text" name="category_title" value="@ac.category_title"/></div>
+          </div>
+          <div class="form-row">
+           <p class="form-label">是否为频道:</p>
+           <input @if(ac.is_channel){ checked }
+           type="checkbox" name="is_channel" id="iphone-check"  />
+          </div>
+          <div class="form-row">
+            <label class="form-label">父新闻分类:</label>
+            <div class="form-item">
+              <select name="parent_category_code">
+                @for(ct <- acs){
+                  @if(ct.category_code != ac.category_code){
+                	<option value='@ct.category_code'>@ct.category_title</option>
+                  }
+               }
+               </select>
+            </div>
+         </div>
+         <div class="form-row">
+         	<div class="box grid_4"></div>
+         	<div class="box grid_4">
+          		<input type="button" id="btn_submit" class="button big green" value="确定">
+          		<input type="button" class="button small red" value="取消">
+          	</div>
+         </div>
+         <div class="clear"></div>
+       </div>
+       </form>
+       }
      </div>
 </div>
 }

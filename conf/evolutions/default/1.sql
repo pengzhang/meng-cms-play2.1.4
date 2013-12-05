@@ -85,6 +85,29 @@ create table message (
   constraint pk_message primary key (id))
 ;
 
+create table news (
+  id                        bigint auto_increment not null,
+  news_code                 varchar(255),
+  news_title                varchar(255),
+  news_content              longtext,
+  news_author               varchar(255),
+  news_date                 datetime,
+  news_subject              varchar(255),
+  news_category_code        varchar(255),
+  news_auditstatus          tinyint(1) default 0,
+  constraint pk_news primary key (id))
+;
+
+create table news_category (
+  id                        bigint auto_increment not null,
+  category_code             varchar(255),
+  category_title            varchar(255),
+  parent_category_code      varchar(255),
+  is_channel                tinyint(1) default 0,
+  create_at                 datetime,
+  constraint pk_news_category primary key (id))
+;
+
 create table question (
   id                        bigint auto_increment not null,
   qtitle                    varchar(255),
@@ -160,6 +183,10 @@ drop table category;
 drop table image;
 
 drop table message;
+
+drop table news;
+
+drop table news_category;
 
 drop table question;
 

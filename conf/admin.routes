@@ -19,6 +19,23 @@ GET		/article/category/edit/:code						controllers.admin.article.AdminArticleCat
 POST	/article/category/update							controllers.admin.article.AdminArticleCategory.update()
 GET		/article/category/del/:code							controllers.admin.article.AdminArticleCategory.delete(code:String)
 
+# Admin News
+GET		/news/view/:code									controllers.admin.Admin.news(code:String)
+GET		/news/add											controllers.admin.news.AdminNews.add()
+POST	/news/create										controllers.admin.news.AdminNews.create()
+GET		/news/edit/:code									controllers.admin.news.AdminNews.edit(code:String)
+POST	/news/update										controllers.admin.news.AdminNews.update()
+GET		/news/del/:code										controllers.admin.news.AdminNews.delete(code:String)
+GET		/news/audit/:code									controllers.admin.news.AdminNews.audit(code:String)
+
+# Admin News Category
+GET		/news/category										controllers.admin.Admin.news_category()
+GET		/news/category/add									controllers.admin.news.AdminNewsCategory.add()
+POST	/news/category/create								controllers.admin.news.AdminNewsCategory.create()
+GET		/news/category/edit/:code							controllers.admin.news.AdminNewsCategory.edit(code:String)
+POST	/news/category/update								controllers.admin.news.AdminNewsCategory.update()
+GET		/news/category/del/:code							controllers.admin.news.AdminNewsCategory.delete(code:String)
+
 # Admin Message
 GET		/message										controllers.admin.Admin.message()
 GET		/message/add								controllers.admin.message.Message.add()
@@ -67,21 +84,7 @@ GET		/faq/edit/:code								controllers.admin.faq.Faq.edit(code:String)
 POST	/faq/update									controllers.admin.faq.Faq.update()
 GET		/faq/del/:code								controllers.admin.faq.Faq.delete(code:String)
 
-# Admin News
-GET		/news											controllers.admin.Admin.news()
-GET		/news/add										controllers.admin.news.News.add()
-POST	/news/create									controllers.admin.news.News.create()
-GET		/news/edit/:code							controllers.admin.news.News.edit(code:String)
-POST	/news/update								controllers.admin.news.News.update()
-GET		/news/del/:code							controllers.admin.news.News.delete(code:String)
 
-# Admin News Category
-GET		/news/category								controllers.admin.Admin.news_category()
-GET		/news/category/add						controllers.admin.news.NewsCategory.add()
-POST	/news/category/create					controllers.admin.news.NewsCategory.create()
-GET		/news/category/edit/:code			controllers.admin.news.NewsCategory.edit(code:String)
-POST	/news/category/update					controllers.admin.news.NewsCategory.update()
-GET		/news/category/del/:code				controllers.admin.news.NewsCategory.delete(code:String)
 
 # Admin Image
 GET		/image											controllers.admin.Admin.image()

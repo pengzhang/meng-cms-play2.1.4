@@ -24,16 +24,32 @@ public class WebArticleCategory extends Controller {
 		return ok(StringUtils.returnSuccess(category_code)).as(StringUtils.APPLICATION_JSON);
 	}
 	
+	/**
+	 * 获取文章分类的子分类
+	 * @param code
+	 * @return
+	 */
 	public static Result getArticleCategoryChild(String code){
 		List<ArticleCategory> lacs= ArticleCategory.getChildCategoryByCode(code);
 		return ok(StringUtils.listJson("article_categories", lacs)).as(StringUtils.APPLICATION_JSON);
 	}
 	
+	/**
+	 * 获取文章分类
+	 * @param code
+	 * @return
+	 */
 	public static Result getArticleCategory(String code){
 		ArticleCategory category = ArticleCategory.getArticleCategoryByCode(code);
 		return ok(Json.toJson(category)).as(StringUtils.APPLICATION_JSON);
 	}
 	
+	/**
+	 * 分页获取文章分类
+	 * @param page
+	 * @param size
+	 * @return
+	 */
 	public static Result getArticleCategoryPage(int page,int size){
 		List<ArticleCategory> lacs = ArticleCategory.getArticleCategoryPage(page, size);
 		return ok(StringUtils.listJson("article_categories", lacs)).as(StringUtils.APPLICATION_JSON);
