@@ -1,9 +1,14 @@
 package models.adverties;
 
+import java.sql.Timestamp;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import play.db.ebean.Model;
 import utils.StringUtils;
@@ -82,28 +87,31 @@ public class Advertising extends Model{
 	/**
 	 * 广告到期日期
 	 */
-	@Column
-	public String endate;
+	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
+	public Timestamp endate;
+	
+	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
+	public Timestamp create_date;
 	
 	
-	public Advertising() {
-		super();
-	}
-
-	public Advertising(String ad_code, String ad_position, String ad_script,
-			String ad_url, String ad_image, String ad_text, String ad_type,
-			boolean online, String endate) {
-		super();
-		this.ad_code = ad_code;
-		this.ad_position = ad_position;
-		this.ad_script = ad_script;
-		this.ad_url = ad_url;
-		this.ad_image = ad_image;
-		this.ad_text = ad_text;
-		this.ad_type = ad_type;
-		this.online = online;
-		this.endate = endate;
-	}
+//	public Advertising() {
+//		super();
+//	}
+//
+//	public Advertising(String ad_code, String ad_position, String ad_script,
+//			String ad_url, String ad_image, String ad_text, String ad_type,
+//			boolean online, String endate) {
+//		super();
+//		this.ad_code = ad_code;
+//		this.ad_position = ad_position;
+//		this.ad_script = ad_script;
+//		this.ad_url = ad_url;
+//		this.ad_image = ad_image;
+//		this.ad_text = ad_text;
+//		this.ad_type = ad_type;
+//		this.online = online;
+//		this.endate = endate;
+//	}
 
 	public static Model.Finder<Long, Advertising> find = new Model.Finder<Long, Advertising>(Long.class, Advertising.class);
 	
@@ -121,6 +129,7 @@ public class Advertising extends Model{
 	 * @param ad
 	 */
 	public static void modify_AD(Advertising ad){
+		ad.id = get_ADByCode(ad.ad_code).id;
 		ad.update();
 	}
 	
@@ -139,6 +148,14 @@ public class Advertising extends Model{
 	 */
 	public static Advertising get_AD(String ad_position){
 		return find.where().eq("ad_position", ad_position).findUnique();
+	}
+	
+	public static Advertising get_ADByCode(String ad_code){
+		return find.where().eq("ad_code", ad_code).findUnique();
+	}
+	
+	public static List<Advertising> getAdvertisingList(int page,int size){
+		return find.where().findPagingList(size).getPage(page).getList();
 	}
 	
 	/**

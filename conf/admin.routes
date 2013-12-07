@@ -55,20 +55,32 @@ GET		/faq/del/:code										controllers.admin.faq.AdminFaq.delete(code:String)
 GET		/faq/audit/:code									controllers.admin.faq.AdminFaq.audit(code:String)
 
 # Admin Exam
-GET		/exam											controllers.admin.Admin.exam()
-GET		/exam/add									controllers.admin.question.Exam.add()
-POST	/exam/create									controllers.admin.question.Exam.create()
-GET		/exam/edit/:code							controllers.admin.question.Exam.edit(code:String)
-POST	/exam/update								controllers.admin.question.Exam.update()
-GET		/exam/del/:code							controllers.admin.question.Exam.delete(code:String)
+GET		/exam												controllers.admin.Admin.exam()
+GET		/exam/add											controllers.admin.question.AdminExam.add()
+POST	/exam/create										controllers.admin.question.AdminExam.create()
+GET		/exam/edit/:code									controllers.admin.question.AdminExam.edit(code:String)
+POST	/exam/update										controllers.admin.question.AdminExam.update()
+GET		/exam/del/:code										controllers.admin.question.AdminExam.delete(code:String)
 
 # Admin Question
-GET		/question										controllers.admin.Admin.question()
-GET		/question/add								controllers.admin.question.Question.add()
-POST	/question/create							controllers.admin.question.Question.create()
-GET		/question/edit/:code						controllers.admin.question.Question.edit(code:String)
-POST	/question/update							controllers.admin.question.Question.update()
-GET		/question/del/:code						controllers.admin.question.Question.delete(code:String)
+GET		/question											controllers.admin.Admin.question()
+GET		/question/add										controllers.admin.question.AdminQuestion.add()
+POST	/question/create									controllers.admin.question.AdminQuestion.create()
+GET		/question/edit/:code								controllers.admin.question.AdminQuestion.edit(code:String)
+POST	/question/update									controllers.admin.question.AdminQuestion.update()
+GET		/question/del/:code									controllers.admin.question.AdminQuestion.delete(code:String)
+GET		/question/audit/:code								controllers.admin.question.AdminQuestion.audit(code:String)
+
+# Admin Advertising
+GET		/advertising										controllers.admin.Admin.advertising()
+GET		/advertising/add									controllers.admin.advertising.AdminAdvertising.add()
+POST	/advertising/create									controllers.admin.advertising.AdminAdvertising.create()
+GET		/advertising/edit/:code								controllers.admin.advertising.AdminAdvertising.edit(code:String)
+POST	/advertising/update									controllers.admin.advertising.AdminAdvertising.update()
+GET		/advertising/del/:code								controllers.admin.advertising.AdminAdvertising.delete(code:String)
+GET		/advertising/online/:code							controllers.admin.advertising.AdminAdvertising.online(code:String)
+GET		/advertising/offline/:code							controllers.admin.advertising.AdminAdvertising.offline(code:String)
+
 
 # Admin User
 GET		/user												controllers.admin.Admin.user()
@@ -78,13 +90,7 @@ GET		/user/edit/:code							controllers.admin.user.User.edit(code:String)
 POST	/user/update									controllers.admin.user.User.update()
 GET		/user/del/:code								controllers.admin.user.User.delete(code:String)
 
-# Admin Advertising
-GET		/advertising									controllers.admin.Admin.advertising()
-GET		/advertising/add							controllers.admin.advertising.Advertising.add()
-POST	/advertising/create						controllers.admin.advertising.Advertising.create()
-GET		/advertising/edit/:code					controllers.admin.advertising.Advertising.edit(code:String)
-POST	/advertising/update						controllers.admin.advertising.Advertising.update()
-GET		/advertising/del/:code					controllers.admin.advertising.Advertising.delete(code:String)
+
 
 # Admin Image
 GET		/image											controllers.admin.Admin.image()

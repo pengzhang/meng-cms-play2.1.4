@@ -4,7 +4,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.admin.advertising.*;
 
-public class Advertising extends Controller {
+public class AdminAdvertising extends Controller {
 	
 	public static Result add(){
 		return ok(advertising.render());
