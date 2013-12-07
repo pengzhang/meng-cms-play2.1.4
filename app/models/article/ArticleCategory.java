@@ -63,6 +63,9 @@ public class ArticleCategory extends Model{
 	public String parent_category_code = "default";
 	
 	@Column
+	public String web_site_code;
+	
+	@Column
 	public boolean is_channel = false; 
 	
 	@Column
@@ -77,7 +80,11 @@ public class ArticleCategory extends Model{
 	 * @return category_code 文章分类编号
 	 */
 	public static String createArticleCategory(ArticleCategory ac){
-		ac.category_code = StringUtils.getMengCode();
+		if(ac.category_code.equals("default")){
+			ac.parent_category_code = "";
+		}else{
+			ac.category_code = StringUtils.getMengCode();
+		}
 		ac.save();
 		return ac.category_code;
 	}
@@ -101,7 +108,7 @@ public class ArticleCategory extends Model{
 	 * 删除文章分类-ByCode
 	 * @param category_code
 	 */
-	public static void destroyArticleCategoryByCode(String category_code){
+	public static void deleteArticleCategoryByCode(String category_code){
 		Ebean.delete(find.where().eq("category_code", category_code).findList());
 	}
 	
@@ -128,29 +135,12 @@ public class ArticleCategory extends Model{
 	}
 	
 	/**
-	 * 根据id获取文章分类
-	 * @param id
-	 * @return
-	 */
-	public static ArticleCategory getArticleCategoryById(long id){
-		return find.byId(id);
-	}
-	
-	/**
 	 * 获取文章分类的子节点_ByParentCategoryCode
 	 * @param parent_category_code
 	 * @return
 	 */
 	public static List<ArticleCategory> getChildCategoryByCode(String parent_category_code){
 		return find.where().eq("parent_category_code", parent_category_code).findList();
-	}
-	
-	/**
-	 * 获取全部文章分类
-	 * @return
-	 */
-	public static List<ArticleCategory> getArticleCategoryAll(){
-		return find.all();
 	}
 	
 	/**
@@ -161,6 +151,13 @@ public class ArticleCategory extends Model{
 		return find.findPagingList(size).getPage(page).getList();
 	}
 	
+	/**
+	 * 分页获取文章分类
+	 * @return
+	 */
+	public static List<ArticleCategory> getWSArticleCategoryPage(String ws_code, int page,int size){
+		return find.where().eq("web_site_code", ws_code).findPagingList(size).getPage(page).getList();
+	}
 	
 
 }

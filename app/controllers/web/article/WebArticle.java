@@ -3,7 +3,7 @@ package controllers.web.article;
 import java.util.List;
 
 import models.article.Article;
-import models.article.ArticleTitle;
+import models.assist.ArticleTitle;
 import play.libs.Json;
 import play.mvc.BodyParser;
 import play.mvc.Controller;

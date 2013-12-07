@@ -34,6 +34,8 @@ public class Message extends Model{
 	@Column
 	public String message;
 	@Column
+	public String web_site_code;
+	@Column
 	public boolean status = false;
 	@Column
 	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
@@ -65,14 +67,6 @@ public class Message extends Model{
 		msg.update();
 	}
 	
-	public static Message getMessage(long id){
-		return find.byId(id);
-	}
-	
-	public static List<Message> getMessageList(){
-		return find.all();
-	}
-	
 	public static List<Message> getMessageShow(){
 		return find.where().eq("status", true).findList();
 	}
@@ -81,8 +75,8 @@ public class Message extends Model{
 		return find.findPagingList(size).getPage(page).getList();
 	}
 	
-	public static int getMessageTotalPage(int size){
-		return find.findPagingList(size).getTotalPageCount();
+	public static List<Message> getWSMessagePage(String ws_code, int page,int size){
+		return find.where().eq("web_site_code", ws_code).findPagingList(size).getPage(page).getList();
 	}
 	
 	public static void statusMessage(long id){

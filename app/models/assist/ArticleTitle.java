@@ -1,4 +1,4 @@
-package models.article;
+package models.assist;
 
 
 public class ArticleTitle {

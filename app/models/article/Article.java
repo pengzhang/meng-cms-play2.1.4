@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
+import models.assist.ArticleTitle;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import play.data.validation.Constraints.Required;
@@ -138,7 +140,7 @@ public class Article extends Model {
 	 * @param article_code
 	 * @return article_category_code 文章分类编号
 	 */
-	public static String destroyArticle(String article_code){
+	public static String deleteArticle(String article_code){
 		Ebean.delete(find.where().eq("article_code", article_code).findList());
 		return getArticleByCode(article_code).article_category_code;
 	}
@@ -147,9 +149,9 @@ public class Article extends Model {
 	 * 删除文章(批量)
 	 * @param article_codes
 	 */
-	public static void destoryArticle(List<String> article_codes){
+	public static void deleteArticle(List<String> article_codes){
 		for(String article_code : article_codes){
-			destroyArticle(article_code);
+			deleteArticle(article_code);
 		}
 	}
 	

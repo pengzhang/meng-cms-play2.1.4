@@ -99,7 +99,7 @@ public class Image extends Model{
 	 * 删除图片
 	 * @param img_code
 	 */
-	public static void destroyImage(String img_code){
+	public static void deleteImage(String img_code){
 		Ebean.delete(find.where().eq("img_code", img_code).findList());
 	}
 	

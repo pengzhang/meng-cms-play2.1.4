@@ -34,6 +34,8 @@ public class Faq extends Model {
 	@Lob
 	public String answer;
 	@Column
+	public String web_site_code;
+	@Column
 	public boolean status = false;
 	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
 	public Timestamp create_date = new Timestamp(System.currentTimeMillis());
@@ -66,6 +68,10 @@ public class Faq extends Model {
 	
 	public static List<Faq> getFaqPage(int page, int size){
 		return find.findPagingList(size).getPage(page).getList();
+	}
+	
+	public static List<Faq> getWSFaqPage(String ws_code, int page, int size){
+		return find.where().eq("web_site_code", ws_code).findPagingList(size).getPage(page).getList();
 	}
 
 }

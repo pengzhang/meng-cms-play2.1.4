@@ -52,7 +52,7 @@ public class AdminArticleCategory extends Controller {
 	}
 	
 	public static Result delete(String code){
-		ArticleCategory.destroyArticleCategoryByCode(code);
+		ArticleCategory.deleteArticleCategoryByCode(code);
 		return redirect("/admin/article/category");
 	}
 

@@ -49,7 +49,7 @@ public class AdminArticle extends Controller {
 	}
 	
 	public static Result delete(String article_code){
-		String acc = Article.destroyArticle(article_code);
+		String acc = Article.deleteArticle(article_code);
 		return redirect("/admin/article/view/"+acc);
 	}
 	

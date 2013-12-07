@@ -1,4 +1,4 @@
-package models.paging;
+package models.assist;
 
 public class Page {
 	

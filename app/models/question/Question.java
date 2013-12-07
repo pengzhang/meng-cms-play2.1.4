@@ -66,15 +66,7 @@ public class Question extends Model{
 	public static Question getQuestionByCode(String code){
 		return find.where().eq("q_code", code).findUnique();
 	}
-	
-	public static List<Question> getQuestionList(){
-		return find.all();
-	}
-	
-	public static void deleteQuestion(long id){
-		find.byId(id).delete();
-	}
-	
+
 	public static void auditQuestion(String code){
 		Question q = getQuestionByCode(code);
 		q.status = true;
@@ -87,10 +79,6 @@ public class Question extends Model{
 	
 	public static List<Question> getQuestionPage(int page,int size){
 		return find.findPagingList(size).getPage(page).getList();
-	}
-	
-	public static int getQuestionTotalPage(int size){
-		return find.findPagingList(size).getTotalPageCount();
 	}
 	
 	public static List<Question> getExamQuestion(String exam_code){

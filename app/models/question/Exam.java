@@ -31,6 +31,8 @@ public class Exam extends Model {
 	public String exam_name;
 	@Column
 	public String exam_desc;
+	@Column
+	public String web_site_code;
 	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
 	public Timestamp create_date;
 	
@@ -39,11 +41,7 @@ public class Exam extends Model {
 	public static void createExam(Exam ex){
 		ex.save();
 	}
-	
-	public static Exam getExamByCode(String code){
-		return find.where().eq("e_code", code).findUnique();
-	}
-	
+
 	public static void modifyExam(Exam ex){
 		ex.id = getExamByCode(ex.e_code).id;
 		ex.update();
@@ -53,12 +51,16 @@ public class Exam extends Model {
 		Ebean.delete(find.where().eq("e_code", code).findList());
 	}
 	
+	public static Exam getExamByCode(String code){
+		return find.where().eq("e_code", code).findUnique();
+	}
+	
 	public static List<Exam> getExamPage(int page,int size){
 		return find.findPagingList(size).getPage(page).getList();
 	}
 
-	public static List<Exam> getExamAll() {
-		return find.select("e_code,exam_name").findList();
+	public static List<Exam> getWSExamPage(String ws_code, int page,int size){
+		return find.where().eq("web_site_code", ws_code).findPagingList(size).getPage(page).getList();
 	}
 	
 

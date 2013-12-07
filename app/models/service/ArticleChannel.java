@@ -1,7 +1,9 @@
-package models.article;
+package models.service;
 
 import java.util.List;
 
+import models.article.Article;
+import models.article.ArticleCategory;
 import play.db.ebean.Model;
 
 /**

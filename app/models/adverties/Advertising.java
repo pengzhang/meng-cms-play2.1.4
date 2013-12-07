@@ -85,6 +85,12 @@ public class Advertising extends Model{
 	public boolean online=true;
 	
 	/**
+	 * 隶属网站
+	 */
+	@Column
+	public String web_site_code;
+	
+	/**
 	 * 广告到期日期
 	 */
 	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
@@ -94,25 +100,6 @@ public class Advertising extends Model{
 	public Timestamp create_date;
 	
 	
-//	public Advertising() {
-//		super();
-//	}
-//
-//	public Advertising(String ad_code, String ad_position, String ad_script,
-//			String ad_url, String ad_image, String ad_text, String ad_type,
-//			boolean online, String endate) {
-//		super();
-//		this.ad_code = ad_code;
-//		this.ad_position = ad_position;
-//		this.ad_script = ad_script;
-//		this.ad_url = ad_url;
-//		this.ad_image = ad_image;
-//		this.ad_text = ad_text;
-//		this.ad_type = ad_type;
-//		this.online = online;
-//		this.endate = endate;
-//	}
-
 	public static Model.Finder<Long, Advertising> find = new Model.Finder<Long, Advertising>(Long.class, Advertising.class);
 	
 	/**
@@ -137,7 +124,7 @@ public class Advertising extends Model{
 	 * 删除广告
 	 * @param ac_code
 	 */
-	public static void destroy_AD(String ad_code){
+	public static void delete_AD(String ad_code){
 		Ebean.delete(find.where().eq("ad_code", ad_code).findList());
 	}
 	
@@ -155,7 +142,11 @@ public class Advertising extends Model{
 	}
 	
 	public static List<Advertising> getAdvertisingList(int page,int size){
-		return find.where().findPagingList(size).getPage(page).getList();
+		return find.findPagingList(size).getPage(page).getList();
+	}
+	
+	public static List<Advertising> getWSAdvertisingList(String ws_code,int page,int size){
+		return find.where().eq("web_site_code", ws_code).findPagingList(size).getPage(page).getList();
 	}
 	
 	/**
