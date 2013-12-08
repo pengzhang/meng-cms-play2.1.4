@@ -41,7 +41,7 @@ public class AdminUser extends Model{
 	public long id;
 	
 	@Column
-	public String admcode = StringUtils.getMengCode();
+	public String admin_code = StringUtils.getMengCode();
 	
 	/**
 	 * 管理员用户名
@@ -172,7 +172,7 @@ public class AdminUser extends Model{
 	 * @return
 	 */
 	public static AdminUser getAdminUserByCode(String code){
-		return find.where().eq("ucode", code).findUnique();
+		return find.where().eq("admin_code", code).findUnique();
 	}
 	
 	/**

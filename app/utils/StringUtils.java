@@ -1,6 +1,7 @@
 package utils;
 
 import java.io.File;
+import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -9,6 +10,7 @@ import java.util.Map;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
+import org.apache.commons.lang3.time.DateUtils;
 
 import play.libs.Json;
 
@@ -48,6 +50,15 @@ public class StringUtils {
 			return date_path;
 		}
 		return File.separator+path+date_path;
+	}
+	
+	public static java.sql.Date convertUtiltoSqlDate(String date_str,String pattern){
+		try {
+			return new java.sql.Date(DateUtils.parseDate(date_str ,pattern).getTime());
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return new java.sql.Date(System.currentTimeMillis());
 	}
 
 	/**

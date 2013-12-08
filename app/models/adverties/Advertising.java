@@ -1,5 +1,6 @@
 package models.adverties;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -93,11 +94,11 @@ public class Advertising extends Model{
 	/**
 	 * 广告到期日期
 	 */
-	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
-	public Timestamp endate;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	public Date endate;
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
-	public Timestamp create_date;
+	public Timestamp create_date = new Timestamp(System.currentTimeMillis());
 	
 	
 	public static Model.Finder<Long, Advertising> find = new Model.Finder<Long, Advertising>(Long.class, Advertising.class);
