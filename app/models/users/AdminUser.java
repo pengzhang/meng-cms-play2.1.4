@@ -1,11 +1,16 @@
 package models.users;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import play.Logger;
 import play.db.ebean.Model;
@@ -32,7 +37,11 @@ public class AdminUser extends Model{
 	 * 管理员ID
 	 */
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public long id;
+	
+	@Column
+	public String admcode = StringUtils.getMengCode();
 	
 	/**
 	 * 管理员用户名
@@ -76,7 +85,18 @@ public class AdminUser extends Model{
 	@Column
 	public boolean status = true;
 	
-	//TODO 登陆时间  登陆操作
+	@Column
+	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
+	public Timestamp login_time = new Timestamp(System.currentTimeMillis());
+	
+	@Column
+	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
+	public Timestamp logout_time = new Timestamp(System.currentTimeMillis());
+	
+	@Column
+	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
+	public Timestamp create_date = new Timestamp(System.currentTimeMillis());
+	
 	
 	public static Model.Finder<Long, AdminUser> find = new Model.Finder<Long, AdminUser>(Long.class, AdminUser.class);
 	
@@ -114,12 +134,10 @@ public class AdminUser extends Model{
 	 * @param au
 	 */
 	public static void modifyAdminUser(AdminUser au){
-		AdminUser user = find.byId(au.id);
-		user.email = au.email;
-		user.mobile = au.mobile;
-		user.real_name = au.real_name;
-		user.privilege = au.privilege;
-		user.update();
+		AdminUser admin = getAdminUserByUsername(au.username);
+		au.id = admin.id;
+		au.password = admin.password;
+		au.update();
 	}
 	
 	/**
@@ -127,11 +145,16 @@ public class AdminUser extends Model{
 	 * @param username
 	 * @param password
 	 */
-	public static void modifyAdminUserPassword(String username, String password){
+	public static boolean modifyAdminUserPassword(String username, String oldPassword, String password){
 		password = StringUtils.md5(password);
 		AdminUser au = getAdminUserByUsername(username);
-		au.password = password;
-		au.update();
+		if(au.password.equals(StringUtils.md5(oldPassword))){
+			au.password = password;
+			au.update();
+		return true;
+		}
+		Logger.info("old_password is not rigth");
+		return false;
 	}
 	
 	/**
@@ -144,12 +167,12 @@ public class AdminUser extends Model{
 	}
 	
 	/**
-	 * 根据ID查询管理员
-	 * @param id
+	 * 根据Code查询管理员
+	 * @param code
 	 * @return
 	 */
-	public static AdminUser getAdminUserById(long id){
-		return find.byId(id);
+	public static AdminUser getAdminUserByCode(String code){
+		return find.where().eq("ucode", code).findUnique();
 	}
 	
 	/**
@@ -184,8 +207,11 @@ public class AdminUser extends Model{
 	 * 删除管理员
 	 * @param username
 	 */
-	public static void destroyAdminUser(String username){
+	public static void deleteAdminUser(String username){
 		Ebean.delete(find.where().eq("username", username).findList());
 	}
 	
+	//TODO 找回密码
+	//TODO 发送邮件激活
+	//TODO 忘记密码
 }

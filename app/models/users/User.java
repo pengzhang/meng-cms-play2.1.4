@@ -1,11 +1,14 @@
 package models.users;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import play.db.ebean.Model;
 import utils.StringUtils;
@@ -39,13 +42,13 @@ public class User extends Model {
 	 * 用户名
 	 */
 	@Column
-	public String username="admin";
+	public String username;
 
 	/**
 	 * 密码
 	 */
 	@Column
-	public String password="e10adc3949ba59abbe56e057f20f883e";
+	public String password;
 
 	/**
 	 * 是否高级会员
@@ -64,24 +67,31 @@ public class User extends Model {
 	 */
 	@Column
 	public long expires_in;
-
+	
 	/**
 	 * 登陆时间
 	 */
 	@Column
-	public long login_at;
-
+	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
+	public Timestamp login_time = new Timestamp(System.currentTimeMillis());
 	/**
 	 * 退出时间
 	 */
 	@Column
-	public long logout_at;
+	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
+	public Timestamp logout_time = new Timestamp(System.currentTimeMillis());
+	
+	@Column
+	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
+	public Timestamp create_date = new Timestamp(System.currentTimeMillis());
 
 	/**
 	 * 激活状态和暂停用户(新注册用户默认为不可用)
 	 */
 	@Column
 	public boolean status = false;
+	
+	
 
 	public static Model.Finder<Long, User> find = new Model.Finder<Long, User>(Long.class, User.class);
 
@@ -105,7 +115,7 @@ public class User extends Model {
 			if (verify_pwd(user, password)) {
 				user.access_token = access_token;
 				user.expires_in = currentTime + 1800000;
-				user.login_at = currentTime;
+//				user.login_at = currentTime;
 				user.update();
 			}
 		} catch (MengException e) {
@@ -129,7 +139,7 @@ public class User extends Model {
 		}
 		user.access_token = "";
 		user.expires_in = 0;
-		user.logout_at = StringUtils.getTimeStamp(); 
+//		user.logout_at = StringUtils.getTimeStamp(); 
 		user.update();
 	}
 	

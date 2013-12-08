@@ -49,7 +49,7 @@ public class AdminNews extends Controller {
 	}
 	
 	public static Result delete(String news_code){
-		String ncc = News.destroyNews(news_code);
+		String ncc = News.deleteNews(news_code);
 		return redirect("/admin/news/view/"+ncc);
 	}
 	

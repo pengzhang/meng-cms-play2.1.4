@@ -29,6 +29,8 @@ public class WebSite extends Model {
 	@Column
 	public String web_url;
 	@Column
+	public String domain = "localhost";
+	@Column
 	public String web_desc;
 	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
 	public Timestamp create_date;

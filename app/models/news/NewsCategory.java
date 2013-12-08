@@ -54,6 +54,8 @@ public class NewsCategory extends Model{
 	@Required
 	public String category_title;
 	
+	public String web_site_code;
+	
 	/**
 	 * 新闻分类的父Code
 	 * default:默认分类
@@ -77,7 +79,11 @@ public class NewsCategory extends Model{
 	 * @return category_code 新闻分类编号
 	 */
 	public static String createNewsCategory(NewsCategory ac){
-		ac.category_code = StringUtils.getMengCode();
+		if(ac.category_code.equals("default")){
+			ac.parent_category_code = "";
+		}else{
+			ac.category_code = StringUtils.getMengCode();
+		}
 		ac.save();
 		return ac.category_code;
 	}
@@ -101,7 +107,7 @@ public class NewsCategory extends Model{
 	 * 删除新闻分类-ByCode
 	 * @param category_code
 	 */
-	public static void destroyNewsCategoryByCode(String category_code){
+	public static void deleteNewsCategoryByCode(String category_code){
 		Ebean.delete(find.where().eq("category_code", category_code).findList());
 	}
 	
@@ -128,29 +134,12 @@ public class NewsCategory extends Model{
 	}
 	
 	/**
-	 * 根据id获取新闻分类
-	 * @param id
-	 * @return
-	 */
-	public static NewsCategory getNewsCategoryById(long id){
-		return find.byId(id);
-	}
-	
-	/**
 	 * 获取新闻分类的子节点_ByParentCategoryCode
 	 * @param parent_category_code
 	 * @return
 	 */
 	public static List<NewsCategory> getChildCategoryByCode(String parent_category_code){
 		return find.where().eq("parent_category_code", parent_category_code).findList();
-	}
-	
-	/**
-	 * 获取全部新闻分类
-	 * @return
-	 */
-	public static List<NewsCategory> getNewsCategoryAll(){
-		return find.all();
 	}
 	
 	/**

@@ -1,4 +1,4 @@
-package models.news;
+package models.assist;
 
 
 public class NewsTitle {

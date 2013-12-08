@@ -1,9 +1,18 @@
 package models.image;
 
+import java.io.File;
+import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.apache.commons.io.FileUtils;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import play.db.ebean.Model;
 import utils.StringUtils;
@@ -19,10 +28,6 @@ import com.avaje.ebean.Ebean;
 @Table(name="image")
 public class Image extends Model{
 
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	@Id
 	public long id;
@@ -31,8 +36,16 @@ public class Image extends Model{
 	 */
 	@Column
 	public String img_code;
+	
+	@Column
+	public String image_name;
+	
+	@Column
+	public String iamge_desc;
+	
 	/**
 	 * 图片URL
+	 * 网络图片
 	 */
 	@Column
 	public String url;
@@ -40,8 +53,8 @@ public class Image extends Model{
 	 * 图片的字节码
 	 * 用于存储上传图片
 	 */
-	@Column
-	public String byte_code;
+	@Transient
+	public File image_file;
 	/**
 	 * 图片存放的路径
 	 * 用于存储上传图片的服务器路径
@@ -58,13 +71,7 @@ public class Image extends Model{
 	public String image_type;
 	
 	/**
-	 * 所属频道的Code
-	 */
-	@Column
-	public String channel_code;
-	
-	/**
-	 * 所属文章分类的Code
+	 * 所属图片分类的Code
 	 */
 	@Column
 	public String category_code;
@@ -75,6 +82,13 @@ public class Image extends Model{
 	@Column
 	public String article_code;
 	
+	@Column
+	public boolean image_status = false;
+	
+	@Column
+	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
+	public Timestamp create_date = new Timestamp(System.currentTimeMillis());
+	
 	public static Model.Finder<Long, Image> find = new Model.Finder<Long, Image>(Long.class, Image.class);
 	
 	/**
@@ -83,6 +97,16 @@ public class Image extends Model{
 	 */
 	public static void createImage(Image img){
 		img.img_code = StringUtils.getMengCode();
+		img.image_path = StringUtils.getDatePath(img.image_path); 
+		if(img.image_type.equalsIgnoreCase("upload")){
+			File file = img.image_file;
+			File descFile = new File(img.image_path);
+			try {
+				FileUtils.copyFile(file,descFile);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 		img.save();
 	}
 	
@@ -91,8 +115,18 @@ public class Image extends Model{
 	 * @param img
 	 */
 	public static void modifyImage(Image img){
-		//TODO 分析图片的类型,具体分析
-		
+		img.id = getImage(img.img_code).id;
+		if(img.image_type.equalsIgnoreCase("upload")){
+			File file = img.image_file;
+			File descFile = new File(img.image_path);
+			try {
+				FileUtils.copyFile(file,descFile);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		img.image_status = false;
+		img.update();
 	}
 	
 	/**
@@ -110,5 +144,17 @@ public class Image extends Model{
 	 */
 	public static Image getImage(String img_code){
 		return find.where().eq("img_code", img_code).findUnique();
+	}
+	
+	public static List<Image> getImagePage(int page,int size){
+		return find.findPagingList(size).getPage(page).getList();
+	}
+	
+	public static List<Image> getImagePageByCategory(String category_code,int page,int size){
+		return find.where().eq("category_code", category_code).findPagingList(size).getPage(page).getList();
+	}
+	
+	public static List<Image> getImagePageByArticle(String article_code,int page,int size){
+		return find.where().eq("article_code", article_code).findPagingList(size).getPage(page).getList();
 	}
 }

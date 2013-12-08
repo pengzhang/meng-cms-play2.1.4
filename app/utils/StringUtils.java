@@ -1,6 +1,9 @@
 package utils;
 
+import java.io.File;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Map;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -33,6 +36,18 @@ public class StringUtils {
 	
 	public static String getForm(Map<String,String> map,String str){
 		return map.get(str);
+	}
+	
+	public static String getDatePath(String path){
+		Calendar calendar = GregorianCalendar.getInstance();
+		int year = calendar.get(Calendar.YEAR);
+		int month = calendar.get(Calendar.YEAR);
+		int day = calendar.get(Calendar.YEAR);
+		String date_path = File.separator+year+File.separator+month+File.separator+day+File.separator;
+		if(path==null || path.equals("")){
+			return date_path;
+		}
+		return File.separator+path+date_path;
 	}
 
 	/**

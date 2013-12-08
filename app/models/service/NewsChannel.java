@@ -1,7 +1,9 @@
-package models.news;
+package models.service;
 
 import java.util.List;
 
+import models.news.News;
+import models.news.NewsCategory;
 import play.db.ebean.Model;
 
 /**

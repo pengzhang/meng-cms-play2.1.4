@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
+import models.assist.NewsTitle;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import play.data.validation.Constraints.Required;
@@ -138,32 +140,11 @@ public class News extends Model {
 	 * @param news_code
 	 * @return news_category_code 新闻分类编号
 	 */
-	public static String destroyNews(String news_code){
+	public static String deleteNews(String news_code){
 		Ebean.delete(find.where().eq("news_code", news_code).findList());
 		return getNewsByCode(news_code).news_category_code;
 	}
 	
-	/**
-	 * 删除新闻(批量)
-	 * @param news_codes
-	 */
-	public static void destoryNews(List<String> news_codes){
-		for(String news_code : news_codes){
-			destroyNews(news_code);
-		}
-	}
-	
-	/**
-	 * 审核新闻(批量)
-	 * @param news_codes
-	 */
-	public static void publishNews(List<String> news_codes){
-		for(String news_code : news_codes){
-			News news = getNewsByCode(news_code);
-			news.news_auditstatus = true;
-			news.update();
-		}
-	}
 	
 	/**
 	 * 审核新闻
@@ -185,15 +166,6 @@ public class News extends Model {
 	 */
 	public static News getNewsByCode(String news_code){
 		return find.where().eq("news_code", news_code).findUnique();
-	}
-	
-	/**
-	 * 查询新闻内容
-	 * @param news_id
-	 * @return
-	 */
-	public static News getNewsById(long id){
-		return find.byId(id);
 	}
 	
 	/**
