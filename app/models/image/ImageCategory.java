@@ -10,6 +10,8 @@ import javax.persistence.Id;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.avaje.ebean.Ebean;
+
 import play.db.ebean.Model;
 import utils.StringUtils;
 
@@ -73,6 +75,14 @@ public class ImageCategory extends Model {
 	
 	public static List<ImageCategory> getChildImageCategoryPage(String parent_category_code){
 		return find.where().eq("parent_category_code", parent_category_code).findList();
+	}
+
+	public static List<ImageCategory> getImageCategoryAll() {
+		return find.all();
+	}
+
+	public static void deleteImageCategory(String code) {
+		Ebean.delete(find.where().eq("ic_code", code).findList());
 	} 
 
 }

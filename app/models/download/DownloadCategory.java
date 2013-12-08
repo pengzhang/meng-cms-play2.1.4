@@ -63,5 +63,9 @@ public class DownloadCategory  extends Model{
 	public static List<DownloadCategory> getWSDownCategoryPage(String ws_code,int page,int size){
 		return find.where().eq("web_site_code", ws_code).findPagingList(size).getPage(page).getList();
 	}
+
+	public static List<DownloadCategory> getDownCategoryAll() {
+		return find.all();
+	}
 	
 }

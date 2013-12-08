@@ -81,5 +81,11 @@ public class Download extends Model {
 	public static List<Download> getDCDownloadPage(String dc_code, int page, int size){
 		return find.where().eq("down_category_code", dc_code).findPagingList(size).getPage(page).getList();
 	}
+	
+	public static void auditDownload(String code){
+		Download dl = getDownload(code);
+		dl.soft_status = true;
+		dl.update();
+	}
 
 }

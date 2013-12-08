@@ -41,14 +41,14 @@ public class Image extends Model{
 	public String image_name;
 	
 	@Column
-	public String iamge_desc;
+	public String image_desc;
 	
 	/**
 	 * 图片URL
 	 * 网络图片
 	 */
 	@Column
-	public String url;
+	public String image_url;
 	/**
 	 * 图片的字节码
 	 * 用于存储上传图片
@@ -134,6 +134,7 @@ public class Image extends Model{
 	 * @param img_code
 	 */
 	public static void deleteImage(String img_code){
+		//TODO 删除图片文件
 		Ebean.delete(find.where().eq("img_code", img_code).findList());
 	}
 	
@@ -156,5 +157,11 @@ public class Image extends Model{
 	
 	public static List<Image> getImagePageByArticle(String article_code,int page,int size){
 		return find.where().eq("article_code", article_code).findPagingList(size).getPage(page).getList();
+	}
+
+	public static void auditImage(String code) {
+		Image img = getImage(code);
+		img.image_status = true;
+		img.update();
 	}
 }

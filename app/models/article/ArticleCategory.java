@@ -158,6 +158,10 @@ public class ArticleCategory extends Model{
 	public static List<ArticleCategory> getWSArticleCategoryPage(String ws_code, int page,int size){
 		return find.where().eq("web_site_code", ws_code).findPagingList(size).getPage(page).getList();
 	}
+
+	public static List<ArticleCategory> getArticleCategoryAll() {
+		return find.all();
+	}
 	
 
 }
