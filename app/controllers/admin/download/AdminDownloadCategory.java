@@ -7,6 +7,7 @@ import models.download.DownloadCategory;
 import play.data.DynamicForm;
 import play.mvc.Controller;
 import play.mvc.Result;
+import views.html.admin.download.*;
 
 public class AdminDownloadCategory extends Controller {
 	

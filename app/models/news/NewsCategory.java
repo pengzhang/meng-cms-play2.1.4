@@ -149,6 +149,10 @@ public class NewsCategory extends Model{
 	public static List<NewsCategory> getNewsCategoryPage(int page,int size){
 		return find.findPagingList(size).getPage(page).getList();
 	}
+
+	public static List<NewsCategory> getNewsCategoryAll() {
+		return find.all();
+	}
 	
 	
 

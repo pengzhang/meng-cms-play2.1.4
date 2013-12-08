@@ -1,5 +1,6 @@
 package controllers.admin.question;
 
+import java.util.List;
 import java.util.Map;
 
 import models.question.Exam;
@@ -11,12 +12,14 @@ import views.html.admin.question.exam;
 public class AdminExam extends Controller {
 	
 	public static Result add(){
-		return ok(exam.render(null,true));
+		List<Exam> exams = Exam.getExamAll();
+		return ok(exam.render(exams,null,true));
 	}
 	
 	public static Result edit(String code){
+		List<Exam> exams = Exam.getExamAll();
 		Exam ex  = Exam.getExamByCode(code);
-		return ok(exam.render(ex,false));
+		return ok(exam.render(exams,ex,false));
 	}
 	
 	public static Result create(){

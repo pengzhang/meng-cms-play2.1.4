@@ -2,12 +2,19 @@ package controllers.admin;
 
 import java.util.List;
 
+import models.advertising.Advertising;
 import models.article.Article;
 import models.article.ArticleCategory;
+import models.download.Download;
+import models.download.DownloadCategory;
 import models.faq.Faq;
+import models.image.Image;
+import models.image.ImageCategory;
 import models.message.Message;
 import models.news.News;
 import models.news.NewsCategory;
+import models.question.Exam;
+import models.question.Question;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.admin.*;
@@ -57,12 +64,14 @@ public class Admin extends Controller {
 		return ok(message_view.render(lmsg));
 	}
 	
-	public static Result question(){
-		return ok(question_view.render());
+	public static Result question(String code){
+		List<Question> lq = Question.getExamQuestionPage(code, 0, 10);
+		return ok(question_view.render(lq));
 	}
 	
 	public static Result exam(){
-		return ok(exam_view.render());
+		List<Exam> le = Exam.getExamPage(0, 10);
+		return ok(exam_view.render(le));
 	}
 	
 	public static Result user(){
@@ -70,7 +79,8 @@ public class Admin extends Controller {
 	}
 	
 	public static Result advertising(){
-		return ok(advertising_view.render());
+		List<Advertising> lad = Advertising.getAdvertisingList(0, 10);
+		return ok(advertising_view.render(lad));
 	}
 	
 	public static Result faq(){
@@ -78,20 +88,24 @@ public class Admin extends Controller {
 		return ok(faq_view.render(faqs));
 	}
 	
-	public static Result image(){
-		return ok(image_view.render());
+	public static Result image(String code){
+		List<Image> limg = Image.getImagePageByCategory(code, 0, 10);
+		return ok(image_view.render(limg));
 	}
 	
 	public static Result image_category(){
-		return ok(image_category_view.render());
+		List<ImageCategory> lic = ImageCategory.getImageCategoryPage(0, 10);
+		return ok(image_category_view.render(lic));
 	}
 	
-	public static Result download(){
-		return ok(download_view.render());
+	public static Result download(String code){
+		List<Download> ldl = Download.getDCDownloadPage(code, 0, 10);
+		return ok(download_view.render(ldl));
 	}
 	
 	public static Result download_category(){
-		return ok(download_category_view.render());
+		List<DownloadCategory> ldc = DownloadCategory.getDownCategoryPage(0, 10);
+		return ok(download_category_view.render(ldc));
 	}
 	
 	public static Result system(){

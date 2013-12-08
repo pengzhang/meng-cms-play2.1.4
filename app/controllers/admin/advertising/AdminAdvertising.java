@@ -5,11 +5,12 @@ import java.util.Map;
 
 import org.apache.commons.lang3.time.DateUtils;
 
-import models.adverties.Advertising;
+import models.advertising.Advertising;
 import play.data.DynamicForm;
 import play.mvc.Controller;
 import play.mvc.Result;
 import utils.StringUtils;
+import views.html.admin.advertising.*;
 
 public class AdminAdvertising extends Controller {
 	

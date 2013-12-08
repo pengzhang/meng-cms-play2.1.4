@@ -62,6 +62,10 @@ public class Exam extends Model {
 	public static List<Exam> getWSExamPage(String ws_code, int page,int size){
 		return find.where().eq("web_site_code", ws_code).findPagingList(size).getPage(page).getList();
 	}
+
+	public static List<Exam> getExamAll() {
+		return find.all();
+	}
 	
 
 }

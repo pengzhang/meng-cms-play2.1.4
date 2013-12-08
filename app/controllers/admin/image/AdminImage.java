@@ -11,6 +11,7 @@ import play.mvc.Controller;
 import play.mvc.Http.MultipartFormData;
 import play.mvc.Http.MultipartFormData.FilePart;
 import play.mvc.Result;
+import views.html.admin.image.*;
 
 public class AdminImage extends Controller {
 	

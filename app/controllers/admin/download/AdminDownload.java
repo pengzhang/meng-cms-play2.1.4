@@ -9,6 +9,7 @@ import play.data.DynamicForm;
 import play.mvc.Controller;
 import play.mvc.Result;
 import utils.StringUtils;
+import views.html.admin.download.*;
 
 public class AdminDownload extends Controller {
 	

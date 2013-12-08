@@ -63,7 +63,7 @@ POST	/exam/update										controllers.admin.question.AdminExam.update()
 GET		/exam/del/:code										controllers.admin.question.AdminExam.delete(code:String)
 
 # Admin Question
-GET		/question											controllers.admin.Admin.question()
+GET		/question/view/:code								controllers.admin.Admin.question(code:String)
 GET		/question/add										controllers.admin.question.AdminQuestion.add()
 POST	/question/create									controllers.admin.question.AdminQuestion.create()
 GET		/question/edit/:code								controllers.admin.question.AdminQuestion.edit(code:String)
@@ -81,6 +81,37 @@ GET		/advertising/del/:code								controllers.admin.advertising.AdminAdvertisin
 GET		/advertising/online/:code							controllers.admin.advertising.AdminAdvertising.online(code:String)
 GET		/advertising/offline/:code							controllers.admin.advertising.AdminAdvertising.offline(code:String)
 
+# Admin Image
+GET		/image/view/:code									controllers.admin.Admin.image(code:String)
+GET		/image/add											controllers.admin.image.AdminImage.add()
+POST	/image/create										controllers.admin.image.AdminImage.create()
+GET		/image/edit/:code									controllers.admin.image.AdminImage.edit(code:String)
+POST	/image/update										controllers.admin.image.AdminImage.update()
+GET		/image/del/:code									controllers.admin.image.AdminImage.delete(code:String)
+
+# Admin Image Category
+GET		/image/category										controllers.admin.Admin.image_category()
+GET		/image/category/add									controllers.admin.image.AdminImageCategory.add()
+POST	/image/category/create								controllers.admin.image.AdminImageCategory.create()
+GET		/image/category/edit/:code							controllers.admin.image.AdminImageCategory.edit(code:String)
+POST	/image/category/update								controllers.admin.image.AdminImageCategory.update()
+GET		/image/category/del/:code							controllers.admin.image.AdminImageCategory.delete(code:String)
+
+# Admin Download
+GET		/download/view/:code								controllers.admin.Admin.download(code:String)
+GET		/download/add										controllers.admin.download.AdminDownload.add()
+POST	/download/create									controllers.admin.download.AdminDownload.create()
+GET		/download/edit/:code								controllers.admin.download.AdminDownload.edit(code:String)
+POST	/download/update									controllers.admin.download.AdminDownload.update()
+GET		/download/del/:code									controllers.admin.download.AdminDownload.delete(code:String)
+
+# Admin Download Category
+GET		/download/category									controllers.admin.Admin.download_category()
+GET		/download/category/add								controllers.admin.download.AdminDownloadCategory.add()
+POST	/download/category/create							controllers.admin.download.AdminDownloadCategory.create()
+GET		/download/category/edit/:code						controllers.admin.download.AdminDownloadCategory.edit(code:String)
+POST	/download/category/update							controllers.admin.download.AdminDownloadCategory.update()
+GET		/download/category/del/:code						controllers.admin.download.AdminDownloadCategory.delete(code:String)
 
 # Admin User
 GET		/user												controllers.admin.Admin.user()
@@ -90,39 +121,6 @@ GET		/user/edit/:code							controllers.admin.user.User.edit(code:String)
 POST	/user/update									controllers.admin.user.User.update()
 GET		/user/del/:code								controllers.admin.user.User.delete(code:String)
 
-
-
-# Admin Image
-GET		/image											controllers.admin.Admin.image()
-GET		/image/add									controllers.admin.image.Image.add()
-POST	/image/create								controllers.admin.image.Image.create()
-GET		/image/edit/:code							controllers.admin.image.Image.edit(code:String)
-POST	/image/update								controllers.admin.image.Image.update()
-GET		/image/del/:code							controllers.admin.image.Image.delete(code:String)
-
-# Admin Image Category
-GET		/image/category							controllers.admin.Admin.image_category()
-GET		/image/category/add					controllers.admin.image.ImageCategory.add()
-POST	/image/category/create					controllers.admin.image.ImageCategory.create()
-GET		/image/category/edit/:code			controllers.admin.image.ImageCategory.edit(code:String)
-POST	/image/category/update				controllers.admin.image.ImageCategory.update()
-GET		/image/category/del/:code			controllers.admin.image.ImageCategory.delete(code:String)
-
-# Admin Download
-GET		/download										controllers.admin.Admin.download()
-GET		/download/add								controllers.admin.download.Download.add()
-POST	/download/create							controllers.admin.download.Download.create()
-GET		/download/edit/:code					controllers.admin.download.Download.edit(code:String)
-POST	/download/update							controllers.admin.download.Download.update()
-GET		/download/del/:code						controllers.admin.download.Download.delete(code:String)
-
-# Admin Download Category
-GET		/download/category						controllers.admin.Admin.download_category()
-GET		/download/category/add				controllers.admin.download.DownloadCategory.add()
-POST	/download/category/create			controllers.admin.download.DownloadCategory.create()
-GET		/download/category/edit/:code		controllers.admin.download.DownloadCategory.edit(code:String)
-POST	/download/category/update			controllers.admin.download.DownloadCategory.update()
-GET		/download/category/del/:code		controllers.admin.download.DownloadCategory.delete(code:String)
 
 # Admin System
 GET		/system											controllers.admin.Admin.system()
