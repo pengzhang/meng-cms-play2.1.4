@@ -4,17 +4,21 @@ import java.sql.Timestamp;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
-import com.avaje.ebean.Ebean;
 
 import play.db.ebean.Model;
 import utils.StringUtils;
 
+import com.avaje.ebean.Ebean;
+
+@Entity
+@Table(name="image_category")
 public class ImageCategory extends Model {
 
 	private static final long serialVersionUID = 1L;
