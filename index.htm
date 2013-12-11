@@ -52,6 +52,17 @@ jQuery(document).ready(function($) {
 	});
 </script>
 
+<script type="text/javascript">
+	
+$(document).ready(function(){
+	$("#submitButton").click(function(){
+		var email = $("#emailsub").val();
+		var result = $.ajax({url:"http://chinajvm.vicp.net/countdown/send/"+email,async:false})
+	});
+});
+
+</script>
+
 </head>
 <body>
 
@@ -87,10 +98,8 @@ jQuery(document).ready(function($) {
 <!--BEGIN subscribe -->
 <div id="subscribe">
 	<div id="subscribes">
-		<form method="post" action="">
-		<input type="text" id="emailsub" name="email" value="" placeholder="输入您的电子邮箱地址"/>
-		<input type="submit" value="订阅" id="submitButton" />
-		</form>
+		<input type="text"  id="emailsub"  name="email"  value="" placeholder="输入您的电子邮箱地址"/>
+		<input type="submit"  value="订阅"  id="submitButton" />
 	</div>
 </div>
 <!--END subscribe -->
