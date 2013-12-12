@@ -55,9 +55,19 @@ jQuery(document).ready(function($) {
 <script type="text/javascript">
 	
 $(document).ready(function(){
+	var patten = new RegExp(/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]+$/);
 	$("#submitButton").click(function(){
+		
 		var email = $("#emailsub").val();
-		var result = $.ajax({url:"http://chinajvm.vicp.net/countdown/send/"+email,async:false})
+		if(email == null || email ==""){
+			alert("请填写订阅的电子邮箱.");
+		}else if(patten.test(email)){
+			var result = $.ajax({url:"http://chinajvm.vicp.net/countdown/send/"+email,async:false});
+			alert("订阅成功.");
+			$("#emailsub").val("");
+		}else{
+			alert("请填写正确的电子邮箱.");
+		}
 	});
 });
 
