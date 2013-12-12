@@ -1,0 +1,170 @@
+/* 
+
+Company - CSS File
+
+CHANGE COLOR STYLE
+
+*/
+
+body {color:#888;}
+#bodychild {
+	 background:#fff; /* must use for IE */
+	-webkit-box-shadow: 0px 0px 6px #bdbdbd;
+	-moz-box-shadow: 0px 0px 6px #bdbdbd;
+	box-shadow: 0px 0px 6px #bdbdbd;
+	border-top: 4px solid #2a313b;
+}
+
+/* Container */
+#outercontainer{border-top:solid 1px #e5e5e5}
+#outerheader {
+    background:#f6f6f6;
+	border-top:solid 1px #fff; 
+    border-bottom: 1px solid #e5e5e5;
+}
+#outerheader:before {
+    border-bottom: 1px solid #fff;
+}
+
+#outeraftercontent{ background:#f0f0f0; border-top:1px solid #c4c4c4;}
+#outerfooter{ background:#282e38;}
+
+/* Link color */
+a, a:visited, .colortext, .colortext a, .colortext a:visited{color:#dc3c00}
+a:hover, .colortext:hover, .colortext:hover{color:#f77a4b}
+
+/* Text color */
+.customcolor{color:#757575;}
+#aftertheheader .pagedesc{color:#888;}
+
+/* Heading */
+h1, h2, h3, h4, h5, h6{color:#4e5b70;}
+
+
+/* Menu top color */
+.sf-menu a, .sf-menu a:visited{color:#4e5b70;}/* 1st level */
+.sf-menu a:hover, .sf-menu li.current a{color:#f27c61; background:#f0f0f0}/* 1st level */
+.sf-menu li.sfHover a:hover{color:#f27c61;}/* 2nd level */
+
+.sf-menu > li {
+    background:#f6f6f6; 
+    border-left: 1px solid #e5e5e5;
+}
+.sf-menu > li:before {
+    border-left: 1px solid #fff;
+}
+
+.sf-menu li:hover ul,
+.sf-menu li.sfHover ul {
+	background:#f7f7f7;
+	color:#4e5b70;
+	-webkit-box-shadow: 2.5px 2.5px 5px rgba(0, 0, 0, .2);
+	-moz-box-shadow: 2.5px 2.5px 5px rgba(0, 0, 0, .2);
+	box-shadow: 2.5px 2.5px 5px rgba(0, 0, 0, .2);
+}
+.sf-menu li li {
+	 border-bottom:1px solid #fff;
+}
+.sf-menu > li li:before{
+	border-bottom:solid 1px #e7e7e7;
+}
+.sf-menu ul li a{ color:#4e5b70;}
+.sf-menu ul li a:hover, #topnav li li a.current{color:#f27c61;}
+
+#topnav li li a, .sf-menu li li a, .sf-menu li li a:visited {color:#4e5b70;}
+#topnav li li a:hover{color:#f27c61; background:#f0f0f0;}
+
+/* Slider */
+#slidercontainer{border-bottom:1px solid #e8e8e8;}
+
+/* Form */
+input[type="text"],
+textarea, input[type="password"], select{
+	border:solid 1px #eeeeee;
+	color:#888;
+}
+
+/* Horizontal Line */
+hr {
+	color:#eaeaea;
+	background-color:#eaeaea;
+}
+
+
+/* Blog */
+.post{border-bottom:1px solid #eaeaea}
+.posttitle a, .posttitle a:visited{color:#535e70;}
+.posttitle a:hover{color:#dc3c00}
+.entry-date{background:#efefef; color:#919191;}
+.posttime{background:#4e5b70; color:#fff;}
+.postdate{color:#4e5b70;}
+
+.pagenavi a, .pagenavi a:visited{color:#535e70;}
+.pagenavi a:hover{color:#dc3c00}
+
+/* Portfolio */
+.ts-display-pf-text h2 a, .ts-display-pf-text h2 a:visited{color:#535e70;}
+.ts-display-pf-text h2 a:hover{color:#dc3c00}
+#ts-display-portfolio  li{background:#f9f9f9; border-bottom:solid 1px #e2e2e2}
+
+/* Sidebar */
+#sidebar li li a{ color:#888; }
+#sidebar li li a:hover{color:#dc3c00;}
+#sidebar .greybox{background:#f5f5f5;}
+#sidebar li li{
+	border-bottom:1px solid #eaeaea;
+}
+
+#sidebar .smalldate a, #sidebar .smalldate a:visited{color:#dc3c00;}
+#sidebar .smalldate a:hover{text-decoration:underline;}
+#sidebar .lp-widget li h3 a{color:#4e5b70;}
+#sidebar .lp-widget li h3 a:hover{color:#dc3c00}
+#sidebar .lp-widget .smalldate{color:#999;}
+.rp-widget li .smalldate{color:#bababa;}
+#searchform .bgsearch{border:solid 1px #ececec;}
+
+/* Button */
+.button, .button:visited, input[type="submit"]{	color:#fff; background:#4e5b70;}
+.button:hover, input[type="submit"]:hover{color:#fff; background:#282e38;}
+
+/* Dropcaps */	
+.dropcap1{text-shadow:1px 1px 0 #ededed; color:#535e70}
+.dropcap2, .circle{background:#535e70; color:#fff;}		
+.dropcap3{	background:#535e70; color:#fff;}
+
+/* Highlight */
+.highlight1{background:#535e70; color:#fff;}	
+.highlight2{background:#ebebeb;  border:solid 1px #f7f7f7}
+
+/* Code */
+code {
+	border-left:4px solid #eaeaea;
+}
+
+		
+/* Tabs */
+ul.tabs li {
+	background:#f8f8f8;
+	border:1px solid #eaeaea;
+	border-width:1px 1px 1px 0px;
+}
+ul.tabs li:first-child{border-left:solid 1px #eaeaea;}
+ul.tabs li a {color:#4e5b70;}
+ul.tabs li.active{background:#fff; border-bottom:solid 1px #fff}
+html ul.tabs li.active a{ color:#dc3c00; }
+#tab-body{border:solid 1px #eaeaea;}
+
+/* jQuery Toggles */
+h2.trigger span {color:#4e5b70;}
+h2.active span{ color:#dc3c00}
+h2.trigger span:hover {color:#dc3c00} 
+
+/* Tables */
+th{border-bottom: 1px solid #f1f1f1;}
+table {border: 1px solid #f1f1f1;border-bottom:0;}
+tr td {border-bottom: 1px solid #f1f1f1;}
+tr.odd td {background: #F2F7FC;}
+
+/* Footer */
+#footer{color:#bebebe;}
+#footer a, #footer a:visited{color:#bebebe;}

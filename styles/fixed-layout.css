@@ -1,0 +1,255 @@
+/* 
+
+Company - CSS File
+
+USE THIS STYLE SHEET FOR FIXED LAYOUT STYLE
+
+*/
+body{ background:url(../images/bg-body.jpg);}
+#bodychild{width:1020px;}
+
+
+/* #Media Queries
+================================================== */
+/* Smaller than standard 960 (devices and browsers) */
+@media only screen and (max-width: 959px) {
+}
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+	#bodychild{width:100%;}
+	
+	/* Main Menu */
+	.sf-menu a {padding:25px 15px !important;}
+	.sf-menu, .sf-menu * {font-size:14px;}
+	.sf-menu li:hover ul,
+	.sf-menu li.sfHover ul {
+		top:4.8em; /* match top ul list item height */
+	}
+	
+	/* Slider */
+	.flexslider .slides img {max-width: 60%;}
+	.flex-caption{top:10px;}
+	.flex-caption h1{font-size:20px;}
+		
+	/* Portfolio */
+	#ts-display-pf-col-1 li{width:748px;}
+	#ts-display-pf-col-1 .ts-display-pf-img{width:748px; height:100%}
+	#ts-display-pf-col-1 .ts-display-pf-img a.image{width:748px; height:100%}
+	#ts-display-pf-col-1 .ts-display-pf-img a .rollover{width:748px; height:100%}
+	
+	/* Portfolio 2 Column */
+	#ts-display-pf-col-2 li{width:344px;}
+	#ts-display-pf-col-2 .ts-display-pf-img{width:344px; height:100%}
+	#ts-display-pf-col-2 .ts-display-pf-img a.image{width:344px; height:100%}
+	#ts-display-pf-col-2  .ts-display-pf-img a .rollover{width:344px; height:100%}
+	
+	/* Portfolio 3 Column */
+	#ts-display-pf-col-3 li{width:229px;}
+	#ts-display-pf-col-3 .ts-display-pf-img{width:229px; height:100%}
+	#ts-display-pf-col-3 .ts-display-pf-img a.image{width:229px; height:100%}
+	#ts-display-pf-col-3  .ts-display-pf-img a .rollover{width:229px; height:100%}
+	
+	/* Portfolio 4 Column */
+	#ts-display-pf-col-4 li{width:164.5px;}
+	#ts-display-pf-col-4 .ts-display-pf-img{width:164.5px; height:100%}
+	#ts-display-pf-col-4 .ts-display-pf-img a.image{width:164.5px; height:100%}
+	#ts-display-pf-col-4  .ts-display-pf-img a .rollover{width:164.5px; height:100%}
+	
+	#style-switcher{display:none;}
+	
+}
+
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {
+	#bodychild{width:100%;}
+	
+	/* Header */
+	#logo{text-align:center;}
+	#headertext{display:none;}
+	#navigation{text-align:center; clear:both}
+	nav{margin:0; float:none;}
+	.js .tinynav { display: block; display: inline-block; text-align:left ; margin:10px 0 20px 0}/* mobile dropdown */
+    .js #topnav { display: none }
+	
+	/* Slider */
+	#slidercontainer{padding-bottom:30px;}
+	.flexslider .slides img{position:static; right:0;}
+	.flex-caption{ display:none;}
+	.flex-control-nav { display:none;}
+	
+	/* Content */
+	img.alignright, .alignright{float:none; margin:0 0 0 0 !important;}
+	
+	/* Blog */
+	.post{padding-bottom:30px; margin-bottom:30px;}
+	.pagenavi{margin-bottom:30px;}
+	
+	/* Sidebar */
+	#sidebar .widget-container{padding:0;}
+	.ads{margin:0 20px 15px 0 !important; float:left; clear:none}
+	
+	/* Portfolio 1 Column */
+	#ts-display-pf-col-1 li{width:300px;}
+	#ts-display-pf-col-1 .ts-display-pf-img{
+		width:300px;
+		height:100%
+	}
+	
+	#ts-display-pf-col-1 .ts-display-pf-img a.image{
+		width:300px;
+		height:100%
+	}
+	
+	#ts-display-pf-col-1  .ts-display-pf-img a .rollover{
+		width:300px;
+		height:100%
+	}
+	
+	/* Portfolio 2 Column */
+	#ts-display-pf-col-2 li{width:300px;}
+	#ts-display-pf-col-2 .ts-display-pf-img{
+		width:300px;
+		height:100%
+	}
+	
+	#ts-display-pf-col-2 .ts-display-pf-img a.image{
+		width:300px;
+		height:100%
+	}
+	
+	#ts-display-pf-col-2  .ts-display-pf-img a .rollover{
+		width:300px;
+		height:100%
+	}
+	
+	
+	/* Portfolio 3 Column */
+	#ts-display-pf-col-3 li{width:300px;}
+	#ts-display-pf-col-3 .ts-display-pf-img{
+		width:300px;
+		height:100%
+	}
+	
+	#ts-display-pf-col-3 .ts-display-pf-img a.image{
+		width:300px;
+		height:100%
+	}
+	
+	#ts-display-pf-col-3  .ts-display-pf-img a .rollover{
+		width:300px;
+		height:100%
+	}
+	
+	
+	/* Portfolio 4 Column */
+	#ts-display-pf-col-4 li{width:300px;}
+	#ts-display-pf-col-4 .ts-display-pf-img{
+		width:300px;
+		height:100%
+	}
+	
+	#ts-display-pf-col-4 .ts-display-pf-img a.image{
+		width:300px;
+		height:100%
+	}
+	
+	#ts-display-pf-col-4  .ts-display-pf-img a .rollover{
+		width:300px;
+		height:100%
+	}
+	
+	/* Footer */
+	.sn{float:none;}
+	.addr{padding:15px 0 0 0;}
+	
+	#style-switcher{display:none;}
+	
+}
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+	#bodychild{width:100%;}
+	
+	
+	/* Portfolio 1 Column */
+	#ts-display-pf-col-1 li{width:420px;}
+	#ts-display-pf-col-1 .ts-display-pf-img{
+		width:420px;
+		height:100%
+	}
+	
+	#ts-display-pf-col-1 .ts-display-pf-img a.image{
+		width:420px;
+		height:100%
+	}
+	
+	#ts-display-pf-col-1  .ts-display-pf-img a .rollover{
+		width:420px;
+		height:100%
+	}
+	
+	/* Portfolio 2 Column */
+	#ts-display-pf-col-2 li{width:420px;}
+	#ts-display-pf-col-2 .ts-display-pf-img{
+		width:420px;
+		height:100%
+	}
+	
+	#ts-display-pf-col-2 .ts-display-pf-img a.image{
+		width:420px;
+		height:100%
+	}
+	
+	#ts-display-pf-col-2  .ts-display-pf-img a .rollover{
+		width:420px;
+		height:100%
+	}
+	
+	/* Portfolio 3 Column */
+	#ts-display-pf-col-3 li{width:420px;}
+	#ts-display-pf-col-3 .ts-display-pf-img{
+		width:420px;
+		height:100%
+	}
+	
+	#ts-display-pf-col-3 .ts-display-pf-img a.image{
+		width:420px;
+		height:100%
+	}
+	
+	#ts-display-pf-col-3  .ts-display-pf-img a .rollover{
+		width:420px;
+		height:100%
+	}
+	
+	/* Portfolio 4 Column */
+	#ts-display-pf-col-4 li{width:420px;}
+	#ts-display-pf-col-4 .ts-display-pf-img{
+		width:420px;
+		height:100%
+	}
+	
+	#ts-display-pf-col-4 .ts-display-pf-img a.image{
+		width:420px;
+		height:100%
+	}
+	
+	#ts-display-pf-col-4  .ts-display-pf-img a .rollover{
+		width:420px;
+		height:100%
+	}
+	
+	
+}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {
+	#bodychild{width:100%;}
+	
+	/* Blog */
+	.commentlist ol{padding-left:20px;}
+	.avatar{display:none;}
+	.comment-body{margin:0;}
+
+}

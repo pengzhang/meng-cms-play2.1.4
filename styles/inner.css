@@ -1,0 +1,270 @@
+/* 
+
+Company - CSS File
+
+USE THIS STYLE SHEET FOR INNER PAGE
+
+*/
+
+
+
+/* Page Navi*/
+.pagenavi {padding:0; font-size:12px; margin:0 0 0 0; clear:both}
+.pagenavi a, .pagenavi a:visited{
+	font-family:'Cuprum', Arial;
+	font-size:16px;
+}
+.pagenavi a.next{float:right;}
+.pagenavi a:hover{}
+.pagenavi .current{}
+
+
+
+/* BLOG */
+.post{margin-bottom:50px; padding-bottom:50px; clear:both;}
+.postimg{margin-bottom:10px;}
+.posttitle{margin:0 0 15px 0}
+.posttitle, .posttitle a{font-size:26px; line-height:28px; font-family:'Cuprum', Arial;}
+.posttitle a:hover{text-decoration:none;}
+
+.entry-text{overflow:hidden;}
+.entry-content {margin:0; padding:12px 0 5px 0;}
+.entry-date{float:left; overflow:hidden; text-align:center; margin:5px 30px 0 0 }
+.posttime{ padding:4px 8px; line-height:20px; font-size:14px; font-family:'Cuprum', Arial; text-transform:uppercase }
+.postdate{font-size:24px; font-family:'Cuprum', Arial; padding:8px 0}
+.entry-utility{padding:0; font-size:11px;}
+
+
+.commentlist{
+	list-style-type:none;
+	padding:0;
+	margin:0;
+}
+.commentlist ol{
+	list-style-type:none;
+	padding:30px 0 0 90px;
+	margin:0;
+}
+
+.commentlist li{
+	position:relative;
+	padding:0 0 30px 0;
+}
+.commentlist li li{
+	position:relative;
+	padding:0;
+}
+
+.avatar{
+	position:absolute;
+	top:0;
+	left:0;
+}
+.fn{font-size:12px; font-style:normal;}
+.tdate{padding-left:20px;}
+.tdate, .reply{ font-size:10px; color:#b7b7b7; }
+.reply a, .reply a:visited{color:#b7b7b7;}
+.fn a, .fn a:visited{color:#535e70;}
+
+.comment-body{margin:0 0 0 90px; padding:20px; background:#f9f9f9;}
+.comment-body p{ margin-bottom:5px; margin-top:10px;}
+.comment-body .more{ padding:0px 0px;}
+#commentform {margin-bottom:20px}
+#commentform label{display:block}
+#commentform .text-input{
+	margin-bottom:8px;
+	padding:8px 5px;
+	vertical-align:middle;
+}
+#commentform .textarea{
+	margin-bottom:20px;
+	padding:8px 5px;
+	vertical-align:top;
+}
+
+
+/* PORTFOLIO */
+#ts-display-portfolio{float:left;}
+.ts-display-pf-img{position:relative;}
+.ts-display-clear{clear:both; height:1px !important; line-height:1px !important; float:none!important}
+
+.ts-display-pf-text{}
+.ts-display-pf-text p{margin-bottom:0;}
+.ts-display-pf-text h2{font-size:18px; margin-bottom:10px}
+
+.ts-display-pf-img a .rollover{
+	background:url(../images/hover-zoom.png);
+	background-repeat:no-repeat;
+	background-position:center;
+	background-color:#000;
+	display:block;
+    position:absolute!important;
+	z-index:10;
+	display:none;
+	cursor:pointer;
+}
+.ts-display-pf-img a .rollover.gotolink{
+	background:url(../images/hover-link.png);
+	background-repeat:no-repeat;
+	background-position:center;
+}
+.ts-display-pf-img a .rollover.gotopost{
+	background:url(../images/hover-doc.png);
+	background-repeat:no-repeat;
+	background-position:center;
+}
+
+
+/*======= Portfolio 1 Column =======*/
+#ts-display-pf-col-1{list-style-type:none; padding:0; margin:0;}
+#ts-display-pf-col-1 li{list-style-type:none; padding:0; margin:0 0 50px 0; width:auto; float:left;}
+#ts-display-pf-col-1 li.nomargin{margin-right:0;}
+#ts-display-pf-col-1 h2{}
+
+#ts-display-pf-col-1 .ts-display-pf-img{
+	width:940px;
+	height:346px;
+}
+
+#ts-display-pf-col-1 .ts-display-pf-img img{display:block;}
+
+#ts-display-pf-col-1 .ts-display-pf-img a.image{
+	width:940px;
+	height:100%;
+	display:block;
+	position:relative;
+}
+
+#ts-display-pf-col-1  .ts-display-pf-img a .rollover{
+	width:940px;
+	height:100%;
+	cursor:pointer;
+}
+
+#ts-display-pf-col-1 .ts-display-pf-text{
+	padding:20px 25px;
+}
+
+
+
+/*======= Portfolio 2 Column =======*/
+#ts-display-pf-col-2{list-style-type:none; padding:0; margin:0;}
+#ts-display-pf-col-2 li{list-style-type:none; padding:0; margin:0 30px 50px 0; width:455px; float:left; }
+#ts-display-pf-col-2 li.nomargin{margin-right:0;}
+#ts-display-pf-col-2 h2{}
+
+#ts-display-pf-col-2 .ts-display-pf-img{
+	width:455px;
+	height:265px;
+}
+
+#ts-display-pf-col-2 .ts-display-pf-img img{display:block;}
+
+#ts-display-pf-col-2 .ts-display-pf-img a.image{
+	width:455px;
+	height:100%;
+	display:block;
+	position:relative;
+}
+
+#ts-display-pf-col-2  .ts-display-pf-img a .rollover{
+	width:455px;
+	height:100%;
+	cursor:pointer;
+}
+
+#ts-display-pf-col-2 .ts-display-pf-text{
+	padding:20px 25px;
+}
+
+
+
+/*======= Portfolio 3 Column =======*/
+#ts-display-pf-col-3{list-style-type:none; padding:0; margin:0;}
+#ts-display-pf-col-3 li{list-style-type:none; padding:0; margin:0 30px 50px 0; width:293px;  float:left;}
+#ts-display-pf-col-3 li.nomargin{margin-right:0;}
+#ts-display-pf-col-3 h2{}
+
+#ts-display-pf-col-3 .ts-display-pf-img{
+	width:293px;
+	height:207px;
+}
+
+#ts-display-pf-col-3 .ts-display-pf-img img{display:block;}
+
+#ts-display-pf-col-3 .ts-display-pf-img a.image{
+	width:293px;
+	height:100%;
+	display:block;
+	position:relative;
+}
+
+#ts-display-pf-col-3  .ts-display-pf-img a .rollover{
+	width:293px;
+	height:100%;
+	cursor:pointer;
+}
+
+#ts-display-pf-col-3 .ts-display-pf-text{
+	padding:20px 25px;
+}
+
+/*======= Portfolio 4 Column =======*/
+#ts-display-pf-col-4{list-style-type:none; padding:0; margin:0;}
+#ts-display-pf-col-4 li{list-style-type:none; padding:0; margin:0 30px 50px 0; width:212px;  float:left;}
+#ts-display-pf-col-4 li.nomargin{margin-right:0;}
+#ts-display-pf-col-4 h2{}
+
+#ts-display-pf-col-4 .ts-display-pf-img{
+	width:212px;
+	height:145px;
+}
+
+#ts-display-pf-col-4 .ts-display-pf-img img{display:block;}
+
+#ts-display-pf-col-4 .ts-display-pf-img a.image{
+	width:212px;
+	height:100%;
+	display:block;
+	position:relative;
+
+}
+
+#ts-display-pf-col-4  .ts-display-pf-img a .rollover{
+	width:212px;
+	height:100%;
+	cursor:pointer;
+}
+
+#ts-display-pf-col-4 .ts-display-pf-text{
+	padding:20px 25px;
+}
+
+
+
+/* CONTACT */
+form{margin:0; padding:0;}
+fieldset{border:0px;}
+#contactform{margin:0 auto; position:relative; }
+#contactform label{display:block; width:100%; float:left; padding-bottom:5px;}
+span.required{ color:#888;}
+span.error{color:red;text-align:left; font-size:11px; padding-bottom:15px; display:block;}
+#contactform input.text-input{
+	margin-bottom:15px;
+	vertical-align:middle;
+	width:70%;
+	float:left;
+	font-style:italic;
+	padding:8px
+}
+#contactform textarea{ width:95%; float:left; font-style:italic} 
+#message{ margin-left:0px; font-weight:bold; color:#ff0000}
+#message h2	{}
+#message p{margin:6px 0px; }
+.note{ color:#d45454;}
+#contactform .button{
+	cursor:pointer;
+	margin-top:20px;
+	clear:both;
+	float:left;
+ }
