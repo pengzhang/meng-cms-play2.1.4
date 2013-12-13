@@ -39,25 +39,24 @@
             <th>分类名称</th>
             <th>分类描述</th>
             <th>父分类名称</th>
-            <th>是否为频道</th>
             <th>创建时间</th>
             <th>操作</th>
           </tr>
         </thead>
         <tbody>
+        @for(i <- 0 to ldc.size()-1){
           <tr class="odd gradeX">
-            <td>Java</td>
-            <td>Java程序设计语言</td>
-            <td class="center">程序设计语言</td>
-            <td class="center">否</td>
-            <td class="center">2013/11/11 11:11:11</td>
+            <td>@ldc.get(i).dc_name</td>
+            <td>@ldc.get(i).dc_desc</td>
+            <td class="center">@ldc.get(i).parent_dc_code</td>
+            <td class="center">@ldc.get(i).create_date</td>
             <td class="center">
-             <input type="button" id="view_download" class="button small orange" value="查看该分类的下载">
-             <input type="button" class="button small green" value="审核通过">
-	         <input type="button" class="button small blue" value="编辑">
-         	 <input type="button" class="button small red" value="删除">
+             <a href="/admin/download/view/@ldc.get(i).dc_code"><input type="button" id="view_download" class="button small orange" value="查看该分类的下载">
+	         <a href="/admin/download/category/edit/@ldc.get(i).dc_code"><input type="button" class="button small blue" value="编辑"></a>
+         	 <a href="/admin/download/category/del/@ldc.get(i).dc_code"><input type="button" class="button small red" value="删除"></a>
             </td>
           </tr>
+          }
         </tbody>
       </table>
         </div>
