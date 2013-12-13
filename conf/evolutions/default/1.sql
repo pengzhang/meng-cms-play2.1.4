@@ -30,6 +30,7 @@ create table admin_website (
 create table advertising (
   id                        bigint auto_increment not null,
   ad_code                   varchar(255),
+  ad_name                   varchar(255),
   ad_position               varchar(255),
   ad_script                 varchar(255),
   ad_url                    varchar(255),

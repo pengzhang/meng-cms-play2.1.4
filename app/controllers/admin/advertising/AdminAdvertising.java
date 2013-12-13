@@ -26,6 +26,7 @@ public class AdminAdvertising extends Controller {
 	public static Result create(){
 		Map<String,String> map = DynamicForm.form().bindFromRequest().data();
 		Advertising ad = new Advertising();
+		ad.ad_name = map.get("ad_name");
 		ad.ad_position = map.get("ad_position");
 		ad.ad_url = map.get("ad_url");
 		ad.ad_script = map.get("ad_script");
@@ -33,7 +34,11 @@ public class AdminAdvertising extends Controller {
 		ad.ad_image = map.get("ad_image");
 		ad.ad_text = map.get("ad_text");
 		ad.ad_url = map.get("ad_url");
-		ad.endate = StringUtils.convertUtiltoSqlDate(map.get("endate"), "yyyy-MM-dd");
+		if(map.get("endate") == null || map.get("endate").equals("")){
+			ad.endate = StringUtils.convertUtiltoSqlDate(StringUtils.getStanderDate(), "yyyy-MM-dd");
+		}else{
+			ad.endate = StringUtils.convertUtiltoSqlDate(map.get("endate"), "yyyy-MM-dd");
+		}
 		ad.web_site_code = map.get("web_site_code");
 		Advertising.create_AD(ad);
 		return redirect("/admin/advertising");
@@ -42,6 +47,7 @@ public class AdminAdvertising extends Controller {
 	public static Result update(){
 		Map<String,String> map = DynamicForm.form().bindFromRequest().data();
 		Advertising ad = new Advertising();
+		ad.ad_name = map.get("ad_name");
 		ad.ad_code = map.get("ad_code");
 		ad.ad_position = map.get("ad_position");
 		ad.ad_url = map.get("ad_url");
@@ -50,7 +56,11 @@ public class AdminAdvertising extends Controller {
 		ad.ad_image = map.get("ad_image");
 		ad.ad_text = map.get("ad_text");
 		ad.ad_url = map.get("ad_url");
-		ad.endate = StringUtils.convertUtiltoSqlDate(map.get("endate"), "yyyy-MM-dd");
+		if(map.get("endate") == null || map.get("endate").equals("")){
+			ad.endate = StringUtils.convertUtiltoSqlDate(StringUtils.getStanderDate(), "yyyy-MM-dd");
+		}else{
+			ad.endate = StringUtils.convertUtiltoSqlDate(map.get("endate"), "yyyy-MM-dd");
+		}
 		ad.web_site_code = map.get("web_site_code");
 		Advertising.modify_AD(ad);
 		return redirect("/admin/advertising");

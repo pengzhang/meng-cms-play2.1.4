@@ -30,25 +30,32 @@
             <th>广告名称</th>
             <th>广告位置</th>
             <th>广告商</th>
-            <th>广告内容</th>
+            <th>是否上线</th>
             <th>创建时间</th>
             <th>操作</th>
           </tr>
         </thead>
         <tbody>
+        @for(i <- 0 to lad.size()-1){
           <tr class="odd gradeX">
-            <td>400*800-banner广告</td>
-            <td class="center">页面顶部</td>
-            <td class="center">百度</td>
-            <td class="center">400*800</td>
-            <td class="center">2013/11/11 11:11:11</td>
+            
+            <td class="center">@lad.get(i).ad_name</td>
+            <td class="center">@lad.get(i).ad_position</td>
+            <td class="center">@lad.get(i).ad_type</td>
+            <td>@if(lad.get(i).online){已上线}else{未上线}</td>
+            <td class="center">@lad.get(i).create_date</td>
             <td class="center">
-             <input type="button" class="button small green" value="审核通过">
-	         <input type="button" class="button small blue" value="编辑">
-         	 <input type="button" class="button small red" value="删除">
+            @if(lad.get(i).online){
+             <a href="/admin/advertising/offline/@lad.get(i).ad_code"><input type="button" class="button small green" value="下线"></a>
+             } else {
+             <a href="/admin/advertising/online/@lad.get(i).ad_code"><input type="button" class="button small green" value="上线"></a>
+             }
+	         <a href="/admin/advertising/edit/@lad.get(i).ad_code"><input type="button" class="button small blue" value="编辑"></a>
+         	 <a href="/admin/advertising/del/@lad.get(i).ad_code"><input type="button" class="button small red" value="删除"></a>
             </td>
           </tr>
         </tbody>
+        }
       </table>
         </div>
       </div>

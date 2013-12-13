@@ -5,6 +5,9 @@ $(function(){
 	$("#view_advertising").click(function(){
     	location.href="/admin/advertising"
     });
+	$("#btn_submit").click(function(){
+		$("#ad_form").submit();
+	});
 });
 </script>
 }
@@ -17,29 +20,60 @@ $(function(){
        </span>
      </div>
      <div class="box grid_12 ">
+     @if(flag){
+     <form action="/admin/advertising/create"  id="ad_form" method="post">
        <div class="box-head"><h2>添加广告</h2></div><div class="box-content">
           <div class="form-row">
-           <p class="form-label">广告名称:</p><div class="form-item"><input type="text" /></div>
+           <p class="form-label">广告名称:</p><div class="form-item"><input name="ad_name" type="text" /></div>
           </div>
           <div class="form-row">
-           <p class="form-label">广告位置:</p><div class="form-item"><input type="text" /></div>
+           <p class="form-label">广告位置:</p><div class="form-item"><input name="ad_position" type="text" /></div>
           </div>
           <div class="form-row">
-           <p class="form-label">广告商:</p><div class="form-item"><input type="text" /></div>
+           <p class="form-label">广告商:</p><div class="form-item"><input name="ad_type"  type="text" /></div>
           </div>
           <div class="form-row">
-           <p class="form-label">广告内容:</p><div class="form-item"><input type="text" /></div>
+           <p class="form-label">广告内容:</p><div class="form-item"><input name="ad_script"  type="text" /></div>
           </div>
           
          <div class="form-row">
          	<div class="box grid_4"></div>
          	<div class="box grid_4">
-          		<input type="button" class="button big green" value="确定">
+          		<input type="button"  id="btn_submit" class="button big green" value="确定">
           		<input type="button" class="button small red" value="取消">
           	</div>
          </div>
          <div class="clear"></div>
        </div>
+       </form>
+       } else {
+       <form action="/admin/advertising/update" id="ad_form" method="post">
+       <div class="box-head"><h2>添加广告</h2></div><div class="box-content">
+       	  <input name="ad_code" type="hidden"  value="@ad.ad_code"/>
+          <div class="form-row">
+           <p class="form-label">广告名称:</p><div class="form-item"><input name="ad_name" type="text"  value="@ad.ad_name"/></div>
+          </div>
+          <div class="form-row">
+           <p class="form-label">广告位置:</p><div class="form-item"><input name="ad_position" type="text"  value="@ad.ad_position"/></div>
+          </div>
+          <div class="form-row">
+           <p class="form-label">广告商:</p><div class="form-item"><input name="ad_type"  type="text"  value="@ad.ad_type"/></div>
+          </div>
+          <div class="form-row">
+           <p class="form-label">广告内容:</p><div class="form-item"><input name="ad_script"  type="text"  value="@ad.ad_script"/></div>
+          </div>
+          
+         <div class="form-row">
+         	<div class="box grid_4"></div>
+         	<div class="box grid_4">
+          		<input type="button"  id="btn_submit" class="button big green" value="确定">
+          		<input type="button" class="button small red" value="取消">
+          	</div>
+         </div>
+         <div class="clear"></div>
+       </div>
+       </form>
+       }
      </div>
 </div>
 }

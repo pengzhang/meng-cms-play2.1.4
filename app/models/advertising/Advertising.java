@@ -39,6 +39,9 @@ public class Advertising extends Model{
 	@Column
 	public String ad_code;
 	
+	@Column
+	public String ad_name;
+	
 	/**
 	 * 广告位置
 	 */
@@ -83,7 +86,7 @@ public class Advertising extends Model{
 	 * 广告上架
 	 */
 	@Column
-	public boolean online=true;
+	public boolean online=false;
 	
 	/**
 	 * 隶属网站
