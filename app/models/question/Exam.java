@@ -32,9 +32,13 @@ public class Exam extends Model {
 	@Column
 	public String exam_desc;
 	@Column
+	public boolean exam_status = false;
+	@Column
+	public String exam_author;
+	@Column
 	public String web_site_code;
 	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
-	public Timestamp create_date;
+	public Timestamp create_date = new Timestamp(System.currentTimeMillis());
 	
 	public static  Model.Finder<Long, Exam> find = new Model.Finder<Long, Exam>(Long.class, Exam.class);
 	
@@ -49,6 +53,12 @@ public class Exam extends Model {
 	
 	public static void deleteExam(String code){
 		Ebean.delete(find.where().eq("e_code", code).findList());
+	}
+	
+	public static void auditExam(String code){
+		Exam ex = getExamByCode(code);
+		ex.exam_status  = true;
+		ex.update();
 	}
 	
 	public static Exam getExamByCode(String code){

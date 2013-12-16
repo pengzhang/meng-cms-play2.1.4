@@ -71,14 +71,16 @@ public class AdminDownload extends Controller {
 	}
 	
 	public static Result delete(String code){
-		Download.deleteDownload(code);
 		String dcc = Download.getDownload(code).down_category_code;
+		Download.deleteDownload(code);
+		
 		return redirect("/admin/download/view/"+dcc);
 	}
 	
 	public static Result audit(String code){
-		Download.auditDownload(code);
 		String dcc = Download.getDownload(code).down_category_code;
+		Download.auditDownload(code);
+		
 		return redirect("/admin/download/view/"+dcc);
 	}
 

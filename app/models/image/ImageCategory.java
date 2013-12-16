@@ -28,7 +28,7 @@ public class ImageCategory extends Model {
 	public long id;
 	
 	@Column
-	public String ic_code;
+	public String ic_code = StringUtils.getMengCode();
 	
 	@Column
 	public String category_name;
@@ -52,10 +52,10 @@ public class ImageCategory extends Model {
 	public static Model.Finder<Long, ImageCategory> find = new Model.Finder<Long, ImageCategory>(Long.class, ImageCategory.class);
 	
 	public static void createImageCategory(ImageCategory ic){
-		if(ic.ic_code.equals("default")){
+		if(ic.parent_category_code == null || ic.parent_category_code.equals("default")){
 			ic.parent_category_code = "";
 		}else{
-			ic.ic_code = StringUtils.getMengCode();
+			ic.parent_category_code = StringUtils.getMengCode();
 		}
 		ic.save();
 	}
@@ -82,7 +82,7 @@ public class ImageCategory extends Model {
 	}
 
 	public static List<ImageCategory> getImageCategoryAll() {
-		return find.all();
+		return find.findList();
 	}
 
 	public static void deleteImageCategory(String code) {

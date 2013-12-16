@@ -16,6 +16,7 @@ import com.avaje.ebean.Ebean;
 
 import play.db.ebean.Model;
 import utils.StringUtils;
+import views.html.admin.system.system;
 
 @Entity
 @Table(name="question")
@@ -45,7 +46,7 @@ public class Question extends Model{
 	@Column
 	public boolean status = false;
 	@DateTimeFormat(pattern="yyyy-MM-dd hh:mm:ss")
-	public Timestamp create_date;
+	public Timestamp create_date = new Timestamp(System.currentTimeMillis());
 	
 	public static Model.Finder<Long, Question> find = new Model.Finder<Long, Question>(Long.class, Question.class);
 	

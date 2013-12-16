@@ -34,7 +34,7 @@ public class AdminQuestion extends Controller {
 		qt.qright = map.get("qright");
 		qt.exam_code = map.get("exam_code");
 		Question.createQuestion(qt);
-		return redirect("/admin/question");
+		return redirect("/admin/question/view/"+qt.exam_code);
 	}
 	
 	public static Result update(){
@@ -49,17 +49,21 @@ public class AdminQuestion extends Controller {
 		qt.q_code = map.get("q_code");
 		qt.exam_code = map.get("exam_code");
 		Question.modifyQuestion(qt);
-		return redirect("/admin/question");
+		return redirect("/admin/question/view/"+qt.exam_code);
 	}
 	
 	public static Result delete(String code){
+		String ec = Question.getQuestionByCode(code).exam_code;
 		Question.deleteQuestion(code);
-		return redirect("/admin/question");
+		
+		return redirect("/admin/question/view/"+ec);
 	}
 	
 	public static Result audit(String code){
+		String ec = Question.getQuestionByCode(code).exam_code;
 		Question.auditQuestion(code);
-		return redirect("/admin/question");
+		
+		return redirect("/admin/question/view/"+ec);
 	}
 
 }

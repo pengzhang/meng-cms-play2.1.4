@@ -27,6 +27,7 @@ public class AdminExam extends Controller {
 		Exam ex = new Exam();
 		ex.exam_name = map.get("exam_name");
 		ex.exam_desc = map.get("exam_desc");
+		ex.exam_author = map.get("exam_author");
 		Exam.createExam(ex);
 		return redirect("/admin/exam");
 	}
@@ -36,6 +37,7 @@ public class AdminExam extends Controller {
 		Exam ex = new Exam();
 		ex.exam_name = map.get("exam_name");
 		ex.exam_desc = map.get("exam_desc");
+		ex.exam_author = map.get("exam_author");
 		ex.e_code = map.get("e_code");
 		Exam.modifyExam(ex);
 		return redirect("/admin/exam");
@@ -43,6 +45,11 @@ public class AdminExam extends Controller {
 	
 	public static Result delete(String code){
 		Exam.deleteExam(code);
+		return redirect("/admin/exam");
+	}
+	
+	public static Result audit(String code){
+		Exam.auditExam(code);
 		return redirect("/admin/exam");
 	}
 

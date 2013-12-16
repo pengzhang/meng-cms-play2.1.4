@@ -61,6 +61,7 @@ POST	/exam/create										controllers.admin.question.AdminExam.create()
 GET		/exam/edit/:code									controllers.admin.question.AdminExam.edit(code:String)
 POST	/exam/update										controllers.admin.question.AdminExam.update()
 GET		/exam/del/:code										controllers.admin.question.AdminExam.delete(code:String)
+GET		/exam/audit/:code									controllers.admin.question.AdminExam.audit(code:String)
 
 # Admin Question
 GET		/question/view/:code								controllers.admin.Admin.question(code:String)

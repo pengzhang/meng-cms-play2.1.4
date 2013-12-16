@@ -43,21 +43,25 @@
           </tr>
         </thead>
         <tbody>
+        @for(i <- 0 to lq.size()-1){
           <tr class="odd gradeX">
-          	<td>试卷A</td>
-            <td>问: System.out.println("Hello"),输出什么?</td>
-            <td class="center">Hello</td>
-            <td class="center">Hel</td>
-            <td class="center">Helloo</td>
-            <td class="center">Hell</td>
-            <td class="center">A</td>
-            <td class="center">2013/11/11 11:11:11</td>
+          	<td>@lq.get(i).exam_code</td>
+            <td>问: @lq.get(i).qtitle</td>
+            <td class="center">@lq.get(i).qoptionA</td>
+            <td class="center">@lq.get(i).qoptionB</td>
+            <td class="center">@lq.get(i).qoptionC</td>
+            <td class="center">@lq.get(i).qoptionD</td>
+            <td class="center">@lq.get(i).qright</td>
+            <td class="center">@lq.get(i).create_date</td>
             <td class="center">
-             <input type="button" class="button small green" value="审核通过">
-	         <input type="button" class="button small blue" value="编辑">
-         	 <input type="button" class="button small red" value="删除">
+            @if(!lq.get(i).status){
+             <a href="/admin/question/audit/@lq.get(i).q_code"><input type="button" class="button small green" value="审核通过"></a>
+             }
+	         <a href="/admin/question/edit/@lq.get(i).q_code"><input type="button" class="button small blue" value="编辑"></a>
+         	 <a href="/admin/question/del/@lq.get(i).q_code"><input type="button" class="button small red" value="删除"></a>
             </td>
           </tr>
+          }
         </tbody>
       </table>
         </div>

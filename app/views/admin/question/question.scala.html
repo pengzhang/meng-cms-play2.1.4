@@ -1,5 +1,12 @@
 @(exams:List[models.question.Exam],q:models.question.Question,flag:Boolean)
 @js_css={
+<script>
+$(function(){
+	$("#btn_submit").click(function(){
+		$("#q_form").submit();
+	});
+});
+</script>
 }
 @import views.html.admin._
 @admin("试题管理",js_css){
@@ -7,35 +14,94 @@
      <div class="box grid_3"></div> 
 
      <div class="box grid_6 ">
+     @if(flag){
+     <form action="/admin/question/create" method="post" id="q_form">
        <div class="box-head"><h2>添加试题</h2></div><div class="box-content">
           <div class="form-row">
-           <p class="form-label">试题:</p><div class="form-item"><input type="text" /></div>
+           <p class="form-label">试题:</p><div class="form-item"><input type="text" name="qtitle" /></div>
           </div>
           <div class="form-row">
-           <p class="form-label">选项A:</p><div class="form-item"><input type="text" /></div>
+           <p class="form-label">选项A:</p><div class="form-item"><input type="text" name="qoptionA"/></div>
           </div>
           <div class="form-row">
-           <p class="form-label">选项B:</p><div class="form-item"><input type="text" /></div>
+           <p class="form-label">选项B:</p><div class="form-item"><input type="text" name="qoptionB"/></div>
           </div>
           <div class="form-row">
-           <p class="form-label">选项C:</p><div class="form-item"><input type="text" /></div>
+           <p class="form-label">选项C:</p><div class="form-item"><input type="text" name="qoptionC"/></div>
           </div>
           <div class="form-row">
-           <p class="form-label">选项D:</p><div class="form-item"><input type="text" /></div>
+           <p class="form-label">选项D:</p><div class="form-item"><input type="text" name="qoptionD"/></div>
           </div>
           <div class="form-row">
-           <p class="form-label">正确答案:</p><div class="form-item"><input type="text" /></div>
+           <p class="form-label">正确答案:</p><div class="form-item"><input type="text" name="qright"/></div>
           </div>
-          
+          <div class="form-row">
+            <label class="form-label">所属试卷:</label>
+            <div class="form-item">
+              <select name="exam_code">
+              @if(exams != null){
+               @for(exam <- exams){
+                <option  value='@exam.e_code'>@exam.exam_name</option>
+                }
+               }
+              </select>
+            </div>
+         </div>
          <div class="form-row">
          	<div class="box grid_4"></div>
          	<div class="box grid_4">
-          		<input type="button" class="button big green" value="确定">
+          		<input type="button" id="btn_submit" class="button big green" value="确定">
           		<input type="button" class="button small red" value="取消">
           	</div>
          </div>
          <div class="clear"></div>
        </div>
+       </form>
+       }else{
+       <form action="/admin/question/update" method="post" id="q_form">
+       <div class="box-head"><h2>添加试题</h2></div><div class="box-content">
+       	  <input type="hidden" name="q_code" value="@q.q_code" />
+          <div class="form-row">
+           <p class="form-label">试题:</p><div class="form-item"><input type="text" name="qtitle" value="@q.qtitle" /></div>
+          </div>
+          <div class="form-row">
+           <p class="form-label">选项A:</p><div class="form-item"><input type="text" name="qoptionA" value="@q.qoptionA"/></div>
+          </div>
+          <div class="form-row">
+           <p class="form-label">选项B:</p><div class="form-item"><input type="text" name="qoptionB" value="@q.qoptionB"/></div>
+          </div>
+          <div class="form-row">
+           <p class="form-label">选项C:</p><div class="form-item"><input type="text" name="qoptionC" value="@q.qoptionC"/></div>
+          </div>
+          <div class="form-row">
+           <p class="form-label">选项D:</p><div class="form-item"><input type="text" name="qoptionD" value="@q.qoptionD"/></div>
+          </div>
+          <div class="form-row">
+           <p class="form-label">正确答案:</p><div class="form-item"><input type="text" name="qright" value="@q.qright"/></div>
+          </div>
+          <div class="form-row">
+            <label class="form-label">所属试卷:</label>
+            <div class="form-item">
+              <select name="exam_code">
+              @if(exams != null){
+               @for(exam <- exams){
+                <option  value='@exam.e_code'>@exam.exam_name</option>
+                }
+               }
+              </select>
+            </div>
+         </div>
+         <div class="form-row">
+         	<div class="box grid_4"></div>
+         	<div class="box grid_4">
+          		<input type="button" id="btn_submit" class="button big green" value="确定">
+          		<input type="button" class="button small red" value="取消">
+          	</div>
+         </div>
+         <div class="clear"></div>
+       </div>
+       </form>
+       }
      </div>
 </div>
 }

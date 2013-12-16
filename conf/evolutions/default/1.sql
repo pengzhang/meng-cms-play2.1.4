@@ -112,6 +112,8 @@ create table exam (
   e_code                    varchar(255),
   exam_name                 varchar(255),
   exam_desc                 varchar(255),
+  exam_status               tinyint(1) default 0,
+  exam_author               varchar(255),
   web_site_code             varchar(255),
   create_date               datetime,
   constraint pk_exam primary key (id))

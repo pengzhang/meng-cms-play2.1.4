@@ -1,5 +1,12 @@
 @(exams:List[models.question.Exam],ex:models.question.Exam,flag:Boolean)
 @js_css={
+<script>
+$(function(){
+	$("#btn_submit").click(function(){
+		$("#ex_form").submit();
+	});
+});
+</script>
 }
 @import views.html.admin._
 @admin("试卷管理",js_css){
@@ -7,27 +14,54 @@
      <div class="box grid_3"></div> 
 
      <div class="box grid_6 ">
+     @if(flag){
+     <form id="ex_form" action="/admin/exam/create" method="post">
        <div class="box-head"><h2>添加试卷</h2></div><div class="box-content">
           <div class="form-row">
-           <p class="form-label">试卷标题:</p><div class="form-item"><input type="text" /></div>
+           <p class="form-label">试卷标题:</p><div class="form-item"><input type="text" name="exam_name"/></div>
           </div>
           <div class="form-row">
-           <p class="form-label">试卷描述:</p><div class="form-item"><input type="text" /></div>
+           <p class="form-label">试卷描述:</p><div class="form-item"><input type="text" name="exam_desc"/></div>
           </div>
-          
-         <div class="form-row">
-           <p class="form-label">作者:</p><div class="form-item"><input type="text" /></div>
+          <div class="form-row">
+           <p class="form-label">试卷作者:</p><div class="form-item"><input type="text" name="exam_author"/></div>
           </div>
           
          <div class="form-row">
          	<div class="box grid_4"></div>
          	<div class="box grid_4">
-          		<input type="button" class="button big green" value="确定">
+          		<input type="button" id="btn_submit" class="button big green" value="确定">
           		<input type="button" class="button small red" value="取消">
           	</div>
          </div>
          <div class="clear"></div>
        </div>
+       </form>
+       }else{
+       <form id="ex_form" action="/admin/exam/update" method="post">
+       <div class="box-head"><h2>添加试卷</h2></div><div class="box-content">
+       	  <input type="hidden" name="e_code" value="@ex.e_code" />
+          <div class="form-row">
+           <p class="form-label">试卷标题:</p><div class="form-item"><input type="text" name="exam_name" value="@ex.exam_name"/></div>
+          </div>
+          <div class="form-row">
+           <p class="form-label">试卷描述:</p><div class="form-item"><input type="text" name="exam_desc" value="@ex.exam_desc"/></div>
+          </div>
+          <div class="form-row">
+           <p class="form-label">试卷作者:</p><div class="form-item"><input type="text" name="exam_author" value="@ex.exam_author"/></div>
+          </div>
+          
+         <div class="form-row">
+         	<div class="box grid_4"></div>
+         	<div class="box grid_4">
+          		<input type="button" id="btn_submit" class="button big green" value="确定">
+          		<input type="button" class="button small red" value="取消">
+          	</div>
+         </div>
+         <div class="clear"></div>
+       </div>
+       </form>
+       }
      </div>
 </div>
 }
