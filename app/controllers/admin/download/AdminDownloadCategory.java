@@ -13,13 +13,14 @@ public class AdminDownloadCategory extends Controller {
 	
 	public static Result add(){
 		//TODO web_site_code
-		return ok(download_category.render(null, true));
+		return ok(download_category.render(null,null,true));
 	}
 	
 	public static Result edit(String code){
 		//TODO web_site_code
 		List<DownloadCategory> ldc = DownloadCategory.getDownCategoryAll();
-		return ok(download_category.render(ldc,false));
+		DownloadCategory dcg = DownloadCategory.getDownCategory(code);
+		return ok(download_category.render(ldc,dcg,false));
 	}
 	
 	public static Result create(){

@@ -1,4 +1,4 @@
-@(ldc:List[models.download.DownloadCategory],flag:Boolean)
+@(ldc:List[models.download.DownloadCategory],dcg:models.download.DownloadCategory,flag:Boolean)
 @js_css={
 <link rel="stylesheet" href="/assets/admin/css/iphone-check.css">
 <script src="/assets/admin/js/forms/iphone-check.js"></script>
@@ -8,6 +8,9 @@ $(function() {
 	$("#view_download_category").click(function(){
     	location.href="/admin/download/category"
     });
+	$("#btn_submit").click(function(){
+		$("#dc_form").submit();
+	});
 });
 </script>
 
@@ -17,16 +20,19 @@ $(function() {
 <div class="content container_12">
 	<div class="sm-box grid_12">
        <span>
-          <input type="button" id="view_download_category" class="button big blue" value="返回下载分类列表">
+          <a href="/admin/download/category"><input type="button" id="view_download_category" class="button big blue" value="返回下载分类列表"></a>
        </span>
      </div>
+    
      <div class="box grid_12">
+     @if(flag){
+      <form id="dc_form"  action="/admin/download/category/create" method="post">
        <div class="box-head"><h2>添加下载分类</h2></div><div class="box-content">
           <div class="form-row">
-           <p class="form-label">下载分类名称:</p><div class="form-item"><input type="text" /></div>
+           <p class="form-label">下载分类名称:</p><div class="form-item"><input type="text"  name="dc_name"/></div>
           </div>
           <div class="form-row">
-           <p class="form-label">下载分类描述:</p><div class="form-item"><input type="text" /></div>
+           <p class="form-label">下载分类描述:</p><div class="form-item"><input type="text"  name="dc_desc"/></div>
           </div>
           <div class="form-row">
            <p class="form-label">是否为频道:</p><input checked type="checkbox" id="iphone-check" />
@@ -35,22 +41,56 @@ $(function() {
             <label class="form-label">下载分类:</label>
             <div class="form-item">
               <select>
-                <option value='option1'>Waldo was here</option>
-                <option value='option2'>Option 1</option>
-                <option value='option3'>Option 2</option>
-                <option value='option4'>Option 3</option>
+              @for(dc <- ldc){
+                <option value='@dc.dc_code'>@dc.dc_name</option>
+                }
               </select>
             </div>
          </div>
          <div class="form-row">
          	<div class="box grid_4"></div>
          	<div class="box grid_4">
-          		<input type="button" class="button big green" value="确定">
+          		<input type="button" id="btn_submit" class="button big green" value="确定">
           		<input type="button" class="button small red" value="取消">
           	</div>
          </div>
          <div class="clear"></div>
        </div>
+       </form>
+       }else{
+           <form  id="dc_form"  action="/admin/download/category/update" method="post">
+       <div class="box-head"><h2>添加下载分类</h2></div><div class="box-content">
+       	  <input type="hidden" name="dc_code" value="@dcg.dc_code" >
+          <div class="form-row">
+           <p class="form-label">下载分类名称:</p><div class="form-item"><input type="text"  name="dc_name" value="@dcg.dc_name"/></div>
+          </div>
+          <div class="form-row">
+           <p class="form-label">下载分类描述:</p><div class="form-item"><input type="text"  name="dc_desc" value="@dcg.dc_desc"/></div>
+          </div>
+          <div class="form-row">
+           <p class="form-label">是否为频道:</p><input checked type="checkbox" id="iphone-check" />
+          </div>
+          <div class="form-row">
+            <label class="form-label">下载分类:</label>
+            <div class="form-item">
+              <select>
+              @for(dc <- ldc){
+                <option value='@dc.dc_code'>@dc.dc_name</option>
+                }
+              </select>
+            </div>
+         </div>
+         <div class="form-row">
+         	<div class="box grid_4"></div>
+         	<div class="box grid_4">
+          		<input type="button" id="btn_submit" class="button big green" value="确定">
+          		<input type="button" class="button small red" value="取消">
+          	</div>
+         </div>
+         <div class="clear"></div>
+       </div>
+       </form>
+       }
      </div>
 </div>
 }
