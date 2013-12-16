@@ -45,14 +45,14 @@
             <td>@ldl.get(i).soft_name</td>
             <td>@ldl.get(i).soft_author</td>
             <td class="center">@ldl.get(i).down_category_code</td>
-            <td class="center">@ldl.get(i).soft_status</td>
+            <td class="center">@if(ldl.get(i).soft_status){已审核}else{未审核}</td>
             <td class="center">@ldl.get(i).create_date</td>
             <td class="center">
-            @if(!@ldl.get(i).soft_status){
-             <input type="button" class="button small green" value="审核通过">
+            @if(!ldl.get(i).soft_status){
+             <a href="/admin/download/audit/@ldl.get(i).soft_code"><input type="button" class="button small green" value="审核通过"></a>
              }
-	         <input type="button" class="button small blue" value="编辑">
-         	 <input type="button" class="button small red" value="删除">
+	         <a href="/admin/download/edit/@ldl.get(i).soft_code"><input type="button" class="button small blue" value="编辑"></a>
+         	 <a href="/admin/download/del/@ldl.get(i).soft_code"><input type="button" class="button small red" value="删除"></a>
             </td>
           </tr>
           }

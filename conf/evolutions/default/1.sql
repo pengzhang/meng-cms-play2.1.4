@@ -72,6 +72,7 @@ create table download (
   id                        bigint auto_increment not null,
   soft_code                 varchar(255),
   soft_name                 varchar(255),
+  soft_author               varchar(255),
   soft_desc                 longtext,
   soft_size                 varchar(255),
   soft_lang                 varchar(255),

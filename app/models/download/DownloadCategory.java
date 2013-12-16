@@ -68,7 +68,7 @@ public class DownloadCategory  extends Model{
 	}
 
 	public static List<DownloadCategory> getDownCategoryAll() {
-		return find.all();
+		return find.findList();
 	}
 	
 }

@@ -32,6 +32,8 @@ public class Download extends Model {
 	public String soft_code = StringUtils.getMengCode();
 	@Column
 	public String soft_name;
+	@Column
+	public String soft_author;
 	@Lob
 	public String soft_desc;
 	@Column

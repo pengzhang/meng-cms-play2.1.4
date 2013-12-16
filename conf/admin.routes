@@ -104,6 +104,7 @@ POST	/download/create									controllers.admin.download.AdminDownload.create()
 GET		/download/edit/:code								controllers.admin.download.AdminDownload.edit(code:String)
 POST	/download/update									controllers.admin.download.AdminDownload.update()
 GET		/download/del/:code									controllers.admin.download.AdminDownload.delete(code:String)
+GET		/download/audit/:code								controllers.admin.download.AdminDownload.audit(code:String)
 
 # Admin Download Category
 GET		/download/category									controllers.admin.Admin.download_category()

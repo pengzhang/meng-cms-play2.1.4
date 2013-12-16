@@ -40,10 +40,12 @@ $(function() {
           <div class="form-row">
             <label class="form-label">下载分类:</label>
             <div class="form-item">
-              <select>
-              @for(dc <- ldc){
+              <select name="parent_dc_code">
+              @if(ldc != null){
+                @for(dc <- ldc){
                 <option value='@dc.dc_code'>@dc.dc_name</option>
                 }
+               }
               </select>
             </div>
          </div>
@@ -73,10 +75,12 @@ $(function() {
           <div class="form-row">
             <label class="form-label">下载分类:</label>
             <div class="form-item">
-              <select>
-              @for(dc <- ldc){
-                <option value='@dc.dc_code'>@dc.dc_name</option>
+              <select name="parent_dc_code">
+              @if(ldc != null){
+              	@for(dc <- ldc){
+                	<option value='@dc.dc_code'>@dc.dc_name</option>
                 }
+               }
               </select>
             </div>
          </div>

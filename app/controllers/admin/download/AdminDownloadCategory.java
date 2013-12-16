@@ -13,7 +13,8 @@ public class AdminDownloadCategory extends Controller {
 	
 	public static Result add(){
 		//TODO web_site_code
-		return ok(download_category.render(null,null,true));
+		List<DownloadCategory> ldc = DownloadCategory.getDownCategoryAll();
+		return ok(download_category.render(ldc,null,true));
 	}
 	
 	public static Result edit(String code){
@@ -29,6 +30,7 @@ public class AdminDownloadCategory extends Controller {
 		dc.dc_name = map.get("dc_name");
 		dc.dc_desc = map.get("dc_desc");
 		dc.parent_dc_code = map.get("parent_dc_code");
+		System.out.println(dc.parent_dc_code);
 		dc.web_site_code = map.get("web_site_code");
 		DownloadCategory.createDownCategory(dc);
 		return redirect("/admin/download/category");
