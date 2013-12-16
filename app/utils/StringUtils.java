@@ -43,8 +43,8 @@ public class StringUtils {
 	public static String getDatePath(String path){
 		Calendar calendar = GregorianCalendar.getInstance();
 		int year = calendar.get(Calendar.YEAR);
-		int month = calendar.get(Calendar.YEAR);
-		int day = calendar.get(Calendar.YEAR);
+		int month = calendar.get(Calendar.MONTH) + 1;
+		int day = calendar.get(Calendar.DAY_OF_MONTH);
 		String date_path = File.separator+year+File.separator+month+File.separator+day+File.separator;
 		if(path==null || path.equals("")){
 			return date_path;

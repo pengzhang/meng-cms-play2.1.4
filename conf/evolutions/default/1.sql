@@ -136,6 +136,7 @@ create table image (
   image_name                varchar(255),
   image_desc                varchar(255),
   image_url                 varchar(255),
+  image_file_name           varchar(255),
   image_path                varchar(255),
   image_type                varchar(255),
   category_code             varchar(255),

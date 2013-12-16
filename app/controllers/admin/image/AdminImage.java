@@ -1,6 +1,5 @@
 package controllers.admin.image;
 
-import java.io.File;
 import java.util.List;
 import java.util.Map;
 
@@ -39,7 +38,7 @@ public class AdminImage extends Controller {
 		if(img.image_type.equalsIgnoreCase("upload")){
 			FilePart picture = body.getFile("picture");
 			  if (picture != null) {
-//			    String fileName = picture.getFilename();
+			    img.image_file_name = picture.getFilename();
 //			    String contentType = picture.getContentType(); 
 			    img.image_file = picture.getFile();
 			  } 
@@ -47,7 +46,7 @@ public class AdminImage extends Controller {
 		img.img_code = map.get("img_code");
 		img.image_url = map.get("image_url");
 		Image.createImage(img);
-		return redirect("/admin/image");
+		return redirect("/admin/image/view/"+img.category_code);
 	}
 	
 	public static Result update(){
@@ -63,7 +62,7 @@ public class AdminImage extends Controller {
 		if(img.image_type.equalsIgnoreCase("upload")){
 			FilePart picture = body.getFile("picture");
 			  if (picture != null) {
-//			    String fileName = picture.getFilename();
+			    img.image_file_name = picture.getFilename();
 //			    String contentType = picture.getContentType(); 
 			    img.image_file = picture.getFile();
 			  } 
@@ -71,17 +70,19 @@ public class AdminImage extends Controller {
 		img.img_code = map.get("img_code");
 		img.image_url = map.get("image_url");
 		Image.modifyImage(img);
-		return redirect("/admin/image");
+		return redirect("/admin/image/view/"+img.category_code);
 	}
 	
 	public static Result delete(String code){
+		String icc = Image.getImage(code).category_code;
 		Image.deleteImage(code);
-		return redirect("/admin/image");
+		return redirect("/admin/image/view/"+icc);
 	}
 	
 	public static Result audit(String code){
+		String icc = Image.getImage(code).category_code;
 		Image.auditImage(code);
-		return redirect("/admin/image");
+		return redirect("/admin/image/view/"+icc);
 	}
 
 }

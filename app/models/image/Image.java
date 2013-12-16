@@ -14,6 +14,7 @@ import javax.persistence.Transient;
 import org.apache.commons.io.FileUtils;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import play.Play;
 import play.db.ebean.Model;
 import utils.StringUtils;
 
@@ -55,6 +56,8 @@ public class Image extends Model{
 	 */
 	@Transient
 	public File image_file;
+	@Column
+	public String image_file_name;
 	/**
 	 * 图片存放的路径
 	 * 用于存储上传图片的服务器路径
@@ -97,16 +100,17 @@ public class Image extends Model{
 	 */
 	public static void createImage(Image img){
 		img.img_code = StringUtils.getMengCode();
-		img.image_path = StringUtils.getDatePath(img.image_path); 
+		img.image_path = Play.application().path()+ "/public/upload/images" + StringUtils.getDatePath(""); 
 		if(img.image_type.equalsIgnoreCase("upload")){
 			File file = img.image_file;
-			File descFile = new File(img.image_path);
+			File descFile = new File(img.image_path+File.separator+img.image_file_name);
 			try {
 				FileUtils.copyFile(file,descFile);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
+		img.image_path = "upload/images" + StringUtils.getDatePath("");
 		img.save();
 	}
 	

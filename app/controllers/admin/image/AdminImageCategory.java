@@ -28,7 +28,6 @@ public class AdminImageCategory extends Controller {
 		ic.category_name = map.get("category_name");
 		ic.category_desc = map.get("category_desc");
 		ic.parent_category_code = map.get("parent_category_code");
-		System.out.println("parent code ===" + ic.parent_category_code);
 		if(map.get("is_channel") == null) {
 			ic.is_channel = false;
 		}else if(map.get("is_channel").equals("on")){

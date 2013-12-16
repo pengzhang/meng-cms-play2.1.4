@@ -89,6 +89,7 @@ POST	/image/create										controllers.admin.image.AdminImage.create()
 GET		/image/edit/:code									controllers.admin.image.AdminImage.edit(code:String)
 POST	/image/update										controllers.admin.image.AdminImage.update()
 GET		/image/del/:code									controllers.admin.image.AdminImage.delete(code:String)
+GET		/image/audit/:code									controllers.admin.image.AdminImage.audit(code:String)
 
 # Admin Image Category
 GET		/image/category										controllers.admin.Admin.image_category()

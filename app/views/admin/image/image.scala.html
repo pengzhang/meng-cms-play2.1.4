@@ -1,49 +1,74 @@
 @(lic:List[models.image.ImageCategory],img:models.image.Image,flag:Boolean)
 @js_css={
+<script>
+$(function() {
+	$("#img_radio_upload").click(function(){
+		$("#d_img_url").hide();
+		$("#d_img_upload").show();
+	})
+	$("#img_radio_url").click(function(){
+		$("#d_img_upload").hide();
+		$("#d_img_url").show();
+
+	})
+	$("#btn_submit").click(function(){
+		$("#img_form").submit();
+	});
+});
+</script>
 }
 @import views.html.admin._
-@admin("文章管理",js_css){
+@admin("图片管理",js_css){
 <div class="content container_12">
      <div class="box grid_3"></div> 
 
      <div class="box grid_6 ">
-       <div class="box-head"><h2>添加文章</h2></div><div class="box-content">
+     <form id="img_form" action="/admin/image/create" method="post" enctype="multipart/form-data">
+       <div class="box-head"><h2>添加图片</h2></div><div class="box-content">
           <div class="form-row">
-           <p class="form-label">文章标题:</p><div class="form-item"><input type="text" /></div>
-          </div>
-          
-          <div class="form-row">
-           <p class="form-label">文章内容:</p><div class="form-item"><textarea></textarea></div>
+           <p class="form-label">图片标题:</p><div class="form-item"><input type="text" name="image_name"/></div>
           </div>
           <div class="form-row">
-           <p class="form-label">文章主题:</p><div class="form-item"><input type="text" /></div>
+           <p class="form-label">图片内容:</p><div class="form-item"><input type="text" name="image_desc"/></div>
           </div>
-         
           <div class="form-row">
-            <label class="form-label">文章分类:</label>
+           <p class="form-label">图片类型:</p>
+           <input type="radio" id="img_radio_upload" name="image_type" value="upload"/>本地上传
+           <input type="radio" id="img_radio_url" checked name="image_type" value="url"/>网络图片
+          </div>
+          <div class="form-row" id="d_img_url">
+           <p class="form-label">图片Url:</p><div class="form-item"><input type="text" name="image_url"/></div>
+          </div>
+          <div id="d_img_upload" style="display:none;">
+          <div class="form-row">
+           <p class="form-label">图片文件:</p><div class="form-item"><input type="file" name="picture"/></div>
+          </div>
+          <!-- <div class="form-row">
+           <p class="form-label">图片路径:</p><div class="form-item"><input type="text" name="image_path"/></div>
+          </div> -->
+          </div>
+          <div class="form-row">
+            <label class="form-label">图片分类:</label>
             <div class="form-item">
-              <select>
-                <option value='option1'>Waldo was here</option>
-                <option value='option2'>Option 1</option>
-                <option value='option3'>Option 2</option>
-                <option value='option4'>Option 3</option>
+              <select name="category_code">
+                @if(lic != null){
+                @for(icg <- lic){
+                <option value='@icg.ic_code'>@icg.category_name</option>
+                }
+               }              
               </select>
             </div>
          </div>
-         
-         <div class="form-row">
-           <p class="form-label">作者:</p><div class="form-item"><input type="text" /></div>
-          </div>
-          
          <div class="form-row">
          	<div class="box grid_4"></div>
          	<div class="box grid_4">
-          		<input type="button" class="button big green" value="确定">
+          		<input type="button" id="btn_submit" class="button big green" value="确定">
           		<input type="button" class="button small red" value="取消">
           	</div>
          </div>
          <div class="clear"></div>
        </div>
+       </form>
      </div>
 </div>
 }
