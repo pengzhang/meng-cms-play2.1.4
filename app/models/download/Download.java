@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
+import models.statistics.MainStat;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import play.db.ebean.Model;
@@ -63,6 +65,7 @@ public class Download extends Model {
 	
 	public static void createDownload(Download dl){
 		dl.save();
+		MainStat.updateMainStat(MainStat.DOWNLOAD);
 	}
 	
 	public static void modifyDownload(Download dl){

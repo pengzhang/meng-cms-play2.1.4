@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import models.statistics.MainStat;
+
 import org.apache.commons.io.FileUtils;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -112,6 +114,7 @@ public class Image extends Model{
 		}
 		img.image_path = "upload/images" + StringUtils.getDatePath("");
 		img.save();
+		MainStat.updateMainStat(MainStat.IMAGE);
 	}
 	
 	/**

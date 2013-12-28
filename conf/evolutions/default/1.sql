@@ -3,7 +3,15 @@
 
 # --- !Ups
 
-create table adminuser (
+create table admin_website (
+  id                        bigint auto_increment not null,
+  aw_code                   varchar(255),
+  admin_code                varchar(255),
+  web_site_code             varchar(255),
+  constraint pk_admin_website primary key (id))
+;
+
+create table administrator (
   id                        bigint auto_increment not null,
   admin_code                varchar(255),
   username                  varchar(255),
@@ -16,15 +24,7 @@ create table adminuser (
   login_time                datetime,
   logout_time               datetime,
   create_date               datetime,
-  constraint pk_adminuser primary key (id))
-;
-
-create table admin_website (
-  id                        bigint auto_increment not null,
-  aw_code                   varchar(255),
-  admin_code                varchar(255),
-  web_site_code             varchar(255),
-  constraint pk_admin_website primary key (id))
+  constraint pk_administrator primary key (id))
 ;
 
 create table advertising (
@@ -158,6 +158,23 @@ create table image_category (
   constraint pk_image_category primary key (id))
 ;
 
+create table mainstat (
+  id                        bigint auto_increment not null,
+  administrator             bigint,
+  user                      bigint,
+  article                   bigint,
+  news                      bigint,
+  image                     bigint,
+  download                  bigint,
+  message                   bigint,
+  exam                      bigint,
+  question                  bigint,
+  domain                    bigint,
+  advertising               bigint,
+  faq                       bigint,
+  constraint pk_mainstat primary key (id))
+;
+
 create table message (
   id                        bigint auto_increment not null,
   msg_code                  varchar(255),
@@ -214,7 +231,7 @@ create table user (
   id                        bigint auto_increment not null,
   username                  varchar(255),
   password                  varchar(255),
-  is_admin                  tinyint(1) default 0,
+  is_vip                    tinyint(1) default 0,
   access_token              varchar(255),
   expires_in                bigint,
   login_time                datetime,
@@ -222,6 +239,16 @@ create table user (
   create_date               datetime,
   status                    tinyint(1) default 0,
   constraint pk_user primary key (id))
+;
+
+create table user_agent (
+  id                        bigint auto_increment not null,
+  code                      varchar(255),
+  brower                    varchar(255),
+  brower_version            varchar(255),
+  platform                  varchar(255),
+  create_date               datetime,
+  constraint pk_user_agent primary key (id))
 ;
 
 create table user_profile (
@@ -265,9 +292,9 @@ create table website (
 
 SET FOREIGN_KEY_CHECKS=0;
 
-drop table adminuser;
-
 drop table admin_website;
+
+drop table administrator;
 
 drop table advertising;
 
@@ -289,6 +316,8 @@ drop table image;
 
 drop table image_category;
 
+drop table mainstat;
+
 drop table message;
 
 drop table news;
@@ -298,6 +327,8 @@ drop table news_category;
 drop table question;
 
 drop table user;
+
+drop table user_agent;
 
 drop table user_profile;
 

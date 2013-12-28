@@ -4,7 +4,6 @@
 
 # Home page
 GET     /                           							controllers.Application.index()
-GET		/init													controllers.Application.cms_init()
 
 # Admin page
 ->		/admin													admin.Routes

@@ -116,6 +116,16 @@ GET		/download/category/edit/:code						controllers.admin.download.AdminDownload
 POST	/download/category/update							controllers.admin.download.AdminDownloadCategory.update()
 GET		/download/category/del/:code						controllers.admin.download.AdminDownloadCategory.delete(code:String)
 
+# Admin Administor
+POST	/login												controllers.admin.Admin.login()
+GET		/logout												controllers.admin.Admin.logout()
+GET		/administor											controllers.admin.Admin.administor()
+GET		/administor/add										controllers.admin.user.Administor.add()
+POST	/administor/create									controllers.admin.user.Administor.create()
+GET		/administor/edit/:code								controllers.admin.user.Administor.edit(code:String)
+POST	/administor/update									controllers.admin.user.Administor.update()
+GET		/administor/del/:code								controllers.admin.user.Administor.delete(code:String)
+
 # Admin User
 GET		/user												controllers.admin.Admin.user()
 GET		/user/add										controllers.admin.user.User.add()

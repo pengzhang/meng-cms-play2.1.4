@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import models.statistics.MainStat;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import play.db.ebean.Model;
@@ -54,7 +56,7 @@ public class User extends Model {
 	 * 是否高级会员
 	 */
 	@Column
-	public boolean is_admin;
+	public boolean is_vip;
 
 	/**
 	 * 访问令牌
@@ -249,6 +251,7 @@ public class User extends Model {
 		}
 		user.password = StringUtils.md5(user.password);
 		user.save();
+		MainStat.updateMainStat(MainStat.USER);
 	}
 
 	/**

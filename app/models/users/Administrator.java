@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import models.statistics.MainStat;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import play.Logger;
@@ -25,12 +27,9 @@ import com.avaje.ebean.Ebean;
  *
  */
 @Entity
-@Table(name="adminuser")
-public class AdminUser extends Model{
+@Table(name="administrator")
+public class Administrator extends Model{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	/**
@@ -98,19 +97,21 @@ public class AdminUser extends Model{
 	public Timestamp create_date = new Timestamp(System.currentTimeMillis());
 	
 	
-	public static Model.Finder<Long, AdminUser> find = new Model.Finder<Long, AdminUser>(Long.class, AdminUser.class);
+	public static Model.Finder<Long, Administrator> find = new Model.Finder<Long, Administrator>(Long.class, Administrator.class);
 	
 	/**
 	 * 创建管理员
 	 * @param au
 	 */
-	public static void createUser(AdminUser au){
+	public static void createUser(Administrator au){
 		au.password = StringUtils.md5(au.password);
 		if (getAdminUserByUsername(au.username) != null) {
 			Logger.info(Messages.get("admin.user.reg.error", ""));
 			return ;
 		}
+		
 		au.save();
+		MainStat.updateMainStat(MainStat.ADMINISTRATOR);
 
 	}
 	
@@ -122,8 +123,8 @@ public class AdminUser extends Model{
 	 */
 	public static boolean login(String username, String password){
 		String pwd = StringUtils.md5(password);
-		AdminUser au = getAdminUserByUsername(username);
-		if(au.equals(pwd) && au.status){
+		Administrator au = getAdminUserByUsername(username);
+		if(au.password.equals(pwd) && au.status){
 			return true;
 		}
 		return false;
@@ -133,8 +134,8 @@ public class AdminUser extends Model{
 	 * 修改管理员信息
 	 * @param au
 	 */
-	public static void modifyAdminUser(AdminUser au){
-		AdminUser admin = getAdminUserByUsername(au.username);
+	public static void modifyAdminUser(Administrator au){
+		Administrator admin = getAdminUserByUsername(au.username);
 		au.id = admin.id;
 		au.password = admin.password;
 		au.update();
@@ -147,7 +148,7 @@ public class AdminUser extends Model{
 	 */
 	public static boolean modifyAdminUserPassword(String username, String oldPassword, String password){
 		password = StringUtils.md5(password);
-		AdminUser au = getAdminUserByUsername(username);
+		Administrator au = getAdminUserByUsername(username);
 		if(au.password.equals(StringUtils.md5(oldPassword))){
 			au.password = password;
 			au.update();
@@ -162,7 +163,7 @@ public class AdminUser extends Model{
 	 * @param username
 	 * @return
 	 */
-	public static AdminUser getAdminUserByUsername(String username){
+	public static Administrator getAdminUserByUsername(String username){
 		return find.where().eq("username", username).findUnique();
 	}
 	
@@ -171,7 +172,7 @@ public class AdminUser extends Model{
 	 * @param code
 	 * @return
 	 */
-	public static AdminUser getAdminUserByCode(String code){
+	public static Administrator getAdminUserByCode(String code){
 		return find.where().eq("admin_code", code).findUnique();
 	}
 	
@@ -181,7 +182,7 @@ public class AdminUser extends Model{
 	 * @param size
 	 * @return
 	 */
-	public static List<AdminUser> getAdminUserByPage(int page, int size){
+	public static List<Administrator> getAdminUserByPage(int page, int size){
 		return find.findPagingList(size).getPage(page).getList();
 	}
 	
@@ -198,7 +199,7 @@ public class AdminUser extends Model{
 	 * @param username
 	 */
 	public static void disableAdminUser(String username){
-		AdminUser user = find.where().eq("username", username).findUnique();
+		Administrator user = find.where().eq("username", username).findUnique();
 		user.status = false;
 		user.update();
 	}

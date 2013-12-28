@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import models.statistics.MainStat;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.avaje.ebean.Ebean;
@@ -45,6 +47,7 @@ public class Message extends Model{
 	
 	public static void createMessage(Message msg){
 		msg.save();
+		MainStat.updateMainStat(MainStat.MESSAGE);
 	}
 	
 	public static void modifyMessage(Message msg){

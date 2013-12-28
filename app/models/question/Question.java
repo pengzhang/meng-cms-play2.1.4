@@ -10,13 +10,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import models.statistics.MainStat;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.avaje.ebean.Ebean;
 
 import play.db.ebean.Model;
 import utils.StringUtils;
-import views.html.admin.system.system;
 
 @Entity
 @Table(name="question")
@@ -52,6 +53,7 @@ public class Question extends Model{
 	
 	public static void createQuestion(Question q){
 		q.save();
+		MainStat.updateMainStat(MainStat.QUESTION);
 	}
 	
 	public static void modifyQuestion(Question q){

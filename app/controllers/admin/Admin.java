@@ -1,6 +1,7 @@
 package controllers.admin;
 
 import java.util.List;
+import java.util.Map;
 
 import models.advertising.Advertising;
 import models.article.Article;
@@ -15,6 +16,10 @@ import models.news.News;
 import models.news.NewsCategory;
 import models.question.Exam;
 import models.question.Question;
+import models.statistics.MainStat;
+import models.statistics.UserAgentStat;
+import models.users.Administrator;
+import play.data.DynamicForm;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.admin.*;
@@ -36,7 +41,9 @@ public class Admin extends Controller {
 	}
 	
 	public static Result main(){
-		return ok(dashboard.render());
+		MainStat ms = MainStat.getMainStat();
+		List<UserAgentStat> lua = UserAgentStat.getUserAgent(0, 10);
+		return ok(dashboard.render(ms,lua));
 	}
 	
 	public static Result article(String code){
@@ -78,6 +85,10 @@ public class Admin extends Controller {
 		return ok(user_view.render());
 	}
 	
+	public static Result administor(){
+		return ok(administrator_view.render());
+	}
+	
 	public static Result advertising(){
 		List<Advertising> lad = Advertising.getAdvertisingList(0, 10);
 		return ok(advertising_view.render(lad));
@@ -110,6 +121,25 @@ public class Admin extends Controller {
 	
 	public static Result system(){
 		return ok(system_view.render());
+	}
+	
+	public static Result login(){
+		Map<String,String> map = DynamicForm.form().bindFromRequest().data();
+		String username = map.get("username");
+		String password	= map.get("password");
+		if(Administrator.login(username, password)){
+			Administrator admin = Administrator.getAdminUserByUsername(username);
+			session().put("username", username);
+			session().put("real_name", admin.real_name);
+			return redirect("/admin/main");
+		} else {
+			return redirect("/admin");
+		}
+	}
+	
+	public static Result logout(){
+		session().clear();
+		return redirect("/admin");
 	}
 
 }

@@ -1,3 +1,4 @@
+@(ms:models.statistics.MainStat,lua:List[models.statistics.UserAgentStat])
 @js_css={
 <link rel="stylesheet" href="/assets/admin/css/tables.css">
 <script> /* SCRIPTS */
@@ -50,14 +51,22 @@
         <div class="box-head"><span class="box-icon-24 fugue-24 counter"></span><h2>统计</h2></div>
         <div class="box-content ad-stats">
           <ul>
-            <li><h3>21594</h3> 单一的访问者</li>
-            <li class="stats-up"><h3>52100</h3> Page Views</li>
-            <li class="stats-up"><h3>$2652</h3> Ad Revenue</li>
-            <li class="stats-down"><h3>$125</h3> Maintenance Costs</li>
-            <li class="stats-up"><h3>+2</h3> Moved up Google</li>
+            <li><h3>@ms.article</h3> 文章总数</li>
+            <li class="stats-up"><h3>@ms.news</h3> 新闻总数</li>
+            <li class="stats-up"><h3>@ms.download</h3> 下载软件总数</li>
+            <li class="stats-down"><h3>@ms.image</h3> 图片总数</li>
+            <li class="stats-up"><h3>@ms.exam</h3> 试卷总数</li>
+            <li class="stats-up"><h3>@ms.question</h3> 试题总数</li>
+            <li class="stats-up"><h3>@ms.message</h3> 留言总数</li>
+            <li class="stats-up"><h3>@ms.faq</h3> FAQ(帮助)总数</li>
+            <li class="stats-up"><h3>@ms.administrator</h3> 管理员总数</li>
+            <li class="stats-up"><h3>@ms.user</h3> 会员总数</li>
+            <li class="stats-up"><h3>@ms.advertising</h3> 广告总数</li>
+            <li class="stats-up"><h3>@ms.domain</h3> 域名(网站)总数</li>
           </ul>
         </div>
       </div>
+      
       <div class="box grid_6">
         <div class="box-head"><span class="box-icon-24 fugue-24 system-monitor"></span><h2>图表分析</h2></div>
         <div class="box-content">
@@ -70,84 +79,19 @@
         <table class="display" id="example">
         <thead>
           <tr>
-            <th>Rendering engine</th>
-            <th>Browser</th>
-            <th>Platform(s)</th>
-            <th>Engine version</th>
-            <th>CSS grade</th>
+          	<th>操作系统(平台)</th>
+            <th>浏览器</th>
+            <th>浏览器版本</th>
           </tr>
         </thead>
         <tbody>
+        @for(i <- 0 to lua.size()-1){
           <tr class="odd gradeX">
-            <td>Trident</td>
-            <td>Internet Explorer 4.0</td>
-            <td>Win 95+</td>
-            <td class="center"> 4</td>
-            <td class="center">X</td>
+          	<td class="center">@lua.get(i).platform</td>
+            <td class="center">@lua.get(i).brower</td>
+            <td class="center">@lua.get(i).brower_version</td>
           </tr>
-          <tr class="even gradeC">
-            <td>Trident</td>
-            <td>Internet Explorer 5.0</td>
-            <td>Win 95+</td>
-            <td class="center">5</td>
-            <td class="center">C</td>
-          </tr>
-          <tr class="odd gradeA">
-            <td>Trident</td>
-            <td>Internet Explorer 5.5</td>
-            <td>Win 95+</td>
-            <td class="center">5.5</td>
-            <td class="center">A</td>
-          </tr>
-          <tr class="even gradeA">
-            <td>Trident</td>
-            <td>Internet Explorer 6</td>
-            <td>Win 98+</td>
-            <td class="center">6</td>
-            <td class="center">A</td>
-          </tr>
-          <tr class="odd gradeA">
-            <td>Trident</td>
-            <td>Internet Explorer 7</td>
-            <td>Win XP SP2+</td>
-            <td class="center">7</td>
-            <td class="center">A</td>
-          </tr>
-          <tr class="even gradeA">
-            <td>Trident</td>
-            <td>AOL browser (AOL desktop)</td>
-            <td>Win XP</td>
-            <td class="center">6</td>
-            <td class="center">A</td>
-          </tr>
-          <tr class="gradeA">
-            <td>Gecko</td>
-            <td>Firefox 1.0</td>
-            <td>Win 98+ / OSX.2+</td>
-            <td class="center">1.7</td>
-            <td class="center">A</td>
-          </tr>
-          <tr class="gradeA">
-            <td>Gecko</td>
-            <td>Firefox 1.5</td>
-            <td>Win 98+ / OSX.2+</td>
-            <td class="center">1.8</td>
-            <td class="center">A</td>
-          </tr>
-          <tr class="gradeA">
-            <td>Gecko</td>
-            <td>Firefox 2.0</td>
-            <td>Win 98+ / OSX.2+</td>
-            <td class="center">1.8</td>
-            <td class="center">A</td>
-          </tr>
-          <tr class="gradeA">
-            <td>Gecko</td>
-            <td>Firefox 3.0</td>
-            <td>Win 2k+ / OSX.3+</td>
-            <td class="center">1.9</td>
-            <td class="center">A</td>
-          </tr>
+          }
         </tbody>
       </table>
         </div>

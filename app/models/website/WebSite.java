@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import models.statistics.MainStat;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import play.db.ebean.Model;
@@ -39,6 +41,7 @@ public class WebSite extends Model {
 	
 	public static void createWebSite(WebSite ws){
 		ws.save();
+		MainStat.updateMainStat(MainStat.DOMAIN);
 	}
 	
 	public static WebSite getWebSite(String code){

@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
+import models.statistics.MainStat;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import play.db.ebean.Model;
@@ -44,6 +46,7 @@ public class Faq extends Model {
 	
 	public static void createFaq(Faq faq){
 		faq.save();
+		MainStat.updateMainStat(MainStat.FAQ);
 	}
 	
 	public static Faq getFaqByCode(String code){

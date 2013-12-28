@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import models.statistics.MainStat;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import play.db.ebean.Model;
@@ -113,6 +115,7 @@ public class Advertising extends Model{
 	public static void create_AD(Advertising ad){
 		ad.ad_code = StringUtils.getMengCode();
 		ad.save();
+		MainStat.updateMainStat(MainStat.ADVERTISING);
 	}
 	
 	/**

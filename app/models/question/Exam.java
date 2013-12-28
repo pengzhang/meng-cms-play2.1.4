@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import models.statistics.MainStat;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import play.db.ebean.Model;
@@ -44,6 +46,7 @@ public class Exam extends Model {
 	
 	public static void createExam(Exam ex){
 		ex.save();
+		MainStat.updateMainStat(MainStat.EXAM);
 	}
 
 	public static void modifyExam(Exam ex){

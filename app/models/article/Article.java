@@ -13,6 +13,7 @@ import javax.persistence.Lob;
 import javax.persistence.Table;
 
 import models.assist.ArticleTitle;
+import models.statistics.MainStat;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -111,6 +112,7 @@ public class Article extends Model {
 			article.article_category_code = "default";
 		}
 		article.save();
+		MainStat.updateMainStat(MainStat.ARTICLE);
 		return article.article_code;
 	}
 	
