@@ -1,6 +1,7 @@
 @js_css={
 <link rel="stylesheet" href="/assets/admin/css/iphone-check.css">
 <script src="/assets/admin/js/forms/iphone-check.js"></script>
+<script type="text/javascript" src="/assets/admin/js/forms/jquery.validate.min.js"></script>
 <script>
 $(function() {
 	$('#iphone-check').iphoneStyle();
@@ -9,12 +10,12 @@ $(function() {
 
 }
 @import views.html.admin._
-@admin("文章管理",js_css){
+@admin("添加管理员",js_css){
 <div class="content container_12">
      <div class="box grid_3"></div> 
 
      <div class="box grid_6 ">
-       <div class="box-head"><h2>添加用户</h2></div><div class="box-content">
+       <div class="box-head"><h2>添加管理员用户</h2></div><div class="box-content">
           <div class="form-row">
            <p class="form-label">用户名:</p><div class="form-item"><input type="text" /></div>
           </div>

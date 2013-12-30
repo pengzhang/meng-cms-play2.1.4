@@ -42,6 +42,8 @@ public class Global extends GlobalSettings {
 		System.out.println("before each method..." + actionMethod.getName());
 		String act = actionMethod.getName();
 		
+		System.out.println(request.getHeader("User-Agent"));
+		
 		UserAgent userAgent = UserAgent.parseUserAgentString(request.getHeader("User-Agent")); 
 		UserAgentStat uas = new UserAgentStat();
 		uas.brower = userAgent.getBrowser().getName();

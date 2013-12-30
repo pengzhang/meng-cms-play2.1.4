@@ -12,6 +12,7 @@ import models.statistics.MainStat;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import play.Logger;
 import play.db.ebean.Model;
 import utils.StringUtils;
 import utils.MengException;
@@ -244,10 +245,12 @@ public class User extends Model {
 	 * @param user
 	 * @throws MengException
 	 */
-	public static void createUser(User user) throws MengException{
+	public static void createUser(User user){
 		User u = find.where().eq("username", user.username).findUnique();
 		if(u != null){
-			throw new MengException("100107");
+//			throw new MengException("100107");
+			Logger.info("username exitis");
+			return;
 		}
 		user.password = StringUtils.md5(user.password);
 		user.save();

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import play.Logger;
 import play.db.ebean.Model;
 import utils.MengException;
 
@@ -108,7 +109,7 @@ public class UserProfile extends Model{
 	 * @param up
 	 * @throws MengException 
 	 */
-	public static void createUserProfile(UserProfile up) throws MengException{
+	public static void createUserProfile(UserProfile up){
 		if(verifyRepeatEmailMobile(up)){
 			up.save();
 		}
@@ -131,14 +132,16 @@ public class UserProfile extends Model{
 	 * @return
 	 * @throws MengException
 	 */
-	private static boolean verifyRepeatEmailMobile(UserProfile up) throws MengException{
-		List<UserProfile> up_email = find.where().eq("email", up.email).findList();
-		List<UserProfile> up_mobile = find.where().eq("mobile", up.mobile).findList();
-		if(up_email != null){
-			throw new MengException("100105");
+	private static boolean verifyRepeatEmailMobile(UserProfile up){
+		if(find.where().eq("email", up.email).findList().size() > 0 ){
+//			throw new MengException("100105");
+			Logger.info("email exist");
+			return false;
 		}
-		if(up_mobile != null){
-			throw new MengException("100106");
+		if(find.where().eq("mobile", up.mobile).findList().size() > 0 ){
+//			throw new MengException("100106");
+			Logger.info("mobile exist");
+			return false;
 		}
 		return true;
 	}

@@ -19,6 +19,8 @@ import models.question.Question;
 import models.statistics.MainStat;
 import models.statistics.UserAgentStat;
 import models.users.Administrator;
+import models.users.User;
+import models.users.UserProfile;
 import play.data.DynamicForm;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -82,11 +84,13 @@ public class Admin extends Controller {
 	}
 	
 	public static Result user(){
-		return ok(user_view.render());
+		List<UserProfile> lup = UserProfile.getUserProfilesPage(0, 10);
+		return ok(user_view.render(lup));
 	}
 	
 	public static Result administor(){
-		return ok(administrator_view.render());
+		List<Administrator> ladmin = Administrator.getAdminUserByPage(0, 10);
+		return ok(administrator_view.render(ladmin));
 	}
 	
 	public static Result advertising(){

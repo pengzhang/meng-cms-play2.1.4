@@ -128,11 +128,11 @@ GET		/administor/del/:code								controllers.admin.user.Administor.delete(code:
 
 # Admin User
 GET		/user												controllers.admin.Admin.user()
-GET		/user/add										controllers.admin.user.User.add()
-POST	/user/create									controllers.admin.user.User.create()
-GET		/user/edit/:code							controllers.admin.user.User.edit(code:String)
-POST	/user/update									controllers.admin.user.User.update()
-GET		/user/del/:code								controllers.admin.user.User.delete(code:String)
+GET		/user/add											controllers.admin.user.AdminUser.add()
+POST	/user/create										controllers.admin.user.AdminUser.create()
+GET		/user/edit/:code									controllers.admin.user.AdminUser.edit(code:String)
+POST	/user/update										controllers.admin.user.AdminUser.update()
+GET		/user/del/:code										controllers.admin.user.AdminUser.delete(code:String)
 
 
 # Admin System
