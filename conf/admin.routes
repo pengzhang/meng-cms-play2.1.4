@@ -130,9 +130,12 @@ GET		/administor/del/:code								controllers.admin.user.Administor.delete(code:
 GET		/user												controllers.admin.Admin.user()
 GET		/user/add											controllers.admin.user.AdminUser.add()
 POST	/user/create										controllers.admin.user.AdminUser.create()
-GET		/user/edit/:code									controllers.admin.user.AdminUser.edit(code:String)
+GET		/user/edit/:username								controllers.admin.user.AdminUser.edit(username:String)
 POST	/user/update										controllers.admin.user.AdminUser.update()
-GET		/user/del/:code										controllers.admin.user.AdminUser.delete(code:String)
+GET		/user/del/:username									controllers.admin.user.AdminUser.delete(username:String)
+GET		/user/active/:username								controllers.admin.user.AdminUser.active(username:String)
+GET		/user/password/:username							controllers.admin.user.AdminUser.password(username:String)
+POST	/user/modifypwd										controllers.admin.user.AdminUser.modifypwd()
 
 
 # Admin System

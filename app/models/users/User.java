@@ -194,7 +194,7 @@ public class User extends Model {
 	 * @param username
 	 * @return
 	 */
-	private static User getUserByName(String username) {
+	public static User getUserByName(String username) {
 		return find.where().eq("username", username).findUnique();
 	}
 
@@ -240,6 +240,16 @@ public class User extends Model {
 		user.update();
 	}
 	
+	public static boolean modifyUserPassword(String username, String old_password, String new_password) {
+		User user = getUserByName(username);
+		if(user.password.equals(old_password)){
+			user.password = new_password;
+			user.update();
+			return true;
+		}
+		return false;
+	}
+	
 	/**
 	 * 创建一个新的用户
 	 * @param user
@@ -254,6 +264,8 @@ public class User extends Model {
 		}
 		user.password = StringUtils.md5(user.password);
 		user.save();
+		
+		//TODO 发送邮件
 		MainStat.updateMainStat(MainStat.USER);
 	}
 
@@ -274,7 +286,25 @@ public class User extends Model {
 	public static void disableUser(String username) {
 		User user = getUserByName(username);
 		user.status = false;
-		user.save();
+		user.update();
+		UserProfile.modifyStatus(username, false);
 	}
+	
+	public static void activeUser(String username){
+		User user = getUserByName(username);
+		user.status = true;
+		user.update();
+		UserProfile.modifyStatus(username, true);
+	}
+	
+	public static boolean checkActive(String username){
+		User user = getUserByName(username);
+		if(user.status){
+			return true;
+		}
+		return false;
+	}
+	
+	
 
 }

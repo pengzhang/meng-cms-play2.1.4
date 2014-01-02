@@ -40,6 +40,7 @@
             <th>昵称</th>
             <th>手机号码</th>
             <th>电子邮箱</th>
+            <th>是否激活</th>
             <th>操作</th>
           </tr>
         </thead>
@@ -51,11 +52,14 @@
             <td class="center">@lup.get(i).nickname</td>
             <td class="center">@lup.get(i).mobile</td>
             <td class="center">@lup.get(i).email</td>
+            <td class="center">@lup.get(i).status</td>
             <td class="center">
-             <input type="button" class="button small green" value="激活">
-             <input type="button" class="button small green" value="修改密码">
-	         <input type="button" class="button small blue" value="编辑">
-         	 <input type="button" class="button small red" value="删除">
+            @if(!lup.get(i).status){
+             <a href=""><input type="button" class="button small green" value="激活"></a>
+             }
+             <a href=""><input type="button" class="button small green" value="修改密码"></a>
+	         <a href=""><input type="button" class="button small blue" value="编辑"></a>
+         	 <a href=""><input type="button" class="button small red" value="删除"></a>
             </td>
           </tr>
           }

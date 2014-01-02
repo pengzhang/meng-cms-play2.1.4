@@ -254,6 +254,7 @@ create table user_agent (
 create table user_profile (
   id                        bigint auto_increment not null,
   username                  varchar(255),
+  code                      varchar(255),
   name                      varchar(255),
   nickname                  varchar(255),
   cardid                    varchar(255),
@@ -262,6 +263,7 @@ create table user_profile (
   mobile                    varchar(255),
   tel                       varchar(255),
   company                   varchar(255),
+  status                    tinyint(1) default 0,
   constraint pk_user_profile primary key (id))
 ;
 

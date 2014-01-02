@@ -10,6 +10,7 @@ import javax.persistence.Table;
 import play.Logger;
 import play.db.ebean.Model;
 import utils.MengException;
+import utils.StringUtils;
 
 @Entity
 @Table(name="user_profile")
@@ -25,6 +26,9 @@ public class UserProfile extends Model{
 	 */
 	@Column
 	public String username;
+	
+	@Column
+	public String code = StringUtils.getMengCode();
 	
 	/**
 	 * 真实姓名
@@ -74,6 +78,9 @@ public class UserProfile extends Model{
 	@Column
 	public String company;
 	
+	@Column
+	public boolean status = false; 
+	
 	public static Model.Finder<Long, UserProfile> find = new Model.Finder<Long, UserProfile>(Long.class, UserProfile.class);
 	
 	/**
@@ -83,6 +90,10 @@ public class UserProfile extends Model{
 	 */
 	public static UserProfile getUserProfileByUsername(String username){
 		return find.where().eq("username", username).findUnique();
+	}
+	
+	public static UserProfile getUserProfileByCode(String code){
+		return find.where().eq("code", code).findUnique();
 	}
 	
 	/**
@@ -120,7 +131,7 @@ public class UserProfile extends Model{
 	 * @param up
 	 * @throws MengException
 	 */
-	public static void modifyUserProfile(UserProfile up) throws MengException{
+	public static void modifyUserProfile(UserProfile up){
 		if(verifyRepeatEmailMobile(up)){
 			up.update();
 		}
@@ -145,6 +156,13 @@ public class UserProfile extends Model{
 		}
 		return true;
 	}
+	
+	public static void modifyStatus(String username,boolean status){
+		UserProfile up = getUserProfileByUsername(username);
+		up.status = status;
+		up.update();
+	}
+	
 	
 	
 
