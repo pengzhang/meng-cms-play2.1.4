@@ -242,8 +242,8 @@ public class User extends Model {
 	
 	public static boolean modifyUserPassword(String username, String old_password, String new_password) {
 		User user = getUserByName(username);
-		if(user.password.equals(old_password)){
-			user.password = new_password;
+		if(user.password.equals(StringUtils.md5(old_password))){
+			user.password = StringUtils.md5(new_password);
 			user.update();
 			return true;
 		}

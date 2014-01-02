@@ -52,14 +52,14 @@ public class AdminUser extends Controller {
 	}
 	
 	public static Result password(String username){
-		return ok();
+		return ok(password.render(username));
 	}
 	
 	public static Result modifypwd(){
 		Map<String,String> map = DynamicForm.form().bindFromRequest().data();
 		String username = map.get("username");
 		String oldpwd = map.get("old_password");
-		String newpwd = map.get("new_password");
+		String newpwd = map.get("password");
 		User.modifyUserPassword(username, oldpwd, newpwd);
 		return redirect("/admin/user");
 	}
