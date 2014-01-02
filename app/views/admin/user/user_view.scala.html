@@ -52,14 +52,14 @@
             <td class="center">@lup.get(i).nickname</td>
             <td class="center">@lup.get(i).mobile</td>
             <td class="center">@lup.get(i).email</td>
-            <td class="center">@lup.get(i).status</td>
+            <td class="center">@if(lup.get(i).status){是}else{否}</td>
             <td class="center">
             @if(!lup.get(i).status){
-             <a href=""><input type="button" class="button small green" value="激活"></a>
+             <a href="/admin/user/active/@lup.get(i).username"><input type="button" class="button small green" value="激活"></a>
              }
-             <a href=""><input type="button" class="button small green" value="修改密码"></a>
-	         <a href=""><input type="button" class="button small blue" value="编辑"></a>
-         	 <a href=""><input type="button" class="button small red" value="删除"></a>
+             <a href="/admin/user/password/@lup.get(i).username"><input type="button" class="button small green" value="修改密码"></a>
+	         <a href="/admin/user/edit/@lup.get(i).username"><input type="button" class="button small blue" value="编辑"></a>
+         	 <a href="/admin/user/del/@lup.get(i).username"><input type="button" class="button small red" value="删除"></a>
             </td>
           </tr>
           }

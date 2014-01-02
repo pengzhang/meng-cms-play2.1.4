@@ -39,10 +39,9 @@ public class AdminUser extends Controller {
 	}
 	
 	public static Result update(){
-		User user = new User();
 		UserProfile up = new UserProfile();
 		Map<String,String> map = DynamicForm.form().bindFromRequest().data();
-		user.username = map.get("username");
+		up.username = map.get("username");
 		up.cardid = map.get("cardid");
 		up.email = map.get("email");
 		up.mobile = map.get("mobile");

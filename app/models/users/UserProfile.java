@@ -133,7 +133,12 @@ public class UserProfile extends Model{
 	 */
 	public static void modifyUserProfile(UserProfile up){
 		if(verifyRepeatEmailMobile(up)){
+			UserProfile profile = getUserProfileByUsername(up.username);
+			up.id = profile.id;
 			up.update();
+				
+		}else{
+			Logger.info("user update failure");
 		}
 	}
 	
@@ -144,12 +149,14 @@ public class UserProfile extends Model{
 	 * @throws MengException
 	 */
 	private static boolean verifyRepeatEmailMobile(UserProfile up){
-		if(find.where().eq("email", up.email).findList().size() > 0 ){
+		UserProfile upemail = find.where().eq("email", up.email).findUnique();
+		UserProfile upmobile = find.where().eq("mobile", up.mobile).findUnique();
+		if(upemail!=null && !upemail.username.equals(up.username) ){
 //			throw new MengException("100105");
 			Logger.info("email exist");
 			return false;
 		}
-		if(find.where().eq("mobile", up.mobile).findList().size() > 0 ){
+		if(upmobile!=null && !upmobile.username.equals(up.username) ){
 //			throw new MengException("100106");
 			Logger.info("mobile exist");
 			return false;
