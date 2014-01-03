@@ -152,7 +152,7 @@ public class Administrator extends Model{
 		if(au.password.equals(StringUtils.md5(oldPassword))){
 			au.password = password;
 			au.update();
-		return true;
+			return true;
 		}
 		Logger.info("old_password is not rigth");
 		return false;
@@ -201,6 +201,12 @@ public class Administrator extends Model{
 	public static void disableAdminUser(String username){
 		Administrator user = find.where().eq("username", username).findUnique();
 		user.status = false;
+		user.update();
+	}
+	
+	public static void activeAdminUser(String username){
+		Administrator user = find.where().eq("username", username).findUnique();
+		user.status = true;
 		user.update();
 	}
 	

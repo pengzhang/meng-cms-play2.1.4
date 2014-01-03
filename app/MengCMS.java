@@ -1,4 +1,5 @@
 import models.article.ArticleCategory;
+import models.news.NewsCategory;
 import models.users.Administrator;
 
 
@@ -11,6 +12,13 @@ public class MengCMS {
 	    	ac.category_code = "default";
 	    	ac.category_title = "默认分类";
 	    	ArticleCategory.createArticleCategory(ac);
+		}
+		
+		if(NewsCategory.getNewsCategoryByCode("default") == null){
+			NewsCategory nc = new NewsCategory();
+			nc.category_code = "default";
+			nc.category_title = "默认分类";
+			NewsCategory.createNewsCategory(nc);
 		}
     	
     	//默认管理员

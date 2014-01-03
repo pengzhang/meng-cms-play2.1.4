@@ -59,7 +59,9 @@
              }
              <a href="/admin/user/password/@lup.get(i).username"><input type="button" class="button small green" value="修改密码"></a>
 	         <a href="/admin/user/edit/@lup.get(i).username"><input type="button" class="button small blue" value="编辑"></a>
-         	 <a href="/admin/user/del/@lup.get(i).username"><input type="button" class="button small red" value="删除"></a>
+	         @if(lup.get(i).status){
+         	 <a href="/admin/user/del/@lup.get(i).username"><input type="button" class="button small red" value="停用"></a>
+         	 }
             </td>
           </tr>
           }

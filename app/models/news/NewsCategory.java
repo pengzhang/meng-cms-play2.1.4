@@ -79,11 +79,11 @@ public class NewsCategory extends Model{
 	 * @return category_code 新闻分类编号
 	 */
 	public static String createNewsCategory(NewsCategory ac){
-		if(ac.category_code.equals("default")){
-			ac.parent_category_code = "";
-		}else{
+		if(ac.category_code == null || ac.category_code.equals("")){
 			ac.category_code = StringUtils.getMengCode();
-		}
+		}else if(ac.category_code.equals("default")){
+			ac.parent_category_code = "";
+		} 
 		ac.save();
 		return ac.category_code;
 	}

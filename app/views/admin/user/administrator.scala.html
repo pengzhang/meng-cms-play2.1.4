@@ -1,3 +1,4 @@
+@(au:models.users.Administrator,flag:Boolean)
 @js_css={
 <link rel="stylesheet" href="/assets/admin/css/iphone-check.css">
 <script src="/assets/admin/js/forms/iphone-check.js"></script>
@@ -5,6 +6,10 @@
 <script>
 $(function() {
 	$('#iphone-check').iphoneStyle();
+	$('#admin_form').validate();
+	$("#btn_submit").click(function(){
+		$("#admin_form").submit();
+	});
 	});
 </script>
 
@@ -15,43 +20,63 @@ $(function() {
      <div class="box grid_3"></div> 
 
      <div class="box grid_6 ">
+     @if(flag){
+       <form id="admin_form" action="/admin/administor/create" method="post">
        <div class="box-head"><h2>添加管理员用户</h2></div><div class="box-content">
           <div class="form-row">
-           <p class="form-label">用户名:</p><div class="form-item"><input type="text" /></div>
+           <p class="form-label">用户名:</p><div class="form-item"><input type="text" class="required" name="username" /></div>
           </div>
           <div class="form-row">
-           <p class="form-label">密码:</p><div class="form-item"><input type="text" /></div>
+           <p class="form-label">密码:</p><div class="form-item"><input type="text" class="required" name="password"/></div>
           </div>
           <div class="form-row">
-           <p class="form-label">确认密码:</p><div class="form-item"><input type="text" /></div>
+           <p class="form-label">确认密码:</p><div class="form-item"><input type="text" class="required" name="repassword"/></div>
           </div>
           <div class="form-row">
-           <p class="form-label">真实姓名:</p><div class="form-item"><input type="text" /></div>
+           <p class="form-label">真实姓名:</p><div class="form-item"><input type="text" class="required" name="real_name"/></div>
           </div>
           <div class="form-row">
-           <p class="form-label">身份证号:</p><div class="form-item"><input type="text" /></div>
+           <p class="form-label">手机号码:</p><div class="form-item"><input type="text" class="required" name="mobile"/></div>
           </div>
           <div class="form-row">
-           <p class="form-label">昵称:</p><div class="form-item"><input type="text" /></div>
-          </div>
-          <div class="form-row">
-           <p class="form-label">手机号码:</p><div class="form-item"><input type="text" /></div>
-          </div>
-          <div class="form-row">
-           <p class="form-label">电子邮箱:</p><div class="form-item"><input type="text" /></div>
-          </div>
-          <div class="form-row">
-           <p class="form-label">是否为管理员:</p><div class="form-item"><input checked type="checkbox" id="iphone-check" /></div>
+           <p class="form-label">电子邮箱:</p><div class="form-item"><input type="text" class="required" name="email"/></div>
           </div>
          <div class="form-row">
          	<div class="box grid_4"></div>
          	<div class="box grid_4">
-          		<input type="button" class="button big green" value="确定">
+          		<input type="button" id="btn_submit" class="button big green" value="确定">
           		<input type="button" class="button small red" value="取消">
           	</div>
          </div>
          <div class="clear"></div>
        </div>
+       </form>
+       } else {
+       <form id="admin_form" action="/admin/administor/update" method="post">
+       <div class="box-head"><h2>添加管理员用户</h2></div><div class="box-content">
+          <div class="form-row">
+           <p class="form-label">用户名:</p><div class="form-item"><input type="text" class="required" name="username" value="@au.username"/></div>
+          </div>
+          <div class="form-row">
+           <p class="form-label">真实姓名:</p><div class="form-item"><input type="text" class="required" name="real_name" value="@au.real_name"/></div>
+          </div>
+          <div class="form-row">
+           <p class="form-label">手机号码:</p><div class="form-item"><input type="text" class="required" name="mobile" value="@au.mobile"/></div>
+          </div>
+          <div class="form-row">
+           <p class="form-label">电子邮箱:</p><div class="form-item"><input type="text" class="required" name="email" value="@au.email"/></div>
+          </div>
+         <div class="form-row">
+         	<div class="box grid_4"></div>
+         	<div class="box grid_4">
+          		<input type="button" id="btn_submit" class="button big green" value="确定">
+          		<input type="button" class="button small red" value="取消">
+          	</div>
+         </div>
+         <div class="clear"></div>
+       </div>
+       </form>
+       }
      </div>
 </div>
 }

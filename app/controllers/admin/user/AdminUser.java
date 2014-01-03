@@ -52,7 +52,7 @@ public class AdminUser extends Controller {
 	}
 	
 	public static Result password(String username){
-		return ok(password.render(username));
+		return ok(password.render(username,false));
 	}
 	
 	public static Result modifypwd(){

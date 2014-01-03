@@ -1,6 +1,7 @@
 @(ladmin:List[models.users.Administrator])
 @js_css={
 <link rel="stylesheet" href="/assets/admin/css/tables.css">
+
 <script> /* SCRIPTS */
   $(function () {
     $('#dt3').dataTable( {
@@ -16,6 +17,7 @@
     $("#view_user").click(function(){
     	location.href="/admin/user"
     });
+    
   });
 </script>
 }
@@ -39,6 +41,7 @@
             <th>真实姓名</th>
             <th>手机号码</th>
             <th>电子邮箱</th>
+            <th>是否激活</th>
             <th>创建时间</th>
             <th>操作</th>
           </tr>
@@ -50,12 +53,17 @@
             <td class="center">@ladmin.get(i).real_name</td>
             <td class="center">@ladmin.get(i).mobile</td>
             <td class="center">@ladmin.get(i).email</td>
+            <td class="center">@if(ladmin.get(i).status){是}else{否}</td>
             <td class="center">@ladmin.get(i).create_date</td>
             <td class="center">
-             <input type="button" class="button small green" value="激活">
-             <input type="button" class="button small green" value="修改密码">
-	         <input type="button" class="button small blue" value="编辑">
-         	 <input type="button" class="button small red" value="删除">
+             @if(ladmin.get(i).username!="admin" && !ladmin.get(i).status){
+             <a href="/admin/administor/active/@ladmin.get(i).username"><input type="button" class="button small green" value="激活"></a>
+             }
+             <a href="/admin/administor/password/@ladmin.get(i).username"><input type="button" class="button small green" value="修改密码"></a>
+	         <a href="/admin/administor/edit/@ladmin.get(i).username"><input type="button" class="button small blue" value="编辑"></a>
+         	 @if(ladmin.get(i).username!="admin" && ladmin.get(i).status){
+         	 <a href="/admin/administor/del/@ladmin.get(i).username"><input type="button" class="button small red" value="停用"></a>
+         	 }
             </td>
           </tr>
           }

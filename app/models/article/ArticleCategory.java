@@ -80,10 +80,10 @@ public class ArticleCategory extends Model{
 	 * @return category_code 文章分类编号
 	 */
 	public static String createArticleCategory(ArticleCategory ac){
-		if(ac.category_code.equals("default")){
-			ac.parent_category_code = "";
-		}else{
+		if(ac.category_code == null || ac.category_code.equals("")){
 			ac.category_code = StringUtils.getMengCode();
+		}else if(ac.category_code.equals("default")){
+			ac.parent_category_code = "";
 		}
 		ac.save();
 		return ac.category_code;
